@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "welkin-wizardry",
+	"version": "${version}",
+	"name": "Welkin Wizardry",
+	"description": "Magic using the power of the sky",
+	"authors": [
+		"Aster"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/welkin-wizardry/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"aster.welkin_wizardry.WelkinWizardry"
+		],
+		"client": [
+			"aster.welkin_wizardry.WelkinWizardryClient"
+		],
+		"fabric-datagen": [
+			"aster.welkin_wizardry.WelkinWizardryDataGenerator"
+		]
+	},
+	"mixins": [
+		"welkin-wizardry.mixins.json",
+		{
+			"config": "welkin-wizardry.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
