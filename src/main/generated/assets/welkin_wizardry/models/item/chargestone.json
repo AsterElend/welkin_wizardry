@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "welkin_wizardry:item/grimoire"
+    "layer0": "welkin_wizardry:item/chargestone"
   }
 }

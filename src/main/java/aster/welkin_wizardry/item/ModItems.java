@@ -15,7 +15,7 @@ public class ModItems {
     public static final Item STELLARIUM = registerItem("stellarium", new Item(new FabricItemSettings()));
     public static final Item CHARGESTONE = registerItem("chargestone", new Item(new FabricItemSettings()));
     public static final Item ZEPHYRITE = registerItem("zephyrite", new Item(new FabricItemSettings()) );
-    public static final Item GRIMOIRE = registerItem("grimoire", new Item(new FabricItemSettings()));
+    public static final Item GRIMORE = registerItem("grimore", new Item(new FabricItemSettings()));
 
     private static void addItemsToWWItemGroup(FabricItemGroupEntries entries) {
     entries.add(STORMPHRAX);

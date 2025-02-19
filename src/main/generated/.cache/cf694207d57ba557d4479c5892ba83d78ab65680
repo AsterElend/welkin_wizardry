@@ -1,7 +1,9 @@
-// 1.20.1	2025-02-18T18:55:51.517615	Welkin Wizardry/Model Definitions
+// 1.20.1	2025-02-18T19:40:50.5111591	Welkin Wizardry/Model Definitions
 d888b8d83b95ec029116c599a41ca012f531e18d assets\welkin_wizardry\models\block\starstone.json
 e801eef6860d9eac644d0531dbec60a7dca6a049 assets\welkin_wizardry\blockstates\starstone.json
 73468c39c6a5983c485ef44685bd0b235ce82027 assets\welkin_wizardry\models\item\zephyrite.json
-9d33629d5db874d289fd32a55793875fb57fc2c7 assets\welkin_wizardry\models\item\grimoire.json
+a1fb6a364abde7c816bfa443e76a47ccce59649c assets\welkin_wizardry\models\item\starstone.json
 09be40b2b76f6aa553543e67f5af9e6fc01af793 assets\welkin_wizardry\models\item\stormphrax.json
+9e5b2e9562611c06cc2e6d63355decbb00dd3461 assets\welkin_wizardry\models\item\chargestone.json
+ad3c1112402354d71f1830dec759cc22f2a94db3 assets\welkin_wizardry\models\item\grimore.json
 1fb5c1c4d4cd60624f301cd1c6b1d32e05458887 assets\welkin_wizardry\models\item\stellarium.json

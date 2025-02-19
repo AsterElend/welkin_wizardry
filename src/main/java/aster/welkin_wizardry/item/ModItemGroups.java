@@ -21,7 +21,7 @@ public class ModItemGroups {
 						entries.add(ModItems.STORMPHRAX);
 						entries.add(ModItems.ZEPHYRITE);
 						entries.add(ModItems.STELLARIUM);
-						entries.add(ModItems.GRIMOIRE);
+						entries.add(ModItems.GRIMORE);
 
 						entries.add(ModBlocks.STARSTONE);
 
