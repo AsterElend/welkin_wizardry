@@ -8,14 +8,18 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 
-public class ModelProvider extends FabricModelProvider {
-    public ModelProvider(FabricDataOutput output) {
+public class ModModelProvider extends FabricModelProvider {
+    public ModModelProvider(FabricDataOutput output) {
         super(output);
     }
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator){
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STARSTONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHARGEPLANKS);
+
+        blockStateModelGenerator.registerLog(ModBlocks.CHARGELOG).log(ModBlocks.CHARGELOG).wood(ModBlocks.CHARGEWOOD);
+        blockStateModelGenerator.registerLog(ModBlocks.STRIPPEDCHARGELOG).log(ModBlocks.STRIPPEDCHARGELOG).wood(ModBlocks.STRIPPEDCHARGEWOOD);
     }
 
     @Override
@@ -25,6 +29,8 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.STELLARIUM, Models.GENERATED);
         itemModelGenerator.register(ModItems.ZEPHYRITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHARGESTONE, Models.GENERATED);
+
+
 
     }
 }

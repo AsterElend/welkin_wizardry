@@ -25,6 +25,17 @@ public class ModItemGroups {
 
 						entries.add(ModBlocks.STARSTONE);
 
+						entries.add(ModBlocks.CHARGEPLANKS);
+						entries.add(ModBlocks.CHARGEWOOD);
+						entries.add(ModBlocks.CHARGELOG);
+						entries.add(ModBlocks.STRIPPEDCHARGELOG);
+						entries.add(ModBlocks.STRIPPEDCHARGEWOOD);
+
+
+
+
+
+
 					}).build());
 
 	public static void registerItemGroups() {

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "welkin_wizardry:block/chargelog_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "welkin_wizardry:block/chargelog"
+    },
+    "axis=z": {
+      "model": "welkin_wizardry:block/chargelog_horizontal",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "welkin_wizardry:block/chargelog_top",
+    "side": "welkin_wizardry:block/chargelog"
+  }
+}
