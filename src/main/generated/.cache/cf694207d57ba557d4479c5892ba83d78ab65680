@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-19T18:18:39.6822361	Welkin Wizardry/Model Definitions
+// 1.20.1	2025-02-19T19:34:31.2063808	Welkin Wizardry/Model Definitions
 ceee643d6bab57e58e80ef663adc91fd4a56a623 assets\welkin_wizardry\models\block\strippedchargelog.json
 d3e88b9b786fa6ad95747d213cc845302f560216 assets\welkin_wizardry\blockstates\strippedchargewood.json
 cdade0c059684f8e2851470ecdb6683160ed11d7 assets\welkin_wizardry\models\block\strippedchargewood.json
@@ -19,8 +19,8 @@ eff3feafa77fa6098aae0273e1a7d48747ba4374 assets\welkin_wizardry\models\item\stri
 8a6c10c8e5ce98845deb88fdeebe4df3ecd3b485 assets\welkin_wizardry\models\block\chargeplanks.json
 cba528cf4adc5b56aa2511e6ffe28fa46d56e530 assets\welkin_wizardry\models\block\strippedchargelog_horizontal.json
 d888b8d83b95ec029116c599a41ca012f531e18d assets\welkin_wizardry\models\block\starstone.json
-e801eef6860d9eac644d0531dbec60a7dca6a049 assets\welkin_wizardry\blockstates\starstone.json
 2a774129f48acf88904c9b3c02865d164b69cb97 assets\welkin_wizardry\blockstates\chargeplanks.json
+e801eef6860d9eac644d0531dbec60a7dca6a049 assets\welkin_wizardry\blockstates\starstone.json
 09be40b2b76f6aa553543e67f5af9e6fc01af793 assets\welkin_wizardry\models\item\stormphrax.json
 8e18fdfb934bf4df227119e1b1974699f312ca41 assets\welkin_wizardry\models\item\chargelog.json
 ad3c1112402354d71f1830dec759cc22f2a94db3 assets\welkin_wizardry\models\item\grimore.json

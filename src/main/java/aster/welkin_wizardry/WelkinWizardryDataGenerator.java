@@ -1,5 +1,6 @@
 package aster.welkin_wizardry;
 
+import aster.welkin_wizardry.datagen.ModAdvancementProvider;
 import aster.welkin_wizardry.datagen.ModBlockTagProvider;
 import aster.welkin_wizardry.datagen.ModItemTagProvider;
 import aster.welkin_wizardry.datagen.ModModelProvider;
@@ -14,6 +15,7 @@ public class WelkinWizardryDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModBlockTagProvider::new);
+		pack.addProvider(ModAdvancementProvider::new);
 
 	}
 }
