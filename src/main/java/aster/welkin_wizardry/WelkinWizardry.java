@@ -1,8 +1,10 @@
 package aster.welkin_wizardry;
 
 import aster.welkin_wizardry.block.ModBlocks;
+import aster.welkin_wizardry.block.entity.ModBlockEntities;
 import aster.welkin_wizardry.item.ModItemGroups;
 import aster.welkin_wizardry.item.ModItems;
+import aster.welkin_wizardry.sound.ModSounds;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -24,6 +26,8 @@ public class WelkinWizardry implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModSounds.registerSounds();
+		ModBlockEntities.registerBlockEntities();
 		LOGGER.info("Hello Fabric world!");
 	}
 }

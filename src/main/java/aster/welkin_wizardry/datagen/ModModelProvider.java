@@ -29,6 +29,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.STELLARIUM, Models.GENERATED);
         itemModelGenerator.register(ModItems.ZEPHYRITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHARGESTONE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND, Models.HANDHELD_ROD);
+        itemModelGenerator.register(ModItems.STORMCYCLE_DISC, Models.GENERATED);
 
 
 

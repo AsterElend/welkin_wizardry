@@ -22,6 +22,7 @@ public class ModItemGroups {
 						entries.add(ModItems.ZEPHYRITE);
 						entries.add(ModItems.STELLARIUM);
 						entries.add(ModItems.GRIMORE);
+						entries.add(ModItems.WAND);
 
 						entries.add(ModBlocks.STARSTONE);
 
@@ -30,6 +31,8 @@ public class ModItemGroups {
 						entries.add(ModBlocks.CHARGELOG);
 						entries.add(ModBlocks.STRIPPEDCHARGELOG);
 						entries.add(ModBlocks.STRIPPEDCHARGEWOOD);
+
+						entries.add(ModItems.STORMCYCLE_DISC);
 
 
 
