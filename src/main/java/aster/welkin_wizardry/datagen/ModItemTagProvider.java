@@ -22,6 +22,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider{
         getOrCreateTagBuilder(ItemTags.LOGS)
                 .add(ModBlocks.CHARGELOG.asItem(), ModBlocks.STRIPPEDCHARGELOG.asItem());
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
-                .add(ModItems.STORMCYCLE_DISC);
+                .add(ModItems.STORMCYCLE_DISC, ModItems.WINDTUNNEL_DISC);
+
     }
 }

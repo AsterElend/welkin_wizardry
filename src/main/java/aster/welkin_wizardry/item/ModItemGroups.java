@@ -33,6 +33,7 @@ public class ModItemGroups {
 						entries.add(ModBlocks.STRIPPEDCHARGEWOOD);
 
 						entries.add(ModItems.STORMCYCLE_DISC);
+						entries.add(ModItems.WINDTUNNEL_DISC);
 
 
 

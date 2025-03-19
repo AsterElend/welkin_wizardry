@@ -31,6 +31,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CHARGESTONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.WAND, Models.HANDHELD_ROD);
         itemModelGenerator.register(ModItems.STORMCYCLE_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WINDTUNNEL_DISC, Models.GENERATED);
 
 
 

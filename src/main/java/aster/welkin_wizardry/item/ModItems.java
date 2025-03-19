@@ -21,6 +21,8 @@ public class ModItems {
     public static final Item WAND = registerItem("wand", new Item(new FabricItemSettings()));
     public static final Item STORMCYCLE_DISC = registerItem("stormcycle_disc",
             new MusicDiscItem(15, ModSounds.STORMCYCLE,  new FabricItemSettings().maxCount(1), 36 ));
+    public static final Item WINDTUNNEL_DISC = registerItem("windtunnel_disc",
+            new MusicDiscItem(15, ModSounds.WINDTUNNEL,  new FabricItemSettings().maxCount(1), 94 ));
 
     private static void addItemsToWWItemGroup(FabricItemGroupEntries entries) {
     entries.add(STORMPHRAX);
@@ -29,6 +31,7 @@ public class ModItems {
     entries.add(STELLARIUM);
     entries.add(WAND);
     entries.add(STORMCYCLE_DISC);
+    entries.add(WINDTUNNEL_DISC);
 
     }
 

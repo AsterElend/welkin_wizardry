@@ -16,6 +16,7 @@ public class ModSounds {
 
 
     public static final SoundEvent STORMCYCLE = registerSoundEvent("stormcycle");
+    public static final SoundEvent WINDTUNNEL = registerSoundEvent("windtunnel");
 
             public static void registerSounds() {
                 WelkinWizardry.LOGGER.info("registering sounds for ww");
