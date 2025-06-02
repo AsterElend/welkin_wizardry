@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "welkin_wizardry:chargelog",
-    "welkin_wizardry:strippedchargelog"
+    "welkin:chargelog",
+    "welkin:strippedchargelog"
   ]
 }

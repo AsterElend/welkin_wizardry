@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "welkin_wizardry:block/strippedchargelog_top",
-    "side": "welkin_wizardry:block/strippedchargelog"
-  }
-}

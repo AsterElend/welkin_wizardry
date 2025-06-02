@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "welkin:block/strippedchargewood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "welkin:block/strippedchargewood"
+    },
+    "axis=z": {
+      "model": "welkin:block/strippedchargewood",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "itemgroup.welkin" : "Welkin Wizardry",
+
+  "item.welkin.stormphrax" : "Stormphrax",
+  "item.welkin.chargestone": "Chargestone",
+  "item.welkin.zephyrite": "Zephyrite",
+  "item.welkin.stellarium": "Stellarium",
+  "item.welkin.grimore": "Skyward Grimoire",
+  "item.welkin.wand": "Charged Wand",
+
+  "block.welkin.starstone": "Starstone",
+  "block.welkin.chargelog": "Charged Log",
+  "block.welkin.strippedchargelog": "Stripped Charged Log",
+  "block.welkin.chargewood": "Charged Wood",
+  "block.welkin.strippedchargewood": "Stripped Charged Wood",
+  "block.welkin.chargeplanks": "Charged Planks",
+
+  "item.welkin.stormcycle_disc": "Stormcycle",
+  "item.welkin.stormcycle_disc.desc": "Zealot Zorua - Stormcycle",
+  "item.welkin.windtunnel_disc": "Windtunnel",
+  "item.welkin.windtunnel_disc.desc": "Zealot Zorua - Windtunnel"
+
+}

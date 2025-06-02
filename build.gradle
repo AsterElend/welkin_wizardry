@@ -19,17 +19,7 @@ repositories {
 	maven { url 'https://maven.blamejared.com' }
 }
 
-loom {
-	splitEnvironmentSourceSets()
 
-	mods {
-		"welkin-wizardry" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
-
-}
 
 fabricApi {
 	configureDataGeneration()

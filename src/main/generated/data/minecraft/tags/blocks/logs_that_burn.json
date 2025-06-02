@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "welkin_wizardry:chargelog",
-    "welkin_wizardry:chargewood",
-    "welkin_wizardry:strippedchargelog",
-    "welkin_wizardry:strippedchargewood"
+    "welkin:chargelog",
+    "welkin:chargewood",
+    "welkin:strippedchargelog",
+    "welkin:strippedchargewood"
   ]
 }
