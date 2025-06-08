@@ -1,6 +1,7 @@
-package aster.welkin.block.nodes;
+package aster.welkin.block.fancy.focus;
 
 import aster.welkin.block.ModBlockEntities;
+import aster.welkin.block.fancy.ImplementedInventory;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -11,12 +12,12 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
-public class NodeBlockEntity extends BlockEntity implements ImplementedInventory {
+public class FocusBlockEntity extends BlockEntity implements ImplementedInventory {
     private final DefaultedList<ItemStack> inventory;
 
-    public NodeBlockEntity(BlockPos pos, BlockState state){
-        super(ModBlockEntities.NODE, pos, state);
-this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
+    public FocusBlockEntity(BlockPos pos, BlockState state){
+        super(ModBlockEntities.FOCUS, pos, state);
+        this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
     }
 
     @Override
@@ -38,7 +39,7 @@ this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     @Override
     public int getMaxCountPerStack()  {
-        return 1;
+        return 64;
     }
 
     @Override

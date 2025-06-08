@@ -1,4 +1,4 @@
-package aster.welkin.block.nodes;
+package aster.welkin.block.fancy;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;

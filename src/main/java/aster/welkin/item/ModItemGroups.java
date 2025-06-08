@@ -39,6 +39,7 @@ public class ModItemGroups {
 						entries.add(ModBlocks.UNLIGHT);
 
 						//entries.add(ModBlocks.PYLON);
+						entries.add(ModBlocks.FOCUS);
 
 
 

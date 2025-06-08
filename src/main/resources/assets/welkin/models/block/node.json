@@ -1,20 +1,19 @@
 {
 	"credit": "Made with Blockbench",
-
 	"ambientocclusion": false,
 	"textures": {
-		"2": "welkin/block/node",
-		"overlay": "block/redstone_dust_overlay"
+		"1": "block/node",
+		"particle": "block/node"
 	},
 	"elements": [
-		    {   "from": [ 0, 0.25, 0 ],
-			"to": [ 16, 0.25, 16 ],
+		{
+			"from": [1, 0.25, 1],
+			"to": [15, 0.25, 15],
 			"shade": false,
 			"faces": {
-				"up": { "uv": [ 0, 0, 16, 16 ], "texture": "#2", "tintindex": 0 },
-				"down": { "uv": [ 0, 16, 16, 0 ], "texture": "#2", "tintindex": 0 }
+				"up": {"uv": [14, 14, 0, 0], "texture": "#1", "tintindex": 0},
+				"down": {"uv": [14, 14, 0, 0], "texture": "#1", "tintindex": 0}
 			}
 		}
-
 	]
 }
