@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "welkin:block/focus",
-		"particle": "welkin:block/focus"
+		"0": "welkin:block/pylon",
+		"particle": "welkin:block/pylon"
 	},
 	"elements": [
 		{

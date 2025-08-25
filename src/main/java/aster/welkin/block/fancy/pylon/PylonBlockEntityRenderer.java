@@ -1,4 +1,4 @@
-package aster.welkin.block.fancy.focus;
+package aster.welkin.block.fancy.pylon;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -9,12 +9,12 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.RotationAxis;
 
-public class FocusBlockEntityRenderer implements BlockEntityRenderer<FocusBlockEntity> {
-    public FocusBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+public class PylonBlockEntityRenderer implements BlockEntityRenderer<PylonBlockEntity> {
+    public PylonBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
 
     }
     @Override
-    public void render(FocusBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay){
+    public void render(PylonBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay){
         ItemStack stack = entity.getRenderStack();
         if (stack.isEmpty()) return;
 

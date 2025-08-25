@@ -2,14 +2,16 @@ package aster.welkin.block;
 
 import aster.welkin.Welkin;
 
-import aster.welkin.block.fancy.focus.FocusBlock;
+
 import aster.welkin.block.fancy.node.NodeBlock;
+import aster.welkin.block.fancy.pylon.PylonBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
 import net.minecraft.block.PillarBlock;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -35,13 +37,19 @@ public class ModBlocks {
 	public static final Block CHARGEPLANKS = registerBlock("chargeplanks",
 			new Block(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS)));
 
-	public static final Block UNLIGHT = registerBlock("unlight",
-			new Block(FabricBlockSettings.copyOf(Blocks.SEA_LANTERN).luminance(-15)));
+
+	public static final Block MOTHTILE = registerBlock("mothtile",
+			new Block(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA)));
+
+
+
+	//public static final Block UNLIGHT = registerBlock("unlight",
+			//new Block(FabricBlockSettings.copyOf(Blocks.SEA_LANTERN).luminance(-15)));
 // now for blockentties
 	public static final Block NODE =  registerBlock("node",
 			new NodeBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_WIRE)));
-	public static final Block FOCUS =  registerBlock("focus",
-			new FocusBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
+	public static final Block PYLON =  registerBlock("pylon",
+			new PylonBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
 
 
 

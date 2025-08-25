@@ -2,7 +2,7 @@ package aster.welkin;
 
 import aster.welkin.block.ModBlockEntities;
 import aster.welkin.block.ModBlocks;
-import aster.welkin.block.fancy.focus.FocusBlockEntityRenderer;
+import aster.welkin.block.fancy.pylon.PylonBlockEntityRenderer;
 import aster.welkin.block.fancy.node.NodeBlockEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -19,8 +19,8 @@ public class WelkinClient implements ClientModInitializer {
                 NodeBlockEntityRenderer::new
         );
         BlockEntityRendererRegistry.register(
-                ModBlockEntities.FOCUS,
-                FocusBlockEntityRenderer::new);
+                ModBlockEntities.PYLON,
+                PylonBlockEntityRenderer::new);
 
     }
 }

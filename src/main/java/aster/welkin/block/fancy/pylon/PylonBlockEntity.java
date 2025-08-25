@@ -1,4 +1,4 @@
-package aster.welkin.block.fancy.focus;
+package aster.welkin.block.fancy.pylon;
 
 import aster.welkin.block.ModBlockEntities;
 import aster.welkin.block.fancy.ImplementedInventory;
@@ -12,11 +12,11 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
-public class FocusBlockEntity extends BlockEntity implements ImplementedInventory {
+public class PylonBlockEntity extends BlockEntity implements ImplementedInventory {
     private final DefaultedList<ItemStack> inventory;
 
-    public FocusBlockEntity(BlockPos pos, BlockState state){
-        super(ModBlockEntities.FOCUS, pos, state);
+    public PylonBlockEntity(BlockPos pos, BlockState state){
+        super(ModBlockEntities.PYLON, pos, state);
         this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
     }
 

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "welkin:block/focus"
+      "model": "welkin:block/pylon"
     }
   }
 }

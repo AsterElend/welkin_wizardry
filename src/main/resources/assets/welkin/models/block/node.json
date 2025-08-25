@@ -1,19 +1,7 @@
 {
-	"credit": "Made with Blockbench",
-	"ambientocclusion": false,
-	"textures": {
-		"1": "block/node",
-		"particle": "block/node"
-	},
-	"elements": [
-		{
-			"from": [1, 0.25, 1],
-			"to": [15, 0.25, 15],
-			"shade": false,
-			"faces": {
-				"up": {"uv": [14, 14, 0, 0], "texture": "#1", "tintindex": 0},
-				"down": {"uv": [14, 14, 0, 0], "texture": "#1", "tintindex": 0}
-			}
-		}
-	]
+  "parent": "minecraft:block/redstone_dust_dot",
+  "textures": {
+    "particle": "welkin:block/node",
+    "line": "welkin:block/node"
+  }
 }

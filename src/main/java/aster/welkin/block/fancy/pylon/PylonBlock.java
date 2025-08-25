@@ -1,6 +1,5 @@
-package aster.welkin.block.fancy.focus;
+package aster.welkin.block.fancy.pylon;
 
-import aster.welkin.block.fancy.focus.FocusBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.util.shape.VoxelShape;
@@ -22,11 +21,11 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-public class FocusBlock extends BlockWithEntity implements BlockEntityProvider {
+public class PylonBlock extends BlockWithEntity implements BlockEntityProvider {
 
     private static final VoxelShape SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-    public FocusBlock(Settings settings) {
+    public PylonBlock(Settings settings) {
         super(settings);
     }
 
@@ -54,14 +53,14 @@ public class FocusBlock extends BlockWithEntity implements BlockEntityProvider {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new FocusBlockEntity(pos, state);
+        return new PylonBlockEntity(pos, state);
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
-            if (world.getBlockEntity(pos) instanceof FocusBlockEntity focusBlockEntity) {
-                ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), focusBlockEntity.getStoredItem());
+            if (world.getBlockEntity(pos) instanceof PylonBlockEntity pylonBlockEntity) {
+                ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), pylonBlockEntity.getStoredItem());
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -73,21 +72,21 @@ public class FocusBlock extends BlockWithEntity implements BlockEntityProvider {
         ActionResult result = ActionResult.PASS;
 
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (!(blockEntity instanceof FocusBlockEntity focusBlockEntity)) {
+        if (!(blockEntity instanceof PylonBlockEntity pylonBlockEntity)) {
             return result;
         }
 
-        if (focusBlockEntity.isEmpty()) {
-            result = addItemFromHand(world, focusBlockEntity, player, hand);
+        if (pylonBlockEntity.isEmpty()) {
+            result = addItemFromHand(world, pylonBlockEntity, player, hand);
         } else if (hand.equals(Hand.MAIN_HAND)) {
-            removeItemFromTable(world, focusBlockEntity, player);
+            removeItemFromTable(world, pylonBlockEntity, player);
             result = ActionResult.SUCCESS;
         }
 
         return result;
     }
 
-    private ActionResult addItemFromHand(World world, FocusBlockEntity focusBlockEntity, PlayerEntity player, Hand hand) {
+    private ActionResult addItemFromHand(World world, PylonBlockEntity pylonBlockEntity, PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getStackInHand(hand);
         ItemStack offHandItem = player.getOffHandStack();
 
@@ -101,19 +100,19 @@ public class FocusBlock extends BlockWithEntity implements BlockEntityProvider {
         }
         if (heldItem.isEmpty()) {
             return ActionResult.PASS;
-        } else if (focusBlockEntity.addItem(player.getAbilities().creativeMode ? heldItem.copy() : heldItem)) {
-            playPlaceSound(world, focusBlockEntity.getPos());
+        } else if (pylonBlockEntity.addItem(player.getAbilities().creativeMode ? heldItem.copy() : heldItem)) {
+            playPlaceSound(world, pylonBlockEntity.getPos());
             return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }
 
-    private void removeItemFromTable(World world, FocusBlockEntity focusBlockEntity, PlayerEntity player) {
-        BlockPos pos = focusBlockEntity.getPos();
+    private void removeItemFromTable(World world, PylonBlockEntity pylonBlockEntity, PlayerEntity player) {
+        BlockPos pos = pylonBlockEntity.getPos();
         if (player.isCreative()) {
-            focusBlockEntity.removeItem();
-        } else if (!player.getInventory().insertStack(focusBlockEntity.removeItem())) {
-            ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), focusBlockEntity.removeItem());
+            pylonBlockEntity.removeItem();
+        } else if (!player.getInventory().insertStack(pylonBlockEntity.removeItem())) {
+            ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), pylonBlockEntity.removeItem());
         }
         playRemoveSound(world, pos);
     }

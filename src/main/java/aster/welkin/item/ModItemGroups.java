@@ -25,8 +25,12 @@ public class ModItemGroups {
 						entries.add(ModItems.WAND);
 
 						entries.add(ModBlocks.STARSTONE);
+						entries.add(ModBlocks.MOTHTILE);
 
 						entries.add(ModBlocks.CHARGEPLANKS);
+
+
+
 						entries.add(ModBlocks.CHARGEWOOD);
 						entries.add(ModBlocks.CHARGELOG);
 						entries.add(ModBlocks.STRIPPEDCHARGELOG);
@@ -36,10 +40,10 @@ public class ModItemGroups {
 						entries.add(ModItems.WINDTUNNEL_DISC);
 
 
-						entries.add(ModBlocks.UNLIGHT);
+						//entries.add(ModBlocks.UNLIGHT);
 
 						//entries.add(ModBlocks.PYLON);
-						entries.add(ModBlocks.FOCUS);
+						entries.add(ModBlocks.PYLON);
 
 
 

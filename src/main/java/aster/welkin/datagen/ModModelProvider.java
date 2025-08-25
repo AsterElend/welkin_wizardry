@@ -15,11 +15,18 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator){
+
+
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STARSTONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHARGEPLANKS);
 
+
         blockStateModelGenerator.registerLog(ModBlocks.CHARGELOG).log(ModBlocks.CHARGELOG).wood(ModBlocks.CHARGEWOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPEDCHARGELOG).log(ModBlocks.STRIPPEDCHARGELOG).wood(ModBlocks.STRIPPEDCHARGEWOOD);
+//work out how to get a rotatable block for mothtile
+
+
+
     }
 
     @Override
