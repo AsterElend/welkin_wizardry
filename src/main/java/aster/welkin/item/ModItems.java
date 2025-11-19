@@ -1,6 +1,7 @@
 package aster.welkin.item;
 
 import aster.welkin.Welkin;
+import aster.welkin.item.fancy.GalvanicWand;
 import aster.welkin.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
@@ -18,11 +19,16 @@ public class ModItems {
     public static final Item CHARGESTONE = registerItem("chargestone", new Item(new FabricItemSettings()));
     public static final Item ZEPHYRITE = registerItem("zephyrite", new Item(new FabricItemSettings()) );
     public static final Item GRIMORE = registerItem("grimore", new Item(new FabricItemSettings()));
-    public static final Item WAND = registerItem("wand", new Item(new FabricItemSettings()));
+
     public static final Item STORMCYCLE_DISC = registerItem("stormcycle_disc",
             new MusicDiscItem(15, ModSounds.STORMCYCLE,  new FabricItemSettings().maxCount(1), 36 ));
     public static final Item WINDTUNNEL_DISC = registerItem("windtunnel_disc",
             new MusicDiscItem(15, ModSounds.WINDTUNNEL,  new FabricItemSettings().maxCount(1), 94 ));
+
+    public static final Item WAND = registerItem("wand", new GalvanicWand(new FabricItemSettings()));
+
+
+
 
     private static void addItemsToWWItemGroup(FabricItemGroupEntries entries) {
     entries.add(STORMPHRAX);
@@ -41,6 +47,7 @@ public class ModItems {
 
 public static Item registerItem(String name, Item item) {
     return Registry.register(Registries.ITEM, new Identifier(Welkin.MOD_ID, name), item); }
+
 public static void registerModItems() {
 
     Welkin.LOGGER.info("Registering Mod Items for " + Welkin.MOD_ID);

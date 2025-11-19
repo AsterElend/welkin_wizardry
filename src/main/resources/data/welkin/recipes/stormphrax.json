@@ -1,0 +1,5 @@
+{
+  "type": "welkin:smite",
+  "input": { "item": "minecraft:copper_ingot" },
+  "result": "minecraft:gold_ingot"
+}

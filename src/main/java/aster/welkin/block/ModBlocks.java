@@ -3,6 +3,7 @@ package aster.welkin.block;
 import aster.welkin.Welkin;
 
 
+//import aster.welkin.block.fancy.brazier2.Brazier;
 import aster.welkin.block.fancy.node.NodeBlock;
 import aster.welkin.block.fancy.pylon.PylonBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -50,6 +51,9 @@ public class ModBlocks {
 			new NodeBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_WIRE)));
 	public static final Block PYLON =  registerBlock("pylon",
 			new PylonBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
+
+	//public static final Block BRAZIER = registerBlock("brazier",
+		//	new Brazier(FabricBlockSettings.copyOf(Blocks.IRON_BARS)));
 
 
 

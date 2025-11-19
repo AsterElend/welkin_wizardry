@@ -23,12 +23,13 @@
 		],
 		"fabric-datagen": [
 			"aster.welkin.WelkinDataGenerator"
+		],
+		"cardinal-components": [
+			"aster.welkin.cc.MyComponents"
 		]
 	},
 	"mixins": [
 		"welkin.mixins.json"
-
-
 
 	],
 	"depends": {
@@ -39,5 +40,13 @@
 	},
 	"suggests": {
 		"another-mod": "*"
+	},
+
+
+	"custom": {
+		"cardinal-components": [
+			"welkin:skyforce"
+		]
 	}
+
 }
