@@ -1,8 +1,0 @@
-{
-  "type": "welkin:smite",
-  "input": {
-    "item": "minecraft:iron_ingot"
-  },
-  "result": "minecraft:diamond_sword",
-  "count": 1
-}

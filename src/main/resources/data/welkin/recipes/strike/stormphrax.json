@@ -1,0 +1,12 @@
+{
+  "type": "welkin:strike",
+
+  "ingredient": {
+    "item": "minecraft:copper_ingot"
+  },
+
+  "result": {
+    "item": "welkin:stormphrax",
+    "count": 1
+  }
+}

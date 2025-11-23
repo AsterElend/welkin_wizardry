@@ -1,0 +1,10 @@
+{
+  "type": "welkin:forsake",
+  "ingredient": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "item": "minecraft:echo_shard",
+    "count": 1
+  }
+}

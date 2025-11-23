@@ -1,7 +1,7 @@
 package aster.welkin.datagen;
 
-import aster.welkin.block.ModBlocks;
-import aster.welkin.item.ModItems;
+import aster.welkin.registry.ModBlocks;
+import aster.welkin.registry.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;

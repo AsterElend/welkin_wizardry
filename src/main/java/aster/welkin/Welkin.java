@@ -1,19 +1,13 @@
 package aster.welkin;
 
-import aster.welkin.block.ModBlockEntities;
-import aster.welkin.block.ModBlocks;
-import aster.welkin.recipes.LightningHandler;
+
+import aster.welkin.registry.*;
 //import aster.welkin.block.fancy.brazier2.TestRecipe;
-import aster.welkin.item.ModItemGroups;
-import aster.welkin.item.ModItems;
-import aster.welkin.recipes.SmiteRecipeSerializer;
-import aster.welkin.recipes.SmiteRecipeType;
+
 import aster.welkin.sound.ModSounds;
 import net.fabricmc.api.ModInitializer;
 
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,20 +27,20 @@ public class Welkin implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItems.registerModItems();
+
+		
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		ModItemGroups.registerItemGroups();
-		ModItems.registerModItems();
+		ModRecipes.register();
+
 		ModBlocks.registerModBlocks();
 		ModSounds.registerSounds();
 		ModBlockEntities.registerBlockEntities();
 
-		Registry.register(Registries.RECIPE_TYPE,
-				SmiteRecipeType.ID, SmiteRecipeType.INSTANCE);
 
-		Registry.register(Registries.RECIPE_SERIALIZER,
-				SmiteRecipeType.ID, SmiteRecipeSerializer.INSTANCE);
 
 
 		LOGGER.info("Hello Fabric world!");
