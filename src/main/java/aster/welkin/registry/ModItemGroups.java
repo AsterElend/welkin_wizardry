@@ -23,6 +23,9 @@ public class ModItemGroups {
 						entries.add(ModItems.GRIMORE);
 						entries.add(ModItems.WAND);
 
+						entries.add(ModItems.GUST);
+						entries.add(ModItems.DOLLY);
+
 						entries.add(ModBlocks.STARSTONE);
 						entries.add(ModBlocks.MOTHTILE);
 
@@ -41,11 +44,14 @@ public class ModItemGroups {
 
 						//entries.add(ModBlocks.UNLIGHT);
 
-						//entries.add(ModBlocks.PYLON);
+
 						entries.add(ModBlocks.PYLON);
 
 						entries.add(ModBlocks.ALTAR);
 						entries.add(ModBlocks.BRAZIER);
+
+						entries.add(ModBlocks.CONDENSER);
+						entries.add(ModBlocks.TRANSDUCER);
 
 
 

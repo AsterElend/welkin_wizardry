@@ -1,9 +1,8 @@
-package aster.welkin.block.altar;
+package aster.welkin.block.solo;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,13 +11,22 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-public class AltarBlock extends Block {
+public class LightningAltar extends Block {
 
-    public AltarBlock(Settings settings) {
+    public LightningAltar(Settings settings) {
         super(settings);
+    }
+
+    public VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 16, 15);
+
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
     }
 
     @Override

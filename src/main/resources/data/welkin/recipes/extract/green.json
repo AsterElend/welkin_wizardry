@@ -1,0 +1,5 @@
+{
+  "type": "welkin:extract",
+  "input": { "item": "minecraft:diamond" },
+  "output": { "item": "minecraft:emerald", "count": 1 }
+}

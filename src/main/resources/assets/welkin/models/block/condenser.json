@@ -1,0 +1,9 @@
+{
+	"parent": "yourmod:block/condenserparent",
+	"textures": {
+		"front":  "yourmod:block/condenser_front",
+		"back":   "yourmod:block/condenser_back",
+		"top":    "yourmod:block/condenser_top",
+		"side":   "yourmod:block/condenser_side"
+	}
+}

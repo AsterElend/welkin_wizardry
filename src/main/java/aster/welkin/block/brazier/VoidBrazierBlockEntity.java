@@ -14,17 +14,17 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Optional;
 
-public class BrazierBlockEntity extends BlockEntity {
+public class VoidBrazierBlockEntity extends BlockEntity {
     private static final double RANGE = 0.2;
 
-    public BrazierBlockEntity(BlockPos pos, BlockState state) {
+    public VoidBrazierBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.BRAZIER, pos, state);
     }
 
     /** Server-side tick */
-    public static void tick(World world, BlockPos pos, BlockState state, BrazierBlockEntity be) {
+    public static void tick(World world, BlockPos pos, BlockState state, VoidBrazierBlockEntity be) {
         if (world.isClient) return;
-        if (!state.get(BrazierBlock.LIT)) return;
+        if (!state.get(VoidBrazierBlock.LIT)) return;
 
         // area around brazier
         Box box = new Box(pos).expand(RANGE);

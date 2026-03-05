@@ -2,12 +2,15 @@ package aster.welkin.registry;
 
 import aster.welkin.Welkin;
 
-
-//import aster.welkin.block.fancy.brazier2.Brazier;
-import aster.welkin.block.altar.AltarBlock;
-import aster.welkin.block.brazier.BrazierBlock;
+import aster.welkin.block.extractor.ExtractorBlock;
+import aster.welkin.block.solo.LightningAltar;
+import aster.welkin.block.brazier.VoidBrazierBlock;
+import aster.welkin.block.condese.CondenseBlock;
 import aster.welkin.block.node.NodeBlock;
 import aster.welkin.block.pylon.PylonBlock;
+//import aster.welkin.block.tank.TankController;
+//import aster.welkin.block.tank.TankFrame;
+import aster.welkin.block.transducer.TransducerBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -55,11 +58,18 @@ public class ModBlocks {
 	public static final Block PYLON =  registerBlock("pylon",
 			new PylonBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
 	public static final Block BRAZIER = registerBlock("brazier",
-			new BrazierBlock(FabricBlockSettings.copyOf(Blocks.SOUL_CAMPFIRE)));
-
+			new VoidBrazierBlock(FabricBlockSettings.copyOf(Blocks.SOUL_CAMPFIRE)));
+	public static final Block CONDENSER = registerBlock("condenser",
+			new CondenseBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON)));
+	//public static final Block TANKCONTROLLER = registerBlock("controller", new TankController(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
+	public static final Block TRANSDUCER = registerBlock("transducer", new TransducerBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT).nonOpaque()));
+	public static final Block EXTRACTOR = registerBlock("extractor", new ExtractorBlock(FabricBlockSettings.copyOf(Blocks.BEACON).nonOpaque()));
 
 	//functional blocks that aren't entites
-	public static final Block ALTAR = registerBlock("altar", new AltarBlock(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK)));
+	public static final Block ALTAR = registerBlock("altar", new LightningAltar(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).nonOpaque()));
+
+
+    //public static final Block TANK_FRAME = registerBlock("tankframe", new TankFrame(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
 
 

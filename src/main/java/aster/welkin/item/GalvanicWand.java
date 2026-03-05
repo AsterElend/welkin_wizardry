@@ -1,11 +1,13 @@
 package aster.welkin.item;
 
 import aster.welkin.registry.ModBlocks;
-import aster.welkin.cc.MyComponents;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -23,23 +25,24 @@ public class GalvanicWand extends Item {
     @Override
     public ActionResult useOnBlock(ItemUsageContext ctx) {
         World world = ctx.getWorld();
-        BlockPos pos = ctx.getBlockPos();
-        Direction direction = ctx.getSide();
-        BlockState target = world.getBlockState(pos.offset(direction));
         PlayerEntity player = ctx.getPlayer();
+        BlockPos pos = ctx.getBlockPos();
+        Direction side = ctx.getSide();
 
-        if (target.isReplaceable() && player.isSneaking()) {
 
-            MyComponents.SKYFORCE.get(player).drainMagic(100, false);
-            world.setBlockState(pos.offset(direction), ModBlocks.NODE.getDefaultState());
-            return ActionResult.success(true);
-        } else {
-            return ActionResult.FAIL;
-        }
+        BlockPos placePos = pos.offset(side);
+        BlockState placeState = world.getBlockState(placePos);
+
+        if (!world.isClient && player != null && player.isSneaking() && placeState.canReplace((ItemPlacementContext) ctx) ) {
+
+
+                world.setBlockState(placePos, ModBlocks.NODE.getDefaultState());
+                return ActionResult.SUCCESS;
+
+
+
+        } return ActionResult.FAIL;
     }
 
-
-
-
-
 }
+

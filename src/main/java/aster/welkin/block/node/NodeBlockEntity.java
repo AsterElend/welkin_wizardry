@@ -1,7 +1,7 @@
 package aster.welkin.block.node;
 
 import aster.welkin.registry.ModBlockEntities;
-import aster.welkin.block.ImplementedInventory;
+import aster.welkin.block.solo.ImplementedInventory;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

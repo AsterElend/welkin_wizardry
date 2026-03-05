@@ -6,6 +6,7 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -80,7 +81,7 @@ public abstract class LightningHandler {
                     item.getZ(),
                     result
             );
-
+server.spawnParticles(ParticleTypes.SCRAPE, item.getX(), item.getY(), item.getZ(), 300, 1, 1, 1,1 );
             server.spawnEntity(output);
         }
 

@@ -13,12 +13,16 @@ public class ModModelProvider extends FabricModelProvider {
         super(output);
     }
 
+
+
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator){
 
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STARSTONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHARGEPLANKS);
+     
+
 
 
         blockStateModelGenerator.registerLog(ModBlocks.CHARGELOG).log(ModBlocks.CHARGELOG).wood(ModBlocks.CHARGEWOOD);
@@ -39,6 +43,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.WAND, Models.HANDHELD_ROD);
         itemModelGenerator.register(ModItems.STORMCYCLE_DISC, Models.GENERATED);
         itemModelGenerator.register(ModItems.WINDTUNNEL_DISC, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GUST, Models.HANDHELD_ROD);
+        itemModelGenerator.register(ModItems.DOLLY, Models.HANDHELD_ROD);
 
 
 

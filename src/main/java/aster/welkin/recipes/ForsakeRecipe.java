@@ -32,9 +32,6 @@ public class ForsakeRecipe implements Recipe<SimpleInventory> {
         return ingredient.test(inv.getStack(0));
     }
 
-    public ItemStack craft(ItemStack input) {
-        return result.copy();
-    }
 
     @Override
     public ItemStack craft(SimpleInventory inv, DynamicRegistryManager manager) {

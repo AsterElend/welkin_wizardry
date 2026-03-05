@@ -22,13 +22,13 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BrazierBlock extends BlockWithEntity {
+public class VoidBrazierBlock extends BlockWithEntity {
     public static final BooleanProperty LIT = Properties.LIT;
     private static final VoxelShape SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
 
 
-    public BrazierBlock(Settings settings) {
+    public VoidBrazierBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(LIT, false));
     }
@@ -50,7 +50,7 @@ public class BrazierBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new BrazierBlockEntity(pos, state);
+        return new VoidBrazierBlockEntity(pos, state);
     }
 
     @Nullable
@@ -62,7 +62,7 @@ public class BrazierBlock extends BlockWithEntity {
     ) {
         if (world.isClient) return null;
         return type == ModBlockEntities.BRAZIER
-                ? (w,p,s,be) -> BrazierBlockEntity.tick(w,p,s, (BrazierBlockEntity) be) : null;
+                ? (w,p,s,be) -> VoidBrazierBlockEntity.tick(w,p,s, (VoidBrazierBlockEntity) be) : null;
 
 
     }

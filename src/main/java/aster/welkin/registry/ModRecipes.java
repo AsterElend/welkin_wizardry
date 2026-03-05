@@ -1,5 +1,6 @@
 package aster.welkin.registry;
 
+import aster.welkin.recipes.ExtractorRecipe;
 import aster.welkin.recipes.ForsakeRecipe;
 import aster.welkin.recipes.LightningRecipe;
 import net.minecraft.recipe.RecipeSerializer;
@@ -14,6 +15,9 @@ public class ModRecipes {
     public static RecipeSerializer<ForsakeRecipe> FORSAKE_SERIALIZER;
      public static RecipeType<LightningRecipe> LIGHTNING_TYPE;
     public static RecipeSerializer<LightningRecipe> LIGHTNING_SERIALIZER;
+
+ public static RecipeType<ExtractorRecipe> EXTRACT_TYPE;
+    public static RecipeSerializer<ExtractorRecipe> EXTRACT_SERIALIZER;
 
 
 
@@ -52,5 +56,23 @@ public class ModRecipes {
                 Registries.RECIPE_SERIALIZER,
                 new Identifier("welkin", "strike"),
                 new LightningRecipe.LightningSerializer());
+
+        //sky extraction recipe
+
+        EXTRACT_TYPE = Registry.register(
+                Registries.RECIPE_TYPE,
+                new Identifier("welkin", "extract"),
+                new RecipeType<ExtractorRecipe>() {
+                    @Override
+                    public String toString() {
+                        return "welkin:extract";
+                    }
+                }
+        );
+
+        EXTRACT_SERIALIZER = Registry.register(
+                Registries.RECIPE_SERIALIZER,
+                new Identifier("welkin", "extract"),
+                new ExtractorRecipe.ExtractorRecipeSerializer());
     }
 }
