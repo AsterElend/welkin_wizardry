@@ -24,7 +24,7 @@ public  class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 ModBlocks.STARSTONE
         );
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
-                        ModBlocks.ALTAR,
+                        ModBlocks.LIGHTNING_ALTAR,
                         ModBlocks.CHARGELOG,
                         ModBlocks.CHARGEWOOD,
                         ModBlocks.CHARGEPLANKS,

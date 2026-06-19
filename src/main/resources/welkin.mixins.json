@@ -6,6 +6,7 @@
     "ExampleMixin",
     "ItemLightningMixin",
     "LightningHandler"
+
   ],
   "injectors": {
     "defaultRequire": 1

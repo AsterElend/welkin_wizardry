@@ -1,33 +1,28 @@
 package aster.welkin.registry;
 
 import aster.welkin.Welkin;
-
-import aster.welkin.block.extractor.ExtractorBlock;
-import aster.welkin.block.solo.LightningAltar;
-import aster.welkin.block.brazier.VoidBrazierBlock;
-import aster.welkin.block.condese.CondenseBlock;
-import aster.welkin.block.node.NodeBlock;
-import aster.welkin.block.pylon.PylonBlock;
-//import aster.welkin.block.tank.TankController;
-//import aster.welkin.block.tank.TankFrame;
-import aster.welkin.block.transducer.TransducerBlock;
+import aster.welkin.block.*;
+import aster.welkin.block.transducer.FluidTransducerBlock;
+import aster.welkin.block.transducer.ItemTransducerBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-
 import net.minecraft.block.PillarBlock;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static aster.welkin.Welkin.id;
 
 
 public class ModBlocks {
+	public static final List<Block> ALL_BLOCKS = new ArrayList<>();
 	public static final Block STARSTONE = registerBlock("starstone",
 			new Block(FabricBlockSettings.copyOf(Blocks.TUFF).sounds(BlockSoundGroup.SCULK)));
 
@@ -50,26 +45,28 @@ public class ModBlocks {
 
 
 
-	//public static final Block UNLIGHT = registerBlock("unlight",
-			//new Block(FabricBlockSettings.copyOf(Blocks.SEA_LANTERN).luminance(-15)));
+
 // now for blockentties
 	public static final Block NODE =  registerBlockNoItem("node",
 			new NodeBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_WIRE)));
-	public static final Block PYLON =  registerBlock("pylon",
-			new PylonBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
-	public static final Block BRAZIER = registerBlock("brazier",
+	public static final Block PEDESTAL =  registerBlock("pedestal",
+			new PedestalBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
+	public static final Block VOID_BRAZIER = registerBlock("void_brazier",
 			new VoidBrazierBlock(FabricBlockSettings.copyOf(Blocks.SOUL_CAMPFIRE)));
 	public static final Block CONDENSER = registerBlock("condenser",
 			new CondenseBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON)));
 	//public static final Block TANKCONTROLLER = registerBlock("controller", new TankController(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
-	public static final Block TRANSDUCER = registerBlock("transducer", new TransducerBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT).nonOpaque()));
-	public static final Block EXTRACTOR = registerBlock("extractor", new ExtractorBlock(FabricBlockSettings.copyOf(Blocks.BEACON).nonOpaque()));
-
+	public static final Block ITEM_TRANSDUCER = registerBlock("item_transducer", new ItemTransducerBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT).nonOpaque()));
+	public static final Block FLUID_TRANSDUCER = registerBlock("fluid_transducer", new FluidTransducerBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT).nonOpaque()));
+	public static final Block ATTRIBUTE_EXTRACTOR = registerBlock("attribute_extractor", new ExtractorBlock(FabricBlockSettings.copyOf(Blocks.BEACON).nonOpaque()));
+	public static final Block ALCHEMICAL_RECYCLER = registerBlock("alchemical_recycler", new RecyclerBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON).nonOpaque()));
+	public static final Block TEAPOT = registerBlock("teapot", new TeapotBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON).nonOpaque()));
 	//functional blocks that aren't entites
-	public static final Block ALTAR = registerBlock("altar", new LightningAltar(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).nonOpaque()));
+	public static final Block LIGHTNING_ALTAR = registerBlock("lightning_altar", new LightningAltar(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).nonOpaque()));
+	public static final Block ANTIGRAVITY_PYLON = registerBlock("antigravity_pylon", new AntigravityPylon(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
 
 
-    //public static final Block TANK_FRAME = registerBlock("tankframe", new TankFrame(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
+	//public static final Block TANK_FRAME = registerBlock("tankframe", new TankFrame(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
 
 
@@ -82,8 +79,9 @@ public class ModBlocks {
 		return Registry.register(Registries.BLOCK, id(name), block);
 	}
 
-	private static Item registerBlockItem(String name, Block block) {
-		return Registry.register(Registries.ITEM, new Identifier(Welkin.MOD_ID, name),
+	private static void registerBlockItem(String name, Block block) {
+		ALL_BLOCKS.add(block);
+		Registry.register(Registries.ITEM, new Identifier(Welkin.MOD_ID, name),
 				new BlockItem(block, new FabricItemSettings()));
 	}
 

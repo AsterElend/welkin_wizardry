@@ -10,7 +10,6 @@ import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-
 import java.util.function.Consumer;
 
 public class ModAdvancementProvider extends FabricAdvancementProvider {

@@ -15,5 +15,9 @@ public class WelkinDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModAdvancementProvider::new);
 		pack.addProvider(BlockLootProvider::new);
 
+
 	}
+
+
+
 }

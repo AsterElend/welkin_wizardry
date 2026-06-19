@@ -1,9 +1,9 @@
 {
-	"parent": "yourmod:block/condenserparent",
+	"parent": "welkin:block/condenserparent",
 	"textures": {
-		"front":  "yourmod:block/condenser_front",
-		"back":   "yourmod:block/condenser_back",
-		"top":    "yourmod:block/condenser_top",
-		"side":   "yourmod:block/condenser_side"
+		"front":  "welkin:block/condenser_front",
+		"back":   "welkin:block/condenser_back",
+		"top":    "welkin:block/condenser_top",
+		"side":   "welkin:block/condenser_side"
 	}
 }

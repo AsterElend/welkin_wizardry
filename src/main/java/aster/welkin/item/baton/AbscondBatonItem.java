@@ -1,31 +1,6 @@
 package aster.welkin.item.baton;
 
-import aster.welkin.cc.SkyForceComponent;
-import aster.welkin.cc.WelkinEntityCC;
-import aster.welkin.registry.ModBlocks;
-import aster.welkin.registry.WelkinTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtHelper;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
-
-
+/*
 public class AbscondBatonItem extends Item {
 
     private static final String STORED_BLOCK = "StoredBlock";
@@ -138,11 +113,7 @@ public class AbscondBatonItem extends Item {
     }
 
 
-    // ---------------------------
-    //    FORCE DRAIN LOGIC
-    // ---------------------------
 
-    /** Called every tick from the mod's tick handler */
     public static void tickCarriedBlock(PlayerEntity player) {
         ItemStack stack = player.getMainHandStack();
         if (!(stack.getItem() instanceof AbscondBatonItem) || !isCarrying(stack)) return;
@@ -209,3 +180,6 @@ public class AbscondBatonItem extends Item {
         }
     }
 }
+
+
+ */

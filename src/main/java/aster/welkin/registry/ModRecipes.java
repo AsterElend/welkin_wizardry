@@ -1,8 +1,12 @@
 package aster.welkin.registry;
 
-import aster.welkin.recipes.ExtractorRecipe;
-import aster.welkin.recipes.ForsakeRecipe;
-import aster.welkin.recipes.LightningRecipe;
+import aster.welkin.Welkin;
+import aster.welkin.recipes.*;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;
@@ -10,18 +14,48 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModRecipes {
-
+    public static RecipeType<RecyclerRecipe> RECYCLE_TYPE;
     public static RecipeType<ForsakeRecipe> FORSAKE_TYPE;
     public static RecipeSerializer<ForsakeRecipe> FORSAKE_SERIALIZER;
      public static RecipeType<LightningRecipe> LIGHTNING_TYPE;
     public static RecipeSerializer<LightningRecipe> LIGHTNING_SERIALIZER;
 
+    public static RecipeType<TeapotRecipe> TEAPOT_TYPE;
+    public static RecipeSerializer<TeapotRecipe> TEAPOT_SERIALIZER;
  public static RecipeType<ExtractorRecipe> EXTRACT_TYPE;
     public static RecipeSerializer<ExtractorRecipe> EXTRACT_SERIALIZER;
 
+    static <S extends RecipeSerializer<T>, T extends Recipe<?>> S registerSerializer(String id, S serializer) {
+        return Registry.register(Registries.RECIPE_SERIALIZER, Welkin.id(id), serializer);
+    }
 
+    static <T extends Recipe<?>> RecipeType<T> registerRecipeType(String id) {
+        return Registry.register(Registries.RECIPE_TYPE, Welkin.id(id), new RecipeType<T>() {
+            @Override
+            public String toString() {
+                return "spectrum:" + id;
+            }
+        });
+    }
 
     public static void register() {
+        TEAPOT_TYPE = registerRecipeType("teapot");
+        TEAPOT_SERIALIZER = registerSerializer("teapot_serializer", new TeapotRecipe.TeapotRecipeSerializer());
+
+
+
+        //the cursed one; procedurally generated from custom reload listener
+        RECYCLE_TYPE = Registry.register(
+                Registries.RECIPE_TYPE,
+                Welkin.id("recycle"),
+                new RecipeType<RecyclerRecipe>() {
+                    @Override
+                    public String toString() {
+                        return "welkin:recycle";
+                    }
+                }
+        );
+
         //void brazier recipe
         FORSAKE_TYPE = Registry.register(
                 Registries.RECIPE_TYPE,
@@ -74,5 +108,8 @@ public class ModRecipes {
                 Registries.RECIPE_SERIALIZER,
                 new Identifier("welkin", "extract"),
                 new ExtractorRecipe.ExtractorRecipeSerializer());
+
+
+
     }
 }

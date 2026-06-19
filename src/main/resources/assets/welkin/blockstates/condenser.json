@@ -1,7 +1,9 @@
+
 {
   "variants": {
-    "": {
-      "model": "welkin:block/condenser"
-    }
+    "facing=north": { "model": "welkin:block/condenser" },
+    "facing=south": { "model": "welkin:block/condenser", "y": 180 },
+    "facing=east":  { "model": "welkin:block/condenser", "y": 90 },
+    "facing=west":  { "model": "welkin:block/condenser", "y": 270 }
   }
 }

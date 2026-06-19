@@ -1,7 +1,5 @@
 package aster.welkin.item.baton;
 
-import aster.welkin.cc.WelkinEntityCC;
-import aster.welkin.cc.SkyForceComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -43,13 +41,7 @@ public class GustBaton extends Item {
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks){
         if (world.isClient || !(user instanceof  PlayerEntity player)) return;
 
-        SkyForceComponent mana = WelkinEntityCC.FORCE.get(player);
-        int cost = 1;
-        if (!mana.consume(cost)) {
-            // out of mana — stop using
-            player.stopUsingItem();
-            return;
-        }
+
 
         double range = 6.0;        // how far the cone reaches
         double force = 1.1;        // push strength

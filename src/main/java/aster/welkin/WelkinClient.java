@@ -1,18 +1,15 @@
 package aster.welkin;
 
-import aster.welkin.block.brazier.VoidBrazierRenderer;
-import aster.welkin.block.extractor.ExtractorRenderer;
-import aster.welkin.block.transducer.WireConnectionRenderer;
+import aster.welkin.client.*;
 
-import aster.welkin.hud.ForceMeter;
+import aster.welkin.packet.WelkinPackets;
 import aster.welkin.registry.ModBlockEntities;
 import aster.welkin.registry.ModBlocks;
-import aster.welkin.block.pylon.PylonBlockEntityRenderer;
-import aster.welkin.block.node.NodeBlockEntityRenderer;
+import dev.emi.emi.api.EmiApi;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.render.RenderLayer;
 
 public class WelkinClient implements ClientModInitializer {
@@ -25,27 +22,31 @@ public class WelkinClient implements ClientModInitializer {
                 NodeBlockEntityRenderer::new
         );
         BlockEntityRendererRegistry.register(
-                ModBlockEntities.PYLON,
-                PylonBlockEntityRenderer::new);
+                ModBlockEntities.PEDESTAL_ENTITY,
+                PedestalBlockEntityRenderer::new);
 
         BlockEntityRendererRegistry.register(
-                ModBlockEntities.BRAZIER,
+                ModBlockEntities.VOID_BRAZIER_ENTITY,
                 VoidBrazierRenderer::new
         );
 
          BlockEntityRendererRegistry.register(
-                ModBlockEntities.EXTRACTOR,
+                ModBlockEntities.ATTRIBUTE_EXTRACTOR,
                 ExtractorRenderer::new
         );
 
+         BlockEntityRendererRegistry.register(
+                 ModBlockEntities.ITEM_TRANSDUCER,
+                 TransducerRenderer::new
+         );
+
+   BlockEntityRendererRegistry.register(
+                 ModBlockEntities.FLUID_TRANSDUCER,
+                 TransducerRenderer::new
+         );
 
 
-        WorldRenderEvents.AFTER_TRANSLUCENT.register((context) -> {
-            WireConnectionRenderer.render(context.matrixStack(),
-                    context.consumers(), context.camera());
-        });
 
-     HudRenderCallback.EVENT.register(new ForceMeter());
 
 
     }

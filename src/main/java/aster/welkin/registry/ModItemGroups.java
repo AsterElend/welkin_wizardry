@@ -2,6 +2,8 @@ package aster.welkin.registry;
 
 import aster.welkin.Welkin;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -15,49 +17,13 @@ public class ModItemGroups {
 		new Identifier(Welkin.MOD_ID, "welkin"),
 			FabricItemGroup.builder().displayName(Text.translatable("itemgroup.welkin"))
 					.icon(()-> new ItemStack(ModItems.CHARGESTONE)).entries((displayContext, entries) -> {
+						for (Item item: ModItems.ALL_ITEMS){
+							entries.add(item);
+						}
 
-						entries.add(ModItems.CHARGESTONE);
-						entries.add(ModItems.STORMPHRAX);
-						entries.add(ModItems.ZEPHYRITE);
-						entries.add(ModItems.STELLARIUM);
-						entries.add(ModItems.GRIMORE);
-						entries.add(ModItems.WAND);
-
-						entries.add(ModItems.GUST);
-						entries.add(ModItems.DOLLY);
-
-						entries.add(ModBlocks.STARSTONE);
-						entries.add(ModBlocks.MOTHTILE);
-
-						entries.add(ModBlocks.CHARGEPLANKS);
-
-
-
-						entries.add(ModBlocks.CHARGEWOOD);
-						entries.add(ModBlocks.CHARGELOG);
-						entries.add(ModBlocks.STRIPPEDCHARGELOG);
-						entries.add(ModBlocks.STRIPPEDCHARGEWOOD);
-
-						entries.add(ModItems.STORMCYCLE_DISC);
-						entries.add(ModItems.WINDTUNNEL_DISC);
-
-
-						//entries.add(ModBlocks.UNLIGHT);
-
-
-						entries.add(ModBlocks.PYLON);
-
-						entries.add(ModBlocks.ALTAR);
-						entries.add(ModBlocks.BRAZIER);
-
-						entries.add(ModBlocks.CONDENSER);
-						entries.add(ModBlocks.TRANSDUCER);
-
-
-
-
-
-
+						for (Block block: ModBlocks.ALL_BLOCKS){
+							entries.add(block);
+						}
 					}).build());
 
 	public static void registerItemGroups() {

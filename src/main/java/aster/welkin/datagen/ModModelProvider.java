@@ -21,13 +21,14 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STARSTONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHARGEPLANKS);
+        blockStateModelGenerator.registerRotatable(ModBlocks.MOTHTILE);
      
 
 
 
         blockStateModelGenerator.registerLog(ModBlocks.CHARGELOG).log(ModBlocks.CHARGELOG).wood(ModBlocks.CHARGEWOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPEDCHARGELOG).log(ModBlocks.STRIPPEDCHARGELOG).wood(ModBlocks.STRIPPEDCHARGEWOOD);
-//work out how to get a rotatable block for mothtile
+
 
 
 
@@ -44,7 +45,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.STORMCYCLE_DISC, Models.GENERATED);
         itemModelGenerator.register(ModItems.WINDTUNNEL_DISC, Models.GENERATED);
         itemModelGenerator.register(ModItems.GUST, Models.HANDHELD_ROD);
-        itemModelGenerator.register(ModItems.DOLLY, Models.HANDHELD_ROD);
+        itemModelGenerator.register(ModItems.WIRE, Models.GENERATED);
 
 
 

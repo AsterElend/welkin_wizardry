@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=up,is_send=true":    { "model": "welkin:block/fluid_transducer_send",    "x": 0,   "y": 0   },
+    "facing=up,is_send=false":   { "model": "welkin:block/fluid_transducer_receive", "x": 0,   "y": 0   },
+    "facing=down,is_send=true":  { "model": "welkin:block/fluid_transducer_send",    "x": 180, "y": 0   },
+    "facing=down,is_send=false": { "model": "welkin:block/fluid_transducer_receive", "x": 180, "y": 0   },
+    "facing=north,is_send=true": { "model": "welkin:block/fluid_transducer_send",    "x": 90,  "y": 0   },
+    "facing=north,is_send=false":{ "model": "welkin:block/fluid_transducer_receive", "x": 90,  "y": 0   },
+    "facing=south,is_send=true": { "model": "welkin:block/fluid_transducer_send",    "x": 90,  "y": 180 },
+    "facing=south,is_send=false":{ "model": "welkin:block/fluid_transducer_receive", "x": 90,  "y": 180 },
+    "facing=east,is_send=true":  { "model": "welkin:block/fluid_transducer_send",    "x": 90,  "y": 90  },
+    "facing=east,is_send=false": { "model": "welkin:block/fluid_transducer_receive", "x": 90,  "y": 90  },
+    "facing=west,is_send=true":  { "model": "welkin:block/fluid_transducer_send",    "x": 90,  "y": 270 },
+    "facing=west,is_send=false": { "model": "welkin:block/fluid_transducer_receive", "x": 90,  "y": 270 }
+  }
+}

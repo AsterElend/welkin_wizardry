@@ -1,0 +1,32 @@
+package aster.welkin.block.transducer;
+
+
+import aster.welkin.registry.ModBlockEntities;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+public class ItemTransducerBlock extends TransducerBlock{
+    public ItemTransducerBlock(Settings settings) {
+        super(settings);
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new ItemTransducerEntity(pos, state);
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(
+            World world, BlockState state, BlockEntityType<T> type) {
+        return world.isClient
+                ? null
+                : checkType(type, ModBlockEntities.ITEM_TRANSDUCER,
+                (w, pos, s, be) -> {
+                    ((ItemTransducerEntity) be).serverTick(w, pos, s);
+                });
+    }
+}

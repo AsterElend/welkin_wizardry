@@ -1,17 +1,16 @@
 package aster.welkin;
 
 
-import aster.welkin.cc.ForceRegenHandler;
-import aster.welkin.item.baton.AbscondBatonItem;
+import aster.welkin.client.WelkinState;
+import aster.welkin.jsonstuff.RecyclerReloadListener;
 import aster.welkin.registry.*;
-//import aster.welkin.block.fancy.brazier2.TestRecipe;
-
 import aster.welkin.sound.ModSounds;
 import net.fabricmc.api.ModInitializer;
-
-
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,13 +26,13 @@ public class Welkin implements ModInitializer {
 		return new Identifier(MOD_ID, it);
 	}
 
-	//public static final RecipeType<TestRecipe> RECIPE_TYPE  = RecipeType.register("welkin:mergify");
+
 
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
 
-		ForceRegenHandler.register();
+
 
 		
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -46,12 +45,15 @@ public class Welkin implements ModInitializer {
 		ModSounds.registerSounds();
 		ModBlockEntities.registerBlockEntities();
 
-		ServerTickEvents.END_SERVER_TICK.register(server -> {
-			for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-				AbscondBatonItem.tickCarriedBlock(player);
-			}
+		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
+			WelkinState.worldSeed = server.getOverworld().getSeed();
 		});
 
+		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+			WelkinState.worldSeed = server.getOverworld().getSeed();
+
+		});
+		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new RecyclerReloadListener());
 
 
 		LOGGER.info("Hello Fabric world!");

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=true": {
+      "model": "welkin:block/alchemical_recycler"
+    },
+       "powered=false": {
+      "model": "welkin:block/alchemical_recycler"
+    }
+  }
+}

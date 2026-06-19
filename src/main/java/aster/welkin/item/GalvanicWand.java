@@ -6,8 +6,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -28,12 +26,14 @@ public class GalvanicWand extends Item {
         PlayerEntity player = ctx.getPlayer();
         BlockPos pos = ctx.getBlockPos();
         Direction side = ctx.getSide();
-
+        if (world.getBlockState(pos).isOf(ModBlocks.ITEM_TRANSDUCER)){
+            return ActionResult.PASS;
+        }
 
         BlockPos placePos = pos.offset(side);
         BlockState placeState = world.getBlockState(placePos);
 
-        if (!world.isClient && player != null && player.isSneaking() && placeState.canReplace((ItemPlacementContext) ctx) ) {
+        if (!world.isClient && player != null && player.isSneaking() && placeState.isAir() && world.getBlockState(pos).isSolidBlock(world, pos)) {
 
 
                 world.setBlockState(placePos, ModBlocks.NODE.getDefaultState());
