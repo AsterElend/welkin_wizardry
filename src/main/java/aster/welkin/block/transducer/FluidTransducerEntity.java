@@ -1,6 +1,5 @@
 package aster.welkin.block.transducer;
 
-import aster.welkin.Welkin;
 import aster.welkin.registry.ModBlockEntities;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;

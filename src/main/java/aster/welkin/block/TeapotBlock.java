@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-public class TeapotBlock extends PedestalBlock {
+public class TeapotBlock extends PylonBlock {
     private static DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
     public TeapotBlock(Settings settings) {
@@ -34,7 +34,7 @@ public class TeapotBlock extends PedestalBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
-
+        return ActionResult.SUCCESS;
 
     }
 

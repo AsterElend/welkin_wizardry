@@ -25,9 +25,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider{
                 .add(ModItems.STORMCYCLE_DISC, ModItems.WINDTUNNEL_DISC);
         getOrCreateTagBuilder(WelkinTags.SHOW_FORCE)
                 .add(
-                        ModItems.WAND,
-                        ModItems.GUST
+                        ModItems.GALVANIC_WAND,
+                        ModItems.GUST_BATON
                 );
+        getOrCreateTagBuilder(WelkinTags.TAKE_HEART)
+                .add(ModItems.EXTRACTED_HEART);
 
     }
 }

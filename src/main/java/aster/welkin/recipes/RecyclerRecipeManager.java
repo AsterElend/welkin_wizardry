@@ -2,26 +2,31 @@ package aster.welkin.recipes;
 
 import aster.welkin.Welkin;
 import aster.welkin.jsonstuff.RecyclerReloadListener;
-import aster.welkin.registry.ModRecipes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeManager;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.random.Random;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RecyclerRecipeManager {
 
     public static final List<RecyclerRecipe> RECYCLER_RECIPES = new ArrayList<>();
-
+    public List<ItemStack> getAllOutputs(){
+        List<ItemStack> list = new ArrayList<>();
+        for (RecyclerRecipe recipe: RECYCLER_RECIPES){
+            list.add(recipe.getOutput());
+        }
+        return list;
+    }
 
 
     public static void generateRecipes(long worldSeed) {

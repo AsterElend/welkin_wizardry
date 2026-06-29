@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "welkin:block/mothtile"
+      },
+      {
+        "model": "welkin:block/mothtile",
+        "y": 90
+      },
+      {
+        "model": "welkin:block/mothtile",
+        "y": 180
+      },
+      {
+        "model": "welkin:block/mothtile",
+        "y": 270
+      }
+    ]
+  }
+}

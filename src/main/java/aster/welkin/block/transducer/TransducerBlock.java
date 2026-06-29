@@ -2,11 +2,8 @@ package aster.welkin.block.transducer;
 
 import aster.welkin.registry.ModItems;
 import net.minecraft.block.*;
-import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -22,7 +19,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,7 +58,7 @@ public abstract class TransducerBlock extends BlockWithEntity {
             }
 
             if (player.isSneaking()){
-                if (player.getStackInHand(hand).isOf(ModItems.WAND)){
+                if (player.getStackInHand(hand).isOf(ModItems.GALVANIC_WAND)){
                     trans.delink(pos);
                 } else {
                     boolean toggle = !state.get(IS_SEND);

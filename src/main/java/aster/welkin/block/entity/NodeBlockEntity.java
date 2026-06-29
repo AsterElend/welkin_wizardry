@@ -4,7 +4,6 @@ import aster.welkin.block.ImplementedInventory;
 import aster.welkin.registry.ModBlockEntities;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -12,7 +11,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
-public class NodeBlockEntity extends BlockEntity implements ImplementedInventory {
+public class NodeBlockEntity extends PedestalRenderable implements ImplementedInventory {
     private final DefaultedList<ItemStack> inventory;
 
     public NodeBlockEntity(BlockPos pos, BlockState state){

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "welkin:block/stripped_watcher_log_top",
+    "side": "welkin:block/stripped_watcher_log"
+  }
+}

@@ -17,10 +17,9 @@ public class BlockLootProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.STRIPPEDCHARGEWOOD);
         addDrop(ModBlocks.CHARGEPLANKS);
         addDrop(ModBlocks.CHARGELOG);
-        addDrop(ModBlocks.NODE);
         addDrop(ModBlocks.PEDESTAL);
         addDrop(ModBlocks.LIGHTNING_ALTAR);
-        addDrop(ModBlocks.VOID_BRAZIER);
+
 
 
 

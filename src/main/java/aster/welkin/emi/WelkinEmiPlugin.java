@@ -2,15 +2,12 @@ package aster.welkin.emi;
 
 import aster.welkin.Welkin;
 import aster.welkin.recipes.LightningRecipe;
-import aster.welkin.recipes.RecyclerRecipe;
-import aster.welkin.recipes.RecyclerRecipeManager;
 import aster.welkin.registry.ModBlocks;
 import aster.welkin.registry.ModRecipes;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
-import net.minecraft.recipe.RecipeManager;
 
 public class WelkinEmiPlugin implements EmiPlugin {
     public static final EmiRecipeCategory LIGHTNING_CATEGORY = new EmiRecipeCategory(

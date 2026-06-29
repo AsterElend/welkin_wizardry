@@ -3,12 +3,20 @@
   "package": "aster.welkin.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ActuallySwimCheck",
     "ExampleMixin",
+    "ExplosionWard",
     "ItemLightningMixin",
-    "LightningHandler"
-
+    "LightningHandler",
+    "PlayerLetheanCheck"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  },
+  "client": [
+    "CameraMixin",
+    "LetheFog",
+    "SpriteAccessor",
+    "SpriteContentsAccessor"
+  ]
 }

@@ -1,8 +1,6 @@
 package aster.welkin.block;
 
 import aster.welkin.block.entity.AntigravityPylonBlockEntity;
-import aster.welkin.block.entity.CondenseBE;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;

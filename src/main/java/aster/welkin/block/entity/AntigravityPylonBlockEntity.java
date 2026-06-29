@@ -1,19 +1,15 @@
 package aster.welkin.block.entity;
 
-import aster.welkin.Welkin;
 import aster.welkin.registry.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class AntigravityPylonBlockEntity extends BlockEntity  {
     private static final int INTERVAL = 20;

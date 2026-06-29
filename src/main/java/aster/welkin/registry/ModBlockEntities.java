@@ -12,8 +12,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import java.util.function.Supplier;
-
 import static aster.welkin.Welkin.id;
 
 public class ModBlockEntities {
@@ -22,15 +20,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(NodeBlockEntity::new,
                             ModBlocks.NODE).build(null));
 
-    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_ENTITY =
+    public static final BlockEntityType<PylonBlockEntity> PEDESTAL_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Welkin.MOD_ID, "pylon_block_entity"),
-                    FabricBlockEntityTypeBuilder.create(PedestalBlockEntity::new,
+                    FabricBlockEntityTypeBuilder.create(PylonBlockEntity::new,
                             ModBlocks.PEDESTAL).build(null));
 
-    public static final BlockEntityType<VoidBrazierBlockEntity> VOID_BRAZIER_ENTITY =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Welkin.MOD_ID, "brazier_block_entity"),
-                    FabricBlockEntityTypeBuilder.create(VoidBrazierBlockEntity::new,
-                            ModBlocks.VOID_BRAZIER).build(null));
 
     public static final BlockEntityType<CondenseBE> CONDENSER =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, id("condenser"),
@@ -46,18 +40,14 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, id("fluid_transducer"),
                     FabricBlockEntityTypeBuilder.create(FluidTransducerEntity::new, ModBlocks.FLUID_TRANSDUCER).build(null));
 
-    public static final BlockEntityType<ExtractorBlockEntity> ATTRIBUTE_EXTRACTOR =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, id("attribute_extractor"),
-                    FabricBlockEntityTypeBuilder.create(ExtractorBlockEntity::new, ModBlocks.ATTRIBUTE_EXTRACTOR).build(null));
-   public static final BlockEntityType<ExtractorBlockEntity> ALCHEMICAL_RECYCLER_ENTITY =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, id("alchemical_recycler"),
-                    FabricBlockEntityTypeBuilder.create(ExtractorBlockEntity::new, ModBlocks.ALCHEMICAL_RECYCLER).build(null));
+
     public static final BlockEntityType<AntigravityPylonBlockEntity> ANTIGRAVITY_PYLON_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, id("antigravity_pylon"),
                     FabricBlockEntityTypeBuilder.create(AntigravityPylonBlockEntity::new, ModBlocks.ANTIGRAVITY_PYLON).build(null));
 
     public static final BlockEntityType<TeapotBlockEntity> TEAPOT_ENTITY = register("teapot", TeapotBlockEntity::new, ModBlocks.TEAPOT);
-
+    public static final BlockEntityType<AgoniteTransmuterEntity> AGONITE_ENTITY = register("agonite", AgoniteTransmuterEntity::new,
+            ModBlocks.AGONITE_TRANSMUTER);
 
 //  public static final BlockEntityType<TankFrameEntity> TANK_FRAME =
  //           Registry.register(Registries.BLOCK_ENTITY_TYPE, id("tankframe"),

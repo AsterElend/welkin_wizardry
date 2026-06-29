@@ -1,7 +1,5 @@
 package aster.welkin.client;
 
-import aster.welkin.Welkin;
-import aster.welkin.block.transducer.TransducerBlock;
 import aster.welkin.block.transducer.TransducerEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;

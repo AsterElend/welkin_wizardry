@@ -208,4 +208,6 @@ public interface ImplementedInventory extends SidedInventory {
     default boolean canPlayerUse(PlayerEntity player) {
         return true;
     }
+
+
 }

@@ -1,0 +1,108 @@
+package aster.welkin.cc;
+
+
+import aster.welkin.Welkin;
+import aster.welkin.client.NadirToast;
+import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.PlayerAdvancementTracker;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ForgottenAdvancementComponent implements AutoSyncedComponent {
+    private final PlayerEntity player;
+    private final List<Identifier> forgotten = new ArrayList<>();
+
+    public boolean isAnyForgotten(){
+        return !forgotten.isEmpty();
+    }
+    public ForgottenAdvancementComponent(PlayerEntity player) {
+        this.player = player;
+    }
+
+    public boolean isForgotten(Identifier id) {
+        return forgotten.contains(id);
+    }
+
+    public List<Identifier> getAll() {
+        return forgotten;
+    }
+
+    public void reset(){
+        forgotten.clear();
+        WelkinEntityCC.FORGOTTEN.sync(player);
+        Identifier id = Welkin.id("everything");
+        NadirToast.sendPacket(id, false, player);
+    }
+
+    public void forget(Identifier id) {
+        forgotten.add(id);
+        WelkinEntityCC.FORGOTTEN.sync(player);
+        NadirToast.sendPacket(id, true, player);
+    }
+
+    public void remember(Identifier id) {
+        forgotten.remove(id);
+        WelkinEntityCC.FORGOTTEN.sync(player);
+        NadirToast.sendPacket(id, false, player);
+    }
+
+    public void rememberRandom(ServerPlayerEntity player){
+        if (!isAnyForgotten()) return;
+       Identifier fetched = forgotten.get(player.getRandom().nextInt(forgotten.size()));
+        remember(fetched);
+    }
+
+
+
+    public void forgetRandom(ServerPlayerEntity player) {
+        PlayerAdvancementTracker tracker = player.getAdvancementTracker();
+
+        List<Advancement> completed = new ArrayList<>();
+
+        for (Advancement adv : player.server.getAdvancementLoader().getAdvancements()) {
+            if (tracker.getProgress(adv).isDone()
+                    && !isForgotten(adv.getId())
+                    && !adv.getId().getPath().startsWith("recipes/")) {
+                completed.add(adv);
+            }
+        }
+
+        if (completed.isEmpty()) return;
+
+        Advancement chosen = completed.get(player.getRandom().nextInt(completed.size()));
+        forget(chosen.getId());
+
+    }
+
+    @Override
+    public void readFromNbt(NbtCompound tag) {
+        forgotten.clear();
+        NbtList list = tag.getList("Forgotten", NbtElement.STRING_TYPE);
+
+        for (int i = 0; i < list.size(); i++) {
+            forgotten.add(new Identifier(list.getString(i)));
+        }
+    }
+
+    @Override
+    public void writeToNbt(NbtCompound tag) {
+        NbtList list = new NbtList();
+
+        for (Identifier id : forgotten) {
+            list.add(NbtString.of(id.toString()));
+        }
+
+        tag.put("Forgotten", list);
+    }
+
+
+}

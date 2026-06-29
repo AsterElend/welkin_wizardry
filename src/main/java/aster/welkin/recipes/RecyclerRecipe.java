@@ -1,6 +1,5 @@
 package aster.welkin.recipes;
 
-import aster.welkin.Welkin;
 import aster.welkin.registry.ModRecipes;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
@@ -18,6 +17,7 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 public class RecyclerRecipe implements Recipe<Inventory> {
     private final Identifier id;
     private final List<Ingredient> ingredients;

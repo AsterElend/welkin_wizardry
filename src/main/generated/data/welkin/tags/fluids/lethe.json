@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "welkin:lethean_water_static",
+    "welkin:lethean_water_flowing"
+  ]
+}

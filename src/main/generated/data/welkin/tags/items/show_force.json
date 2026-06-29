@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "welkin:wand",
+    "welkin:galvanic_wand",
     "welkin:gust_baton"
   ]
 }

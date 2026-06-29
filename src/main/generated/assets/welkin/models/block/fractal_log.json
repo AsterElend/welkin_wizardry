@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "welkin:block/fractal_log_top",
+    "side": "welkin:block/fractal_log"
+  }
+}

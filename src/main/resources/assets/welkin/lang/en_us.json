@@ -7,7 +7,9 @@
   "item.welkin.stellarium": "Stellarium",
   "item.welkin.grimore": "Skyward Grimoire",
   "item.welkin.wand": "Charged Wand",
-
+  "songweaver.toast.forget_title": "Something has been lost",
+  "songweaver.toast.remember_title": "Fleeting Recollection:",
+  "songweaver.toast.everything": "debug: total recall",
   "block.welkin.starstone": "Starstone",
   "block.welkin.chargelog": "Charged Log",
   "block.welkin.strippedchargelog": "Stripped Charged Log",
@@ -18,6 +20,29 @@
   "item.welkin.stormcycle_disc": "Stormcycle",
   "item.welkin.stormcycle_disc.desc": "Zealot Zorua - Stormcycle",
   "item.welkin.windtunnel_disc": "Windtunnel",
-  "item.welkin.windtunnel_disc.desc": "Zealot Zorua - Windtunnel"
+  "item.welkin.windtunnel_disc.desc": "Zealot Zorua - Windtunnel",
 
+  "block.songweaver.lethean_water": "Lethean Water",
+
+  "block.songweaver.watcher_leaves": "Watcher Leaves",
+  "block.songweaver.watcher_sapling": "Watcher Sapling",
+  "block.songweaver.watcher_planks": "Watcher Planks",
+  "block.songweaver.watcher_wood": "Watcher Wood",
+  "block.songweaver.stripped_watcher_wood": "Stripped Watcher Wood",
+  "block.songweaver.stripped_watcher_log": "Stripped Watcher Log",
+  "block.songweaver.watcher_log": "Watcher Log",
+  "item.songweaver.warding_prism": "Warding Prism",
+  "item.songweaver.lethean_water_bucket": "Bucket of Lethean Water",
+  "item.songweaver.world_salts": "World Salts",
+  "block.songweaver.fractal_leaves": "Fractal Leaves",
+  "block.songweaver.fractal_sapling": "Fractal Sapling",
+  "block.songweaver.fractal_planks": "Fractal Planks",
+  "block.songweaver.fractal_wood": "Fractal Wood",
+  "block.songweaver.stripped_fractal_wood": "Stripped Fractal Wood",
+  "block.songweaver.stripped_fractal_log": "Stripped Fractal Log",
+  "block.songweaver.fractal_log": "Fractal Log",
+  "item.songweaver.lethean_water_bottle": "Bottle of Lethean Water",
+
+  "block.songweaver.starstone": "Starstone",
+  "block.songweaver.voidstone": "Voidstone"
 }
