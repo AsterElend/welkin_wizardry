@@ -1,32 +1,44 @@
 package aster.welkin;
 
 
+import aster.welkin.api.chat.ChatCatchHelper;
+import aster.welkin.api.ExtraEnchantsHolder;
 import aster.welkin.api.WardedBlocksState;
+import aster.welkin.config.WelkinConfigData;
 import aster.welkin.block.entity.AgoniteTransmuterEntity;
 import aster.welkin.client.WelkinState;
+import aster.welkin.item.baton.ConductorBatonItem;
 import aster.welkin.jsonstuff.RecyclerReloadListener;
-import aster.welkin.packet.ServerCutsceneManager;
 import aster.welkin.packet.WelkinPackets;
 import aster.welkin.registry.*;
 import aster.welkin.registry.world.DimensionStuff;
 import aster.welkin.registry.world.trees.LoomFoliagePlacers;
 import aster.welkin.registry.world.trees.LoomTrunkPlacers;
 import aster.welkin.sound.ModSounds;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import org.slf4j.Logger;
@@ -34,7 +46,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 
-import static aster.welkin.packet.ServerCutsceneManager.LOCKED_PLAYERS;
 
 public class Welkin implements ModInitializer {
 	public static final String MOD_ID = "welkin";
@@ -51,38 +62,43 @@ public class Welkin implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModItems.registerModItems();
+		WelkinItems.registerModItems();
+		AutoConfig.register(WelkinConfigData.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
+		ExtraEnchantsHolder.registerExtraTag(Enchantments.SWIFT_SNEAK, ItemTags.BOATS);
+		ExtraEnchantsHolder.registerExtraTag(Enchantments.FROST_WALKER, ItemTags.BOATS);
+		ExtraEnchantsHolder.registerExtraTag(Enchantments.DEPTH_STRIDER, ItemTags.BOATS);
+
 
 
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-		ModItemGroups.registerItemGroups();
-		ModRecipes.register();
+		WelkinItemGroups.registerItemGroups();
+		WelkinRecipes.register();
 
-		ModBlocks.registerModBlocks();
+		WelkinBlocks.registerModBlocks();
 		ModSounds.registerSounds();
-		ModBlockEntities.registerBlockEntities();
+		WelkinBlockEntities.registerBlockEntities();
 		LoomFluids.invoke();
 		LoomTrunkPlacers.init();
 		LoomFoliagePlacers.init();
 		DimensionStuff.init();
 		WelkinPackets.registerServer();
-		ServerPlayNetworking.registerGlobalReceiver(WelkinPackets.STOP_CUTSCENE, (server, player, handler, buf, responseSender) -> {
-			server.execute(() -> {
-				// Unlock the player when the client reports the rotation is finished
-				LOCKED_PLAYERS.remove(player.getUuid());
-			});
+		ChatCatchHelper.register();
+
+
+		//don't open guis with the baton please
+		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+			ItemStack stack = player.getStackInHand(hand);
+
+			if (stack.getItem() instanceof ConductorBatonItem baton) {
+				ItemUsageContext ctx = new ItemUsageContext(world, player, hand, stack, hitResult);
+				return baton.useOnBlock(ctx);
+			}
+
+			return ActionResult.PASS;
 		});
 
-		ServerTickEvents.END_SERVER_TICK.register(server -> {
-			for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-				if (LOCKED_PLAYERS.contains(player.getUuid())) {
-					player.setVelocity(0, 0, 0);
-					player.networkHandler.syncWithPlayerPosition(); // Forces client sync
-				}
-			}
-		});
 		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
 			ServerPlayerEntity player = handler.player;
 
@@ -164,4 +180,7 @@ public class Welkin implements ModInitializer {
 
 		ServerPlayNetworking.send(player, WelkinPackets.SYNC_WARDS, buf);
 	}
+
+
+
 }

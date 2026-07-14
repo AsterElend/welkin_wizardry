@@ -4,19 +4,20 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ActuallySwimCheck",
-    "ExampleMixin",
+    "BoatEntityMixin",
+    "BoatItemMixin",
+    "EnchantmentMixin",
+    "EntityApplyFluidsMixin",
     "ExplosionWard",
     "ItemLightningMixin",
     "LightningHandler",
+    "PlayerInventoryMixin",
     "PlayerLetheanCheck"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
-    "CameraMixin",
-    "LetheFog",
-    "SpriteAccessor",
-    "SpriteContentsAccessor"
+    "LetheFog"
   ]
 }

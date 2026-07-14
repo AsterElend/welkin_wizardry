@@ -1,6 +1,6 @@
 package aster.welkin.recipes;
 
-import aster.welkin.registry.ModRecipes;
+import aster.welkin.registry.WelkinRecipes;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
@@ -63,12 +63,12 @@ public class LightningRecipe implements Recipe<SimpleInventory> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipes.LIGHTNING_SERIALIZER;
+        return WelkinRecipes.LIGHTNING_SERIALIZER;
     }
 
     @Override
     public RecipeType<?> getType() {
-        return ModRecipes.LIGHTNING_TYPE;
+        return WelkinRecipes.LIGHTNING_TYPE;
     }
 
 

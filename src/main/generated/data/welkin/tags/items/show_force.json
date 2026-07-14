@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "welkin:galvanic_wand",
-    "welkin:gust_baton"
+    "welkin:conductor_baton",
+    "welkin:windstormer_baton"
   ]
 }

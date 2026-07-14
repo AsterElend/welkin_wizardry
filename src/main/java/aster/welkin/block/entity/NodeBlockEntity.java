@@ -1,92 +1,30 @@
 package aster.welkin.block.entity;
 
-import aster.welkin.block.ImplementedInventory;
-import aster.welkin.registry.ModBlockEntities;
+import aster.welkin.api.PedestalLikeBlockEntity;
+import aster.welkin.registry.WelkinBlockEntities;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.Nullable;
 
-public class NodeBlockEntity extends PedestalRenderable implements ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory;
+public class NodeBlockEntity extends PedestalLikeBlockEntity {
 
-    public NodeBlockEntity(BlockPos pos, BlockState state){
-        super(ModBlockEntities.NODE, pos, state);
-this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
-    }
-    //this only contains 1 item. ever.
-    @Override
-    public DefaultedList<ItemStack> getItems(){
-        return inventory;
-    }
-
-
-    @Override
-    protected void writeNbt(NbtCompound nbt){
-        super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, inventory);
+    public NodeBlockEntity(BlockPos pos, BlockState state) {
+        super(WelkinBlockEntities.NODE, pos, state);
     }
 
     @Override
-    public void readNbt(NbtCompound nbt) {
-        Inventories.readNbt(nbt, inventory);
-        super.readNbt(nbt);
-    }
-
-    @Override
-    public int getMaxCountPerStack()  {
+    public int getMaxCount() {
         return 1;
     }
 
-    @Override
-    public void markDirty() {
-        if(!world.isClient()) {
-            PacketByteBuf data = PacketByteBufs.create();
-            data.writeInt(inventory.size());
-            for(int i = 0; i < inventory.size(); i++) {
-                data.writeItemStack(inventory.get(i));
-            }
-            data.writeBlockPos(getPos());
-
-
-        }
-        super.markDirty();
-    }
-    public ItemStack getStack(){
-        return this.getStack(0);
-    }
-    public void setInventory(DefaultedList<ItemStack> list){
-        for(int i = 0; i < list.size(); i++) {
-            this.inventory.set(i, list.get(i));
-        }
-    }
-
-    public boolean addItem(ItemStack itemStack) {
-        if (isEmpty() && !itemStack.isEmpty()) {
-            setStack(0, itemStack.split(1));
-            return true;
-        }
-        return false;
-    }
-
-    public ItemStack removeItem() {
-        if (!isEmpty()) {
-            return getStack().split(1);
-        }
-        return ItemStack.EMPTY;
-    }
-
-    public boolean isEmpty() {
-        return getStack(0).isEmpty();
-    }
-
-
-    @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return createNbt();
-    }
 }

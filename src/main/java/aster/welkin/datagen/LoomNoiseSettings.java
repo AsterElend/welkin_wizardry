@@ -1,8 +1,7 @@
 package aster.welkin.datagen;
 
 
-import aster.welkin.registry.ModBlocks;
-import aster.welkin.registry.ModItems;
+import aster.welkin.registry.WelkinBlocks;
 import aster.welkin.registry.world.LoomDimensions;
 import com.mojang.serialization.Lifecycle;
 import net.minecraft.block.Blocks;
@@ -59,7 +58,7 @@ public class LoomNoiseSettings {
                                         YOffset.BOTTOM,
                                         YOffset.aboveBottom(5)
                                 ),
-                                MaterialRules.block(ModBlocks.STARSTONE.getDefaultState())
+                                MaterialRules.block(WelkinBlocks.STARSTONE.getDefaultState())
                         )
 
                 );
@@ -72,7 +71,7 @@ public class LoomNoiseSettings {
                         2      // vertical size
                 ),
                 Blocks.AIR.getDefaultState(), // default fluid
-                ModBlocks.VOIDSTONE.getDefaultState(), // default block
+                WelkinBlocks.VOIDSTONE.getDefaultState(), // default block
                 router,
                 surfaceRule,
                 List.of(), // spawn targets

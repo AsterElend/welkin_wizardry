@@ -1,6 +1,6 @@
 package aster.welkin.recipes;
 
-import aster.welkin.registry.ModRecipes;
+import aster.welkin.registry.WelkinRecipes;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
@@ -68,12 +68,12 @@ public class AgoniteTransmutationRecipe implements Recipe<SimpleInventory> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipes.AGONY_SERIALIZER;
+        return WelkinRecipes.AGONY_SERIALIZER;
     }
 
     @Override
     public RecipeType<?> getType() {
-        return ModRecipes.AGONY_TYPE;
+        return WelkinRecipes.AGONY_TYPE;
     }
 
 

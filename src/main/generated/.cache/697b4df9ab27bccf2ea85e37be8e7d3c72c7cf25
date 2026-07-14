@@ -1,5 +1,9 @@
-// 1.20.1	2026-06-29T07:34:44.7073471	Welkin Wizardry/Tags for minecraft:block
-36b6a2ece7a842bc476365a3fd7e9cd11e56f1b9 data\minecraft\tags\blocks\logs_that_burn.json
+// 1.20.1	2026-07-11T16:57:07.629631	Welkin Wizardry/Tags for minecraft:block
+5e6c6bdf2998e346f8de6f5d849ef36b5d8f6061 data\minecraft\tags\blocks\logs_that_burn.json
 4d49a70cbbedeecfbe8e66ba043f208d513bcb73 data\minecraft\tags\blocks\mineable\pickaxe.json
 a7716ef687ed71e211d93f502320266a97ed5e13 data\welkin\tags\blocks\abscondable.json
-b8ebe855f1ffd62177554ecf05b98e758bb9e5ee data\minecraft\tags\blocks\mineable\axe.json
+84a8d6c6acae97b9a58101f428f582bdba15ae6c data\minecraft\tags\blocks\leaves.json
+38c6acca62ce57350652b218d3ea72e4340e332b data\minecraft\tags\blocks\saplings.json
+8f26bb359e9180d7f8f6267ba90bbf5d6cad610c data\minecraft\tags\blocks\mineable\axe.json
+5e6c6bdf2998e346f8de6f5d849ef36b5d8f6061 data\minecraft\tags\blocks\logs.json
+ba0d5506cef387436024711a4b33be30e308f671 data\minecraft\tags\blocks\planks.json

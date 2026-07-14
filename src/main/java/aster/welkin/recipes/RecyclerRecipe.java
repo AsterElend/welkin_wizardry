@@ -1,6 +1,6 @@
 package aster.welkin.recipes;
 
-import aster.welkin.registry.ModRecipes;
+import aster.welkin.registry.WelkinRecipes;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -100,7 +100,7 @@ public class RecyclerRecipe implements Recipe<Inventory> {
 
     @Override
     public RecipeType<?> getType() {
-        return ModRecipes.RECYCLE_TYPE;
+        return WelkinRecipes.RECYCLE_TYPE;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package aster.welkin.block.transducer;
 
-import aster.welkin.registry.ModBlockEntities;
+import aster.welkin.registry.WelkinBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -23,9 +23,9 @@ public class FluidTransducerBlock extends TransducerBlock {
             World world, BlockState state, BlockEntityType<T> type) {
         return world.isClient
                 ? null
-                : checkType(type, ModBlockEntities.FLUID_TRANSDUCER,
+                : checkType(type, WelkinBlockEntities.FLUID_TRANSDUCER,
                 (w, pos, s, be) -> {
-                    ((FluidTransducerEntity) be).serverTick(w, pos, s);
+                    be.serverTick(w, pos, s);
                 });
     }
 }

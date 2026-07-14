@@ -20,11 +20,6 @@ public class WelkinPackets {
 
         public static final Identifier SYNC_WARDS = new Identifier("welkin", "ward_sync");
 
-        // Server tells Client: "Start the cutscene at this position"
-        public static final Identifier START_CUTSCENE = new Identifier("welkin", "start_cutscene");
-
-        // Client tells Server: "Animation done, unlock my character"
-        public static final Identifier STOP_CUTSCENE = new Identifier("welkin", "stop_cutscene");
 
 
 

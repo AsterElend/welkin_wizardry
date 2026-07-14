@@ -1,5 +1,6 @@
 package aster.welkin.client;
 
+import aster.welkin.api.PedestalLikeBlockEntity;
 import aster.welkin.block.entity.PedestalRenderable;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -10,15 +11,15 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.RotationAxis;
 
-public class PedestalRenderableRenderer<T extends PedestalRenderable> implements BlockEntityRenderer<T> {
+public class PedestalRenderableRenderer<T extends PedestalLikeBlockEntity> implements BlockEntityRenderer<T> {
     public PedestalRenderableRenderer(BlockEntityRendererFactory.Context ctx) {
 
     }
 
 
     @Override
-    public void render(PedestalRenderable entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay){
-        ItemStack stack = entity.getRenderStack();
+    public void render(PedestalLikeBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay){
+        ItemStack stack = entity.getStack();
         if (stack.isEmpty()) return;
 
         matrices.push();

@@ -1,6 +1,6 @@
 package aster.welkin.block.entity;
 
-import aster.welkin.registry.ModBlockEntities;
+import aster.welkin.registry.WelkinBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,7 +31,7 @@ public class AntigravityPylonBlockEntity extends BlockEntity  {
     }
     public AntigravityPylonBlockEntity(BlockPos pos, BlockState state) {
         super(
-                ModBlockEntities.ANTIGRAVITY_PYLON_ENTITY,
+                WelkinBlockEntities.ANTIGRAVITY_PYLON,
                 pos,
                 state
         );

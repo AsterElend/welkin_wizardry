@@ -1,27 +1,30 @@
 package aster.welkin;
 
 import aster.welkin.client.*;
-
-import aster.welkin.mixin.CameraMixin;
-import aster.welkin.packet.WelkinPackets;
+import aster.welkin.item.GenericScreenInvocationItem;
 import aster.welkin.registry.LoomFluids;
-import aster.welkin.registry.ModBlockEntities;
-import aster.welkin.registry.ModBlocks;
+import aster.welkin.registry.WelkinBlockEntities;
+import aster.welkin.registry.WelkinBlocks;
+import aster.welkin.registry.screen.AlchemySlateScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRenderEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
+import net.minecraft.util.TypedActionResult;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import aster.welkin.packet.WelkinPackets;
 
 import static aster.welkin.packet.WelkinPackets.FIRE_NADIR_TOAST;
 import static aster.welkin.packet.WelkinPackets.SYNC_WARDS;
@@ -29,6 +32,9 @@ import static aster.welkin.packet.WelkinPackets.SYNC_WARDS;
 public class WelkinClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+
+        OculatorLensOverlays.addOculatorLensStuff();
+        HudRenderCallback.EVENT.register(OculatorRendererHandler::overlayGui);
         ClientPlayNetworking.registerGlobalReceiver(SYNC_WARDS, (client, handler, buf, responseSender) ->{
             if (buf.readableBytes() > 9) {
 
@@ -67,46 +73,38 @@ public class WelkinClient implements ClientModInitializer {
 
             }
         });
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.NODE, RenderLayer.getCutout());
-    ClientCutsceneManager.registerPacketReceivers();
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (CameraMixin.isCutsceneActive) {
-                // Rotates 3 degrees per tick (takes 120 ticks / 6 seconds total)
-                CameraMixin.orbitAngle += 3.0f;
 
-                if (CameraMixin.orbitAngle >= 360.0f) {
-                    // Cutscene finished! Snap back camera and notify server to unlock player
-                    ClientCutsceneManager.stopSequence();
-                }
-            }
-        });
+
+
+    BlockRenderLayerMap.INSTANCE.putBlock(WelkinBlocks.NODE, RenderLayer.getCutout());
+    HaloBatonRenderer.register();
 
         WorldRenderEvents.AFTER_TRANSLUCENT.register(WardedBlockRenderer::render);
         FluidRenderHandlerRegistry.INSTANCE.register(LoomFluids.LETHEAN_WATER_STATIC, LoomFluids.LETHEAN_WATER_FLOWING, SimpleFluidRenderHandler.coloredWater(0xff209f));
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), LoomFluids.LETHEAN_WATER_STATIC, LoomFluids.LETHEAN_WATER_FLOWING);
         BlockEntityRendererRegistry.register(
-                ModBlockEntities.NODE,
+                WelkinBlockEntities.NODE,
                 NodeBlockEntityRenderer::new
         );
 
         BlockEntityRendererRegistry.register(
-                ModBlockEntities.PEDESTAL_ENTITY,
+                WelkinBlockEntities.PYLON,
                 PedestalRenderableRenderer::new);
 
         BlockEntityRendererRegistry.register(
-                ModBlockEntities.AGONITE_ENTITY,
+                WelkinBlockEntities.AGONITE_TRANSMUTER,
                 PedestalRenderableRenderer::new
         );
 
 
 
          BlockEntityRendererRegistry.register(
-                 ModBlockEntities.ITEM_TRANSDUCER,
+                 WelkinBlockEntities.ITEM_TRANSDUCER,
                  TransducerRenderer::new
          );
 
    BlockEntityRendererRegistry.register(
-                 ModBlockEntities.FLUID_TRANSDUCER,
+                 WelkinBlockEntities.FLUID_TRANSDUCER,
                  TransducerRenderer::new
          );
 

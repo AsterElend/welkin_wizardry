@@ -1,6 +1,8 @@
-// 1.20.1	2026-06-29T07:34:44.7113468	Welkin Wizardry/Tags for minecraft:item
+// 1.20.1	2026-07-11T16:57:07.6326322	Welkin Wizardry/Tags for minecraft:item
 ce7b25b1c744483299782c43110ffd27178def93 data\minecraft\tags\items\music_discs.json
-647f18543182a8cc7eb01ee1aac6f4e0b87dbc50 data\minecraft\tags\items\logs.json
+0f05f690a188cb7e2c0d385dba38bd41da38379d data\minecraft\tags\items\saplings.json
+5e6c6bdf2998e346f8de6f5d849ef36b5d8f6061 data\minecraft\tags\items\logs.json
 2ae7cef8432518f9bbfc723cc518d3fa02c363ed data\welkin\tags\items\take_heart.json
-8840f1b118c1b71e8480a04a79922bd6225c14fd data\welkin\tags\items\show_force.json
-472ae85c269eb6897c903bb6da7847e63859500c data\minecraft\tags\items\planks.json
+84a8d6c6acae97b9a58101f428f582bdba15ae6c data\minecraft\tags\items\leaves.json
+e09be05e3e22dd0fa98c06f5b36c7ca94bbe333c data\welkin\tags\items\show_force.json
+ba0d5506cef387436024711a4b33be30e308f671 data\minecraft\tags\items\planks.json

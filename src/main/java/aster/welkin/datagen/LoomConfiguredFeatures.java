@@ -2,7 +2,7 @@ package aster.welkin.datagen;
 
 
 import aster.welkin.Welkin;
-import aster.welkin.registry.ModBlocks;
+import aster.welkin.registry.WelkinBlocks;
 import aster.welkin.registry.world.trees.FractalTreeTrunkPlacer;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -26,16 +26,16 @@ public class LoomConfiguredFeatures {
 
     public static void bootstrap(Registerable<ConfiguredFeature<?,?>> context){
         register(context, FRACTAL_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(ModBlocks.FRACTAL_LOG),
+                BlockStateProvider.of(WelkinBlocks.FRACTAL_LOG),
                 new FractalTreeTrunkPlacer(2, 1, 0),
-                BlockStateProvider.of(ModBlocks.FRACTAL_LEAVES),
+                BlockStateProvider.of(WelkinBlocks.FRACTAL_LEAVES),
                 new BlobFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(1), 4),
                 new TwoLayersFeatureSize(1, 0, 2)).build());
 
         register(context, WATCHER_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(ModBlocks.WATCHER_LOG),
+                BlockStateProvider.of(WelkinBlocks.WATCHER_LOG),
                 new DarkOakTrunkPlacer(3, 4, 5),
-                BlockStateProvider.of(ModBlocks.WATCHER_LEAVES),
+                BlockStateProvider.of(WelkinBlocks.WATCHER_LEAVES),
                 new BlobFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(2), 3),
                 new TwoLayersFeatureSize(1, 0, 2)
         ).build());

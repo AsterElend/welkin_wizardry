@@ -1,10 +1,10 @@
 package aster.welkin.block;
 
-import aster.welkin.packet.ServerCutsceneManager;
-import aster.welkin.registry.ModItems;
+import aster.welkin.registry.WelkinItems;
 import aster.welkin.registry.WelkinTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -15,6 +15,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.UUID;
@@ -44,7 +46,7 @@ public class HeartExtractorBlock extends Block {
            stack.decrement(1);
 
             if (player instanceof ServerPlayerEntity servPlay){
-                ServerCutsceneManager.startSequence(servPlay, pos.up().up());
+              //todo astral sorcery attunement style animation
             }
 
            return ActionResult.SUCCESS;
@@ -57,7 +59,7 @@ public class HeartExtractorBlock extends Block {
             instance.addPersistentModifier(new EntityAttributeModifier(MODIFIED_HEARTS, "modified_hearts", value-2, EntityAttributeModifier.Operation.ADDITION));
             if (!player.getWorld().isClient && player instanceof ServerPlayerEntity) {
                 // Create an ItemStack (e.g., giving 1 Apple)
-                ItemStack stackToGive = new ItemStack(ModItems.EXTRACTED_HEART, 1);
+                ItemStack stackToGive = new ItemStack(WelkinItems.EXTRACTED_HEART, 1);
 
                 // Try to insert the item into the player's inventory
                 boolean success = player.getInventory().insertStack(stackToGive);
@@ -68,13 +70,22 @@ public class HeartExtractorBlock extends Block {
                 }
             }
             if (player instanceof ServerPlayerEntity servPlay){
-                ServerCutsceneManager.startSequence(servPlay, pos.up().up());
+
             }
 
             return ActionResult.SUCCESS;
         }
         return ActionResult.FAIL;
     }
+
+    public VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 16, 4, 16);
+
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
 
 
 }

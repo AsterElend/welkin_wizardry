@@ -1,2 +1,5 @@
-intially created following kaupenjoe's 1.20.1 fabric modding tutorial
+intially created following kaupenjoe's 1.20.1 fabric modding tutorial, but quickly spiraled beyond the scope of that
+used the fabric mod template generator
 many thanks to the wonderful botania mod
+hexcasting for the scrying lens system
+spectrum for how to make a pedestal-like block, and generally being the best reference for this version of fabric

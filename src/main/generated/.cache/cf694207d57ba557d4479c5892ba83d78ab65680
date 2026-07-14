@@ -1,8 +1,8 @@
-// 1.20.1	2026-06-29T07:34:44.7123465	Welkin Wizardry/Model Definitions
+// 1.20.1	2026-07-11T16:57:07.6336318	Welkin Wizardry/Model Definitions
 87a1c2886cd2b27512b74973a900ffec6ac7507b assets\welkin\models\block\watcher_log_horizontal.json
 103b1449253cd928c646edcf85997d16fe027361 assets\welkin\models\item\lethean_water_bucket.json
-5c6eb2e50fdc2b744c588105a2d41b6bacee048c assets\welkin\models\item\fractal_wood.json
 5b1bbe7f915929cc2544b0dc1094ec5c64be9cd3 assets\welkin\models\item\fractal_planks.json
+5c6eb2e50fdc2b744c588105a2d41b6bacee048c assets\welkin\models\item\fractal_wood.json
 1870a1feeb4003eb4c718a8a553b3fd0e3151578 assets\welkin\models\item\fractal_leaves.json
 a094605a12b0e119df0571786a6962df88536c5a assets\welkin\blockstates\stripped_watcher_log.json
 a8adc1d909c7ba077be0497058207d15b97095fb assets\welkin\models\item\extracted_heart.json
@@ -10,12 +10,13 @@ a8adc1d909c7ba077be0497058207d15b97095fb assets\welkin\models\item\extracted_hea
 dbb025e9d1d7135600768774b50e7dc19245121b assets\welkin\models\block\strippedchargelog_horizontal.json
 71edce7ea2fcb2588c9b1012ea199fe774941e2b assets\welkin\models\block\stripped_fractal_wood.json
 ab18fac92c89b4b7b0a1292e92ee883344f932b8 assets\welkin\models\block\stripped_watcher_log_horizontal.json
+95be14c5bf69d4f77a87efa47e2a775ef2189723 assets\welkin\models\item\oculator_lens.json
 b3a95a175ab760401303425a6f96f07602da65ff assets\welkin\blockstates\watcher_sapling.json
 32e069e9e7eb24a599992d65bf8e2874f54ab427 assets\welkin\blockstates\fractal_planks.json
 25b0fb5beb026080d82b65ccbde7b7a75ade4097 assets\welkin\models\block\mothtile.json
 2a7893b0e858f939dfb7b57e070bad67f9060bbd assets\welkin\blockstates\watcher_wood.json
 f5a27fde8a1418e25dca2d691874224cba74640c assets\welkin\models\block\chargelog_horizontal.json
-2c0a7e575a1f7938db59ce816a1b86475cfc78d1 assets\welkin\models\item\gust_baton.json
+966b083152c395f1087639c736b3e12c0d67390c assets\welkin\models\item\bricklayer_baton.json
 d3a2c0a293ead9e6155b3975d6deef6f13b8317d assets\welkin\blockstates\strippedchargelog.json
 a27b4a94563e49392b9286a6e8887520e84210dc assets\welkin\models\item\stripped_fractal_log.json
 ea0bbccd3d7f2dc5d1a90d40d6bf5c7c54decb8d assets\welkin\models\item\world_salts.json
@@ -36,11 +37,9 @@ d90788765eed1734554ba6ad5073358503036aaa assets\welkin\models\item\watcher_plank
 b412a8f0449e269ec4044316303ab6f6e878f735 assets\welkin\models\item\chargewood.json
 4300c07a90eb00ab0ae6a1c91f3301f2e5b376ef assets\welkin\models\item\stellarium.json
 94c72b0ef1bf27a0476b25e84ed9354171703cf6 assets\welkin\blockstates\strippedchargewood.json
-7a89c9586d789c7fae8aa55ee04bbef6b76e17fc assets\welkin\models\item\halo_baton.json
 a259f244cc0f2b5be1a77cdfc1281008435787c1 assets\welkin\models\item\watcher_wood.json
 ee668d55959a6e35429fa6733c18a8d31a259ce3 assets\welkin\blockstates\voidstone.json
 9cd69813b9c897a989b62f6f356472d881847db3 assets\welkin\models\block\strippedchargewood.json
-dde7c9ecf56e61c00da3e5efafe197a8379a3a78 assets\welkin\models\item\galvanic_wand.json
 f9589b4902d81b7ad96d718a80d65ac5fc299877 assets\welkin\blockstates\stripped_fractal_wood.json
 77afeb4ea41a8cb366cfe7a89f54aded9d23bfc6 assets\welkin\models\item\lethean_water_bottle.json
 16c26354ab16146617972c071b7bd24121ed4170 assets\welkin\models\item\starstone.json
@@ -65,11 +64,12 @@ f41b67c230b4fa976fd931162baf086ac3d4c107 assets\welkin\models\block\fractal_log.
 c6e93d0e81850baed09593df2a5a92d65288c954 assets\welkin\models\item\mothtile.json
 f9a5002daa12ac10acf9e2aac37585c514aaca2a assets\welkin\blockstates\starstone.json
 08c952df7a27767b4eaeba28df2b7c44f600904d assets\welkin\models\item\strippedchargelog.json
+2c9cd65f2728c6d11cdef1c19258ce6d36d217a5 assets\welkin\models\item\windstormer_baton.json
 e16a5bde60820d74373d5e286c4675df49c47be3 assets\welkin\models\block\stripped_fractal_log.json
 900b3390aa3d6cd9e78ae6ff24a19c839f82910b assets\welkin\models\block\watcher_wood.json
 877e343564daa0c0d4671cb48f7e773bfd8881de assets\welkin\models\item\voidstone.json
-10bb667833bbdb260ef0967f7f11631e85bb0fb7 assets\welkin\models\item\strippedchargewood.json
 5a24c117371391b1a8280c770629d0725ed23e4c assets\welkin\models\block\watcher_sapling.json
+10bb667833bbdb260ef0967f7f11631e85bb0fb7 assets\welkin\models\item\strippedchargewood.json
 881afc44465c1ad3d9f7b035c31c9db5b6121a7c assets\welkin\blockstates\watcher_log.json
 fa8d38ffcd9baddf26dbc9d7b78f8a6f8455d8a1 assets\welkin\models\item\windtunnel_disc.json
 1a6c6359154d1047e96b648854316eaa1bd718ed assets\welkin\models\block\stripped_watcher_log.json
@@ -85,6 +85,6 @@ baccb00976a5402d31face711b52211e4d3de8b9 assets\welkin\models\item\fractal_log.j
 17c90d25c3d6b85e369df62439ff0cacc09c9bcd assets\welkin\blockstates\chargelog.json
 0bdb8e72d65824168358c22a68d2a58b16cad9b1 assets\welkin\models\block\fractal_wood.json
 368b86c6a4f7acce0ae5da6a7e61e6d90e6d50cf assets\welkin\models\block\watcher_log.json
-ba399adf6823f31b4454e8a5aea6a7f25bc7a147 assets\welkin\models\item\wire.json
 614b75b542194517ba03eb5d46e0dc24524c06f3 assets\welkin\models\block\stripped_fractal_log_horizontal.json
 24347425d69cae677d7ea6020433be1650aed771 assets\welkin\models\item\stripped_watcher_log.json
+a7259961cc4f625c3cbc1c511496d952ba874984 assets\welkin\models\item\conductor_baton.json

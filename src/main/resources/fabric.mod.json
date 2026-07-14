@@ -30,6 +30,9 @@
 		],
 		"emi": [
 			"aster.welkin.emi.WelkinEmiPlugin"
+		],
+		"modMenu": [
+			"aster.welkin.config.WelkinModMenuConfig"
 		]
 	},
 	"mixins": [
@@ -52,7 +55,9 @@
 
 	"custom": {
 		"cardinal-components": [
-			"welkin:force"
+			"welkin:force",
+			"welkin:discoveries",
+			"welkin:forgotten"
 		]
 	}
 

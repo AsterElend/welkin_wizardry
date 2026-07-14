@@ -1,7 +1,7 @@
 package aster.welkin.datagen;
 
-import aster.welkin.registry.ModBlocks;
-import aster.welkin.registry.ModItems;
+import aster.welkin.registry.WelkinBlocks;
+import aster.welkin.registry.WelkinItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
@@ -21,7 +21,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
     public void generateAdvancement(Consumer<Advancement> consumer) {
         Advancement rootAdvancement = Advancement.Builder.create()
                 .display(
-                        ModItems.GRIMORE,
+                        WelkinItems.GRIMORE,
                         Text.literal("Welkin Wizardry"),
                         Text.literal("The Power of The Sky"),
                         new Identifier("textures/gui/advancements/backgrounds/adventure.png"),
@@ -31,7 +31,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         false
 
                 )
-                .criterion("root", InventoryChangedCriterion.Conditions.items(ModBlocks.CHARGELOG))
+                .criterion("root", InventoryChangedCriterion.Conditions.items(WelkinBlocks.CHARGELOG))
                 .build(consumer, "welkin" + "/root");
     }
 }

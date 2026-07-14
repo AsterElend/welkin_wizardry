@@ -65,7 +65,7 @@ public class RecyclerBlock extends Block {
 
         for (NodeBlockEntity node: nodes){
             spawnDustBurst(world, pos);
-            node.removeItem();
+            node.clear();
         }
 
         ItemEntity output = new ItemEntity(

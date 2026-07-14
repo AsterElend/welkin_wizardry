@@ -1,6 +1,8 @@
 package aster.welkin.block.transducer;
 
-import aster.welkin.registry.ModItems;
+import aster.welkin.api.IHasLensInfo;
+import aster.welkin.api.Yoinkable;
+import aster.welkin.registry.WelkinItems;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -23,9 +25,9 @@ import net.minecraft.world.World;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class TransducerBlock extends BlockWithEntity {
+public abstract class TransducerBlock extends BlockWithEntity implements IHasLensInfo, Yoinkable {
 
-    public static final BooleanProperty IS_SEND = BooleanProperty.of("is_send");
+
     public static final DirectionProperty FACING = Properties.FACING;
 
     public static final VoxelShape UP_SHAPE    = Block.createCuboidShape(5, 0,  5,  11, 13, 11);
@@ -46,41 +48,17 @@ public abstract class TransducerBlock extends BlockWithEntity {
 
     public TransducerBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.UP).with(IS_SEND, true));
+        this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.UP));
     }
 
 
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (world.getBlockEntity(pos) instanceof TransducerEntity trans){
-            if (player.getStackInHand(hand).isOf(ModItems.WIRE)){
-                return ActionResult.PASS;
-            }
-
-            if (player.isSneaking()){
-                if (player.getStackInHand(hand).isOf(ModItems.GALVANIC_WAND)){
-                    trans.delink(pos);
-                } else {
-                    boolean toggle = !state.get(IS_SEND);
-                    world.setBlockState(pos, state.with(IS_SEND, toggle));
-                }
-            } else {
-                if (trans.hasLink() && world.isClient){
-                    player.sendMessage(Text.literal("Linked To: " + trans.getLinkedNode().toString()));
-                }
-            }
-            return ActionResult.SUCCESS;
-        }
-        return ActionResult.FAIL;
-
-    }
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx){
         Direction direction = ctx.getSide();
         BlockState state = ctx.getWorld().getBlockState(ctx.getBlockPos().offset(direction.getOpposite()));
-        return state.isOf(this) && state.get(FACING) == direction ? this.getDefaultState().with(FACING, direction.getOpposite()).with(IS_SEND, false)
-                : this.getDefaultState().with(FACING, direction).with(IS_SEND, false);
+        return state.isOf(this) && state.get(FACING) == direction ? this.getDefaultState().with(FACING, direction.getOpposite())
+                : this.getDefaultState().with(FACING, direction);
     }
 
     @Override
@@ -96,7 +74,6 @@ public abstract class TransducerBlock extends BlockWithEntity {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
-        builder.add(IS_SEND);
 
     }
 
@@ -113,14 +90,7 @@ public abstract class TransducerBlock extends BlockWithEntity {
 }
 
 
-@Override
-public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-    if (world.getBlockEntity(pos) instanceof TransducerEntity entity){
-        entity.delink(pos);
-    }
-    super.onBreak(world, pos, state, player);
 
-}
 
 
 }

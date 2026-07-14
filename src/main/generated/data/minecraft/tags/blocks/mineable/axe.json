@@ -6,6 +6,14 @@
     "welkin:chargewood",
     "welkin:chargeplanks",
     "welkin:strippedchargelog",
-    "welkin:strippedchargewood"
+    "welkin:strippedchargewood",
+    "welkin:fractal_log",
+    "welkin:fractal_wood",
+    "welkin:stripped_fractal_log",
+    "welkin:stripped_fractal_wood",
+    "welkin:watcher_log",
+    "welkin:watcher_wood",
+    "welkin:stripped_watcher_log",
+    "welkin:stripped_watcher_wood"
   ]
 }

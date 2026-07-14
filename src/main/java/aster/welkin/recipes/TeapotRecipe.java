@@ -1,7 +1,7 @@
 package aster.welkin.recipes;
 
 import aster.welkin.block.entity.TeapotBlockEntity;
-import aster.welkin.registry.ModRecipes;
+import aster.welkin.registry.WelkinRecipes;
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
@@ -73,7 +73,7 @@ public class TeapotRecipe implements Recipe<TeapotBlockEntity> {
 
     @Override
     public RecipeType<?> getType() {
-        return ModRecipes.TEAPOT_TYPE;
+        return WelkinRecipes.TEAPOT_TYPE;
     }
 
     public static class TeapotRecipeSerializer implements RecipeSerializer<TeapotRecipe> {

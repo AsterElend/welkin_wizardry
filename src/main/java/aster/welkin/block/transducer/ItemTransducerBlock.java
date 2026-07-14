@@ -1,7 +1,7 @@
 package aster.welkin.block.transducer;
 
 
-import aster.welkin.registry.ModBlockEntities;
+import aster.welkin.registry.WelkinBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -24,9 +24,9 @@ public class ItemTransducerBlock extends TransducerBlock{
             World world, BlockState state, BlockEntityType<T> type) {
         return world.isClient
                 ? null
-                : checkType(type, ModBlockEntities.ITEM_TRANSDUCER,
+                : checkType(type, WelkinBlockEntities.ITEM_TRANSDUCER,
                 (w, pos, s, be) -> {
-                    ((ItemTransducerEntity) be).serverTick(w, pos, s);
+                    be.serverTick(w, pos, s);
                 });
     }
 }

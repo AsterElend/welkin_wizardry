@@ -1,7 +1,7 @@
 package aster.welkin.mixin;
 
 import aster.welkin.recipes.LightningRecipe;
-import aster.welkin.registry.ModRecipes;
+import aster.welkin.registry.WelkinRecipes;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.inventory.SimpleInventory;
@@ -59,7 +59,7 @@ public abstract class LightningHandler {
 
             Optional<LightningRecipe> match =
                     server.getRecipeManager().getFirstMatch(
-                            ModRecipes.LIGHTNING_TYPE, inv, server
+                            WelkinRecipes.LIGHTNING_TYPE, inv, server
                     );
 
             if (match.isEmpty()) continue;

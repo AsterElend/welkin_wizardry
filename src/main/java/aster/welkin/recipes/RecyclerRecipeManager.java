@@ -2,6 +2,7 @@ package aster.welkin.recipes;
 
 import aster.welkin.Welkin;
 import aster.welkin.jsonstuff.RecyclerReloadListener;
+import com.ibm.icu.util.Output;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
@@ -11,19 +12,24 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.random.Random;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RecyclerRecipeManager {
 
     public static final List<RecyclerRecipe> RECYCLER_RECIPES = new ArrayList<>();
-    public List<ItemStack> getAllOutputs(){
-        List<ItemStack> list = new ArrayList<>();
+    private static final Map<Identifier, RecyclerRecipe> OUTPUT_LOOKUP = new HashMap<>();
+    public static List<Identifier> getOutputIdentifiersForAlchemySlate(){
+        List<Identifier> makeAList = new ArrayList<>();
+        OUTPUT_LOOKUP.forEach(((identifier, recyclerRecipe) -> {
+            makeAList.add(identifier);
+        }));
+        return makeAList;
+    }
+    public static List<Item> getOutputItemsForDebugAlchemySlate(){
+        List<Item> list = new ArrayList<>();
         for (RecyclerRecipe recipe: RECYCLER_RECIPES){
-            list.add(recipe.getOutput());
+            list.add(recipe.getOutput().getItem());
         }
         return list;
     }
@@ -31,6 +37,7 @@ public class RecyclerRecipeManager {
 
     public static void generateRecipes(long worldSeed) {
         RECYCLER_RECIPES.clear();
+        OUTPUT_LOOKUP.clear();
         Registry<Item> itemRegistry = Registries.ITEM;
 
         for (RecyclerReloadListener.RecycleSet set : RecyclerReloadListener.getTagsToAlchemize()) {
@@ -104,9 +111,15 @@ public class RecyclerRecipeManager {
                         ingredientList,
                         new ItemStack(output)
                 ));
-
+                RecyclerRecipe recipe = new RecyclerRecipe(recipeId, ingredientList, new ItemStack(output));
+                RECYCLER_RECIPES.add(recipe);
+                OUTPUT_LOOKUP.put(outputId, recipe);
 
             }
         }
+    }
+
+    public static RecyclerRecipe getRecipeForOutput(Identifier outputItemId) {
+        return OUTPUT_LOOKUP.get(outputItemId);
     }
 }

@@ -2,8 +2,8 @@ package aster.welkin.block;
 
 import aster.welkin.Welkin;
 import aster.welkin.registry.LoomFluids;
-import aster.welkin.registry.ModBlocks;
-import aster.welkin.registry.ModItems;
+import aster.welkin.registry.WelkinBlocks;
+import aster.welkin.registry.WelkinItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -46,7 +46,7 @@ public abstract class LetheanFluid extends FlowableFluid {
     }
 
     public Item getBucketItem() {
-        return ModItems.LETHEAN_WATER_BUCKET;
+        return WelkinItems.LETHEAN_WATER_BUCKET;
     }
 
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
@@ -79,7 +79,7 @@ public abstract class LetheanFluid extends FlowableFluid {
     }
     @Override
     public BlockState toBlockState(FluidState state) {
-        return ModBlocks.LETHEAN_WATER_BLOCK.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
+        return WelkinBlocks.LETHEAN_WATER_BLOCK.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
     }
     @Override
     public boolean matchesType(Fluid fluid) {

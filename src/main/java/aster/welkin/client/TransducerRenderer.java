@@ -1,6 +1,7 @@
 package aster.welkin.client;
 
-import aster.welkin.block.transducer.TransducerEntity;
+import aster.welkin.api.Linkable;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -12,7 +13,7 @@ import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class TransducerRenderer<T extends TransducerEntity> implements BlockEntityRenderer<T> {
+public class TransducerRenderer<T extends BlockEntity> implements BlockEntityRenderer<T> {
     public TransducerRenderer(BlockEntityRendererFactory.Context ctx) {
 
     }
@@ -24,11 +25,12 @@ public class TransducerRenderer<T extends TransducerEntity> implements BlockEnti
 
     @Override
     public void render(T entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        if (!entity.hasLink()) return;
-        BlockPos from = entity.getPos();
-        BlockPos to = entity.getLinkedNode();
+       if (!(entity instanceof Linkable linkable)) return;
+       if (linkable.getLinkPos() == null) return;
+       BlockPos from = entity.getPos();
+       BlockPos to = linkable.getLinkPos();
 
-        Vec3d start = new Vec3d(0.5, 0.5, 0.5); // this block's center
+       Vec3d start = new Vec3d(0.5, 0.5, 0.5); // this block's center
         Vec3d end = new Vec3d(
                 to.getX() - from.getX() + 0.5,
                 to.getY() - from.getY() + 0.5,

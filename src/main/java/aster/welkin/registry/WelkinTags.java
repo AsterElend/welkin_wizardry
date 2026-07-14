@@ -14,4 +14,6 @@ public class WelkinTags {
     public static final TagKey<Block> ABSCONDABLE = TagKey.of(RegistryKeys.BLOCK, Identifier.of("welkin", "abscondable"));
     public static final TagKey<Item> TAKE_HEART = TagKey.of(RegistryKeys.ITEM, Welkin.id("take_heart"));
     public static final TagKey<Fluid> LETHE = TagKey.of(RegistryKeys.FLUID, Welkin.id("lethe"));
+    public static final TagKey<Block> YOINKABLE = TagKey.of(RegistryKeys.BLOCK, Welkin.id("yoinkable"));
+    public static final TagKey<Block> UNACCELERATEABLE = TagKey.of(RegistryKeys.BLOCK, Welkin.id("unaccelerateable"));
 }

@@ -1,6 +1,6 @@
 package aster.welkin.datagen;
 
-import aster.welkin.registry.ModBlocks;
+import aster.welkin.registry.WelkinBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 
@@ -11,14 +11,14 @@ public class BlockLootProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(ModBlocks.STARSTONE);
-        addDrop(ModBlocks.CHARGEWOOD);
-        addDrop(ModBlocks.STRIPPEDCHARGELOG);
-        addDrop(ModBlocks.STRIPPEDCHARGEWOOD);
-        addDrop(ModBlocks.CHARGEPLANKS);
-        addDrop(ModBlocks.CHARGELOG);
-        addDrop(ModBlocks.PEDESTAL);
-        addDrop(ModBlocks.LIGHTNING_ALTAR);
+        addDrop(WelkinBlocks.STARSTONE);
+        addDrop(WelkinBlocks.CHARGEWOOD);
+        addDrop(WelkinBlocks.STRIPPEDCHARGELOG);
+        addDrop(WelkinBlocks.STRIPPEDCHARGEWOOD);
+        addDrop(WelkinBlocks.CHARGEPLANKS);
+        addDrop(WelkinBlocks.CHARGELOG);
+        addDrop(WelkinBlocks.PYLON);
+        addDrop(WelkinBlocks.LIGHTNING_ALTAR);
 
 
 

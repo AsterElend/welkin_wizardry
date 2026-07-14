@@ -1,5 +1,6 @@
 package aster.welkin.block;
 
+import aster.welkin.api.PedestalLikeBlock;
 import aster.welkin.block.entity.PylonBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -20,7 +21,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-public class PylonBlock extends BlockWithEntity implements BlockEntityProvider {
+public class PylonBlock extends PedestalLikeBlock {
 
     private static final VoxelShape SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
@@ -55,72 +56,5 @@ public class PylonBlock extends BlockWithEntity implements BlockEntityProvider {
         return new PylonBlockEntity(pos, state);
     }
 
-    @Override
-    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if (state.getBlock() != newState.getBlock()) {
-            if (world.getBlockEntity(pos) instanceof PylonBlockEntity pylonBlockEntity) {
-                ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), pylonBlockEntity.getStoredItem());
-                world.updateComparators(pos, this);
-            }
-            super.onStateReplaced(state, world, pos, newState, moved);
-        }
-    }
 
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ActionResult result = ActionResult.PASS;
-
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (!(blockEntity instanceof PylonBlockEntity pylonBlockEntity)) {
-            return result;
-        }
-
-        if (pylonBlockEntity.isEmpty()) {
-            result = addItemFromHand(world, pylonBlockEntity, player, hand);
-        } else if (hand.equals(Hand.MAIN_HAND)) {
-            removeItemFromTable(world, pylonBlockEntity, player);
-            result = ActionResult.SUCCESS;
-        }
-
-        return result;
-    }
-
-    private ActionResult addItemFromHand(World world, PylonBlockEntity pylonBlockEntity, PlayerEntity player, Hand hand) {
-        ItemStack heldItem = player.getStackInHand(hand);
-        ItemStack offHandItem = player.getOffHandStack();
-
-        if (!offHandItem.isEmpty()) {
-            if (hand.equals(Hand.MAIN_HAND) && !(heldItem.getItem() instanceof BlockItem)) {
-                return ActionResult.PASS;
-            }
-            if (hand.equals(Hand.OFF_HAND)) {
-                return ActionResult.PASS;
-            }
-        }
-        if (heldItem.isEmpty()) {
-            return ActionResult.PASS;
-        } else if (pylonBlockEntity.addItem(player.getAbilities().creativeMode ? heldItem.copy() : heldItem)) {
-            playPlaceSound(world, pylonBlockEntity.getPos());
-            return ActionResult.SUCCESS;
-        }
-        return ActionResult.PASS;
-    }
-
-    private void removeItemFromTable(World world, PylonBlockEntity pylonBlockEntity, PlayerEntity player) {
-        BlockPos pos = pylonBlockEntity.getPos();
-        if (player.isCreative()) {
-            pylonBlockEntity.removeItem();
-        } else if (!player.getInventory().insertStack(pylonBlockEntity.removeItem())) {
-            ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), pylonBlockEntity.removeItem());
-        }
-        playRemoveSound(world, pos);
-    }
-
-    private void playPlaceSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM, SoundCategory.BLOCKS, 1f, 1f);
-    }
-
-    private void playRemoveSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
-    }
 }

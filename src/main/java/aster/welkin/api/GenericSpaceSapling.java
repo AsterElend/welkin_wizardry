@@ -1,6 +1,6 @@
 package aster.welkin.api;
 
-import aster.welkin.registry.ModBlocks;
+import aster.welkin.registry.WelkinBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
@@ -14,6 +14,6 @@ public class GenericSpaceSapling extends SaplingBlock {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos){
-        return floor.isOf(ModBlocks.VOIDSTONE);
+        return floor.isOf(WelkinBlocks.VOIDSTONE);
     }
 }

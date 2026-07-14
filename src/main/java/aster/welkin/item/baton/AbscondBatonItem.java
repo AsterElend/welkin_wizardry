@@ -29,12 +29,12 @@ public class AbscondBatonItem extends Item {
 
         ItemStack stack = ctx.getStack();
         BlockPos pos = ctx.getBlockPos();
-        Direction side = ctx.getSide();
+        Direction linkSide = ctx.getSide();
 
         if (!isCarrying(stack)) {
             return pickUpBlock(world, pos, player, stack);
         } else {
-            return placeStoredBlock(world, pos, side, player, stack);
+            return placeStoredBlock(world, pos, linkSide, player, stack);
         }
     }
 
@@ -71,11 +71,11 @@ public class AbscondBatonItem extends Item {
         return ActionResult.SUCCESS;
     }
     // ✨ Public so the tick handler can auto-place on force depletion
-    public ActionResult placeStoredBlock(World world, BlockPos pos, Direction side, PlayerEntity player, ItemStack stack) {
+    public ActionResult placeStoredBlock(World world, BlockPos pos, Direction linkSide, PlayerEntity player, ItemStack stack) {
         if (!isCarrying(stack)) return ActionResult.FAIL;
 
         NbtCompound nbt = stack.getOrCreateNbt();
-        BlockPos placePos = pos.offset(side);
+        BlockPos placePos = pos.offset(linkSide);
 
         // Must be replaceable
         if (!world.getBlockState(placePos).isReplaceable()) {

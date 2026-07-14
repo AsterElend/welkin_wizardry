@@ -1,7 +1,7 @@
 package aster.welkin.block.entity;
 
-import aster.welkin.block.ImplementedInventory;
-import aster.welkin.registry.ModBlockEntities;
+import aster.welkin.api.ImplementedInventory;
+import aster.welkin.registry.WelkinBlockEntities;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
@@ -60,7 +60,7 @@ public class TeapotBlockEntity extends BlockEntity implements ImplementedInvento
 
 
     public TeapotBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.TEAPOT_ENTITY, pos, state);
+        super(WelkinBlockEntities.TEAPOT, pos, state);
         this.inputInventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
         this.outputInventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
     }
