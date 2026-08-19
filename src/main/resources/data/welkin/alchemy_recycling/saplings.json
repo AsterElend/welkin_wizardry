@@ -1,8 +1,0 @@
-{
-  "mainTag": "minecraft:saplings",
-  "removeTags": [
-    "spectrum:colored_saplings"
-  ],
-  "removeItems": [],
-  "comboLength": 3
-}

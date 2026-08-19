@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=up":    { "model": "welkin:block/aether_transducer",    "x": 0,   "y": 0   },
+
+    "facing=down":  { "model": "welkin:block/aether_transducer",    "x": 180, "y": 0   },
+
+    "facing=north": { "model": "welkin:block/aether_transducer",    "x": 90,  "y": 0   },
+
+    "facing=south": { "model": "welkin:block/aether_transducer",    "x": 90,  "y": 180 },
+
+    "facing=east":  { "model": "welkin:block/aether_transducer",    "x": 90,  "y": 90  },
+
+    "facing=west":  { "model": "welkin:block/aether_transducer",    "x": 90,  "y": 270 }
+
+  }
+}

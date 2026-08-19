@@ -2,7 +2,6 @@ package aster.welkin.item.baton;
 
 import aster.welkin.api.WelkinUtil;
 import aster.welkin.registry.WelkinItems;
-import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import com.unascribed.lib39.recoil.api.DirectClickItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,7 +16,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;

@@ -1,10 +1,7 @@
 package aster.welkin.registry;
 
 import aster.welkin.Welkin;
-import aster.welkin.recipes.AgoniteTransmutationRecipe;
-import aster.welkin.recipes.LightningRecipe;
-import aster.welkin.recipes.RecyclerRecipe;
-import aster.welkin.recipes.TeapotRecipe;
+import aster.welkin.recipes.*;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
@@ -13,7 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class WelkinRecipes {
-    public static RecipeType<RecyclerRecipe> RECYCLE_TYPE;
+    public static RecipeType<AlchemyRecipe> ALCHEMY_TYPE;
 
   //  public static RecipeType<ForsakeRecipe> FORSAKE_TYPE;
  //   public static RecipeSerializer<ForsakeRecipe> FORSAKE_SERIALIZER;
@@ -30,6 +27,10 @@ public class WelkinRecipes {
     public static RecipeType<AgoniteTransmutationRecipe> AGONY_TYPE;
     public static RecipeSerializer<AgoniteTransmutationRecipe> AGONY_SERIALIZER;
 
+    public static RecipeType<StormEyeRecipe> STORM_EYE_TYPE;
+    public static RecipeSerializer<StormEyeRecipe> STORM_EYE_SERIALIZER;
+
+
     static <S extends RecipeSerializer<T>, T extends Recipe<?>> S registerSerializer(String id, S serializer) {
         return Registry.register(Registries.RECIPE_SERIALIZER, Welkin.id(id), serializer);
     }
@@ -38,25 +39,25 @@ public class WelkinRecipes {
         return Registry.register(Registries.RECIPE_TYPE, Welkin.id(id), new RecipeType<T>() {
             @Override
             public String toString() {
-                return "spectrum:" + id;
+                return "welkin:" + id;
             }
         });
     }
 
     public static void register() {
         TEAPOT_TYPE = registerRecipeType("teapot");
-        TEAPOT_SERIALIZER = registerSerializer("teapot_serializer", new TeapotRecipe.TeapotRecipeSerializer());
+        TEAPOT_SERIALIZER = registerSerializer("teapot", new TeapotRecipe.TeapotRecipeSerializer());
 
 
 
         //the cursed one; procedurally generated from custom reload listener
-        RECYCLE_TYPE = Registry.register(
+        ALCHEMY_TYPE = Registry.register(
                 Registries.RECIPE_TYPE,
-                Welkin.id("recycle"),
-                new RecipeType<RecyclerRecipe>() {
+                Welkin.id("alchemy"),
+                new RecipeType<AlchemyRecipe>() {
                     @Override
                     public String toString() {
-                        return "welkin:recycle";
+                        return "welkin:alchemy";
                     }
                 }
         );
@@ -82,39 +83,40 @@ public class WelkinRecipes {
 
         LIGHTNING_TYPE = Registry.register(
                 Registries.RECIPE_TYPE,
-                new Identifier("welkin", "strike"),
+                new Identifier("welkin", "lightning_transmutation"),
                 new RecipeType<LightningRecipe>() {
                     @Override
                     public String toString() {
-                        return "welkin:forsake";
+                        return "welkin:lightning_transmutation";
                     }
                 }
         );
 
         LIGHTNING_SERIALIZER = Registry.register(
                 Registries.RECIPE_SERIALIZER,
-                new Identifier("welkin", "strike"),
+                new Identifier("welkin", "lightning_transmutation"),
                 new LightningRecipe.LightningSerializer());
 
-        //sky extraction recipe
-/*
-        EXTRACT_TYPE = Registry.register(
+
+
+        STORM_EYE_TYPE = Registry.register(
                 Registries.RECIPE_TYPE,
-                new Identifier("welkin", "extract"),
-                new RecipeType<ExtractorRecipe>() {
+                new Identifier("welkin", "storm_eye"),
+                new RecipeType<StormEyeRecipe>() {
                     @Override
                     public String toString() {
-                        return "welkin:extract";
+                        return "welkin:storm_eye";
                     }
                 }
         );
 
-        EXTRACT_SERIALIZER = Registry.register(
+        STORM_EYE_SERIALIZER = Registry.register(
                 Registries.RECIPE_SERIALIZER,
-                new Identifier("welkin", "extract"),
-                new ExtractorRecipe.ExtractorRecipeSerializer());
+                new Identifier("welkin", "storm_eye"),
+                new StormEyeRecipe.Serializer());
 
 
-*/
+
+
     }
 }

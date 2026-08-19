@@ -20,7 +20,7 @@ public abstract class PedestalLikeBlock extends BlockWithEntity {
     protected PedestalLikeBlock(Settings settings) {
         super(settings);
     }
-    
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos,
                               PlayerEntity player, Hand hand, BlockHitResult hit) {
@@ -29,28 +29,23 @@ public abstract class PedestalLikeBlock extends BlockWithEntity {
             return ActionResult.SUCCESS;
         }
 
-        if (!(world.getBlockEntity(pos) instanceof PedestalLikeBlockEntity pedestal)) {
-            return ActionResult.PASS;
+        if (!(world.getBlockEntity(pos) instanceof PedestalInteractable pedestal)) {
+            return ActionResult.FAIL;
         }
 
-        if (player.isSneaking()){
-            doSneakInteractions(pedestal, player, hand);
+        if (player.isSneaking()) {
+            pedestal.doSneakInteraction(player, hand);
             return ActionResult.SUCCESS;
         }
 
         ItemStack held = player.getStackInHand(hand);
+        ItemStack mutatedHeld = pedestal.stackInteractionAttempt(held);
+        player.setStackInHand(hand, mutatedHeld);
 
-
-       ItemStack mutatedHeld = pedestal.stackInteractionAttempt(held);
-        if (!player.isCreative()) {
-            player.setStackInHand(hand, mutatedHeld);
-        }
-
-        return ActionResult.CONSUME;
+        return ActionResult.SUCCESS;
     }
-    public void doSneakInteractions(PedestalLikeBlockEntity entity, PlayerEntity player, Hand hand) {
-        // base no-op
-    }
+
+
 
     @Override
     public BlockRenderType getRenderType(BlockState state){
@@ -90,5 +85,6 @@ public abstract class PedestalLikeBlock extends BlockWithEntity {
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
+
 
 }

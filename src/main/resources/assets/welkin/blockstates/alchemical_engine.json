@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=true": {
+      "model": "welkin:block/alchemical_engine"
+    },
+       "powered=false": {
+      "model": "welkin:block/alchemical_engine"
+    }
+  }
+}

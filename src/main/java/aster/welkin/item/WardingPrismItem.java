@@ -3,6 +3,7 @@ package aster.welkin.item;
 
 import aster.welkin.api.WardedBlocksState;
 import aster.welkin.packet.WelkinPackets;
+import aster.welkin.registry.WelkinItems;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
@@ -11,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -121,4 +123,16 @@ public class WardingPrismItem extends Item {
             ServerPlayNetworking.send(player, WelkinPackets.SYNC_WARDS, copy);
         }
     }
+
+    @Override
+    public boolean hasRecipeRemainder(){
+        return true;
+    }
+
+    @Override
+    public ItemStack getRecipeRemainder(ItemStack stack){
+        if (stack.isOf(WelkinItems.WARDING_PRISM)) return stack;
+        else return null;
+    }
+
 }

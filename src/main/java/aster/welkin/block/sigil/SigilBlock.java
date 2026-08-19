@@ -1,8 +1,11 @@
 package aster.welkin.block.sigil;
 
-import aster.welkin.api.Yoinkable;
+import aster.welkin.Welkin;
+import aster.welkin.api.state.SetYouOnFireRegistryState;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
@@ -12,12 +15,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SigilBlock extends BlockWithEntity implements Yoinkable {
+public abstract class SigilBlock extends BlockWithEntity {
 
     public static final DirectionProperty FACING = Properties.FACING;
 
@@ -66,11 +70,29 @@ public class SigilBlock extends BlockWithEntity implements Yoinkable {
 
     @Override
     public BlockRenderType getRenderType(BlockState state){
-        return BlockRenderType.ENTITYBLOCK_ANIMATED;
+        if (Welkin.CONFIG.FancySigils) return BlockRenderType.ENTITYBLOCK_ANIMATED;
+        return BlockRenderType.MODEL;
     }
 
     @Override
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return null;
+    public BlockState getPlacementState(ItemPlacementContext ctx){
+        Direction direction = ctx.getSide();
+        BlockState state = ctx.getWorld().getBlockState(ctx.getBlockPos().offset(direction.getOpposite()));
+        return this.getDefaultState().with(FACING, direction.getOpposite());
     }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+        SetYouOnFireRegistryState.register(world, pos);
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+       super.onStateReplaced(state, world, pos, newState, moved);
+        SetYouOnFireRegistryState.unregister(world, pos);
+
+    }
+
+
 }

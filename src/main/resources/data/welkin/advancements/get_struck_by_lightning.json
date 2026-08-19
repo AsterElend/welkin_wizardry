@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:lightning_rod"
+    },
+    "title": "Shocking Experience",
+    "description": "Accidentally imbue yourself with the power of the heavens ",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "lightning_strike": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "source": {
+            "is_lightning": true
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["lightning_strike"]
+  ]
+}

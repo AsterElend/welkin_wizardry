@@ -1,10 +1,10 @@
 {
   "stormcycle": {
     "sounds": [
-  {
-   "name": "welkin:stormcycle",
-    "stream": true
-     }
+     "welkin:stormcycle",
+      "welkin:windtunnel",
+      "welkin:exosphere"
+
     ]
   }
 

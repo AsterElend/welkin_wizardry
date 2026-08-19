@@ -8,6 +8,7 @@
   "item.welkin.conductor_baton": "Conductor's Baton",
   "item.welkin.bricklayer_baton": "Bricklayer's Baton",
   "item.welkin.windstormer_baton": "Windstormer's Baton",
+  "item.welkin.inscriber_baton": "Inscriber's Baton",
   "item.welkin.oculator_lens": "Oculator's Lens",
   "welkin.toast.forget_title": "Something has been lost",
   "welkin.toast.remember_title": "Fleeting Recollection:",
@@ -44,8 +45,18 @@
   "block.welkin.voidstone": "Voidstone",
   "welkin.scry.echo.idle": "Listening...",
   "welkin.scry.echo.listen": "Listening for:",
-  "welkin.scry.trans.idle": "Unlinked.",
-  "welkin.scry.trans.linked": "Linked to:",
-  "welkin.scry.trans.side1": "on the ",
-  "welkin.scry.trans.side2": " side."
+  "welkin.scry.linkable.idle": "Unlinked.",
+  "welkin.scry.linkable.linked": "Linked to:",
+  "welkin.scry.linkable.side1": "on the ",
+  "welkin.scry.linkable.side2": " side.",
+  "welkin.scry.thunderhead": "Aether: ",
+  "welkin.sigil.tenpo": "Tenpo",
+  "welkin.sigil.suli": "Suli",
+  "welkin.scry.warp.charged": "Charged!",
+  "welkin.scry.infinite": "INFINITE AETHER!",
+  "emi.category.welkin.lightning_transmutation": "Lightning Transmutation",
+  "emi.category.welkin.alchemy": "Alchemization",
+  "tag.block.welkin.cut_copper": "Cut Copper",
+  "emi.category.welkin.storm_eye": "Storm Eye Multiblocks"
+
 }

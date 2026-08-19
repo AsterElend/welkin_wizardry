@@ -4,10 +4,10 @@ import aster.welkin.registry.WelkinBlocks;
 import aster.welkin.registry.WelkinTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
@@ -72,7 +72,16 @@ public  class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PLANKS).add(WelkinBlocks.CHARGEPLANKS, WelkinBlocks.WATCHER_PLANKS, WelkinBlocks.FRACTAL_PLANKS);
         getOrCreateTagBuilder(BlockTags.LEAVES).add(WelkinBlocks.FRACTAL_LEAVES, WelkinBlocks.WATCHER_LEAVES);
 
-
+        getOrCreateTagBuilder(WelkinTags.CUT_COPPER).add(
+                Blocks.CUT_COPPER,
+                Blocks.EXPOSED_CUT_COPPER,
+                Blocks.WEATHERED_CUT_COPPER,
+                Blocks.OXIDIZED_CUT_COPPER,
+                Blocks.WAXED_CUT_COPPER,
+                Blocks.WAXED_EXPOSED_CUT_COPPER,
+                Blocks.WAXED_WEATHERED_CUT_COPPER,
+                Blocks.WAXED_OXIDIZED_CUT_COPPER
+        );
     }
 
 

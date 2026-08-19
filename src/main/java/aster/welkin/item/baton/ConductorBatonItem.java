@@ -4,10 +4,12 @@ import aster.welkin.api.Linkable;
 import aster.welkin.api.WelkinUtil;
 import aster.welkin.api.Yoinkable;
 import aster.welkin.registry.WelkinBlocks;
+import aster.welkin.registry.WelkinItems;
 import aster.welkin.registry.WelkinTags;
 import com.unascribed.lib39.recoil.api.DirectClickItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -26,6 +28,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ConductorBatonItem extends Item implements DirectClickItem {
 
@@ -49,7 +54,9 @@ public class ConductorBatonItem extends Item implements DirectClickItem {
         if (player.getWorld().isClient) return ActionResult.SUCCESS;
         ItemUsageContext ctx = new ItemUsageContext(player, hand, WelkinUtil.getTargetedBlock(player, false));
         if (player.isSneaking()){
-            return doNodeFunction(ctx);
+            if (player.getItemCooldownManager().isCoolingDown(WelkinItems.CONDUCTOR_BATON)) return ActionResult.FAIL;
+            player.getItemCooldownManager().set(WelkinItems.CONDUCTOR_BATON, 4);
+            return WelkinUtil.placeBlockWithoutItem(ctx, WelkinBlocks.NODE);
         } else {
             return doLinkFunction(ctx);
         }
@@ -61,6 +68,12 @@ public class ConductorBatonItem extends Item implements DirectClickItem {
     }
 
 
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context){
+        if (stack.hasNbt() && stack.getOrCreateNbt().contains("storedpos")){
+            tooltip.add(Text.translatable("welkin.scry.linkable.linked").append(Text.of(BlockPos.fromLong(stack.getNbt().getLong("storedpos")).toString())));
+        }
+    }
 
 
     private static ActionResult doLinkFunction(ItemUsageContext ctx) {
@@ -100,15 +113,14 @@ public class ConductorBatonItem extends Item implements DirectClickItem {
     private static ActionResult doGrabFunction(ItemUsageContext ctx) {
         BlockState state = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (state.isIn(WelkinTags.YOINKABLE) || state.getBlock() instanceof Yoinkable) {
-            if (!ctx.getWorld().isClient) {
-                if (!ctx.getPlayer().isCreative()) {
+            if (!ctx.getWorld().isClient && ctx.getPlayer() != null) {
                     Block.getDroppedStacks(state, (ServerWorld) ctx.getWorld(), ctx.getBlockPos(), ctx.getWorld().getBlockEntity(ctx.getBlockPos()),
                             ctx.getPlayer(), ctx.getStack()).forEach(itemStack -> {
                         if (!ctx.getPlayer().getInventory().insertStack(itemStack)) {
                             ctx.getPlayer().dropStack(itemStack);
                         }
                     });
-                }
+
                 ctx.getWorld().breakBlock(ctx.getBlockPos(), false);
             }
             return ActionResult.SUCCESS;
@@ -116,23 +128,7 @@ public class ConductorBatonItem extends Item implements DirectClickItem {
         return ActionResult.PASS;
     }
 
-    private static ActionResult doNodeFunction(ItemUsageContext ctx) {
-        World world = ctx.getWorld();
-        PlayerEntity player = ctx.getPlayer();
-        BlockPos pos = ctx.getBlockPos();
-        Direction side = ctx.getSide();
 
-        BlockPos placePos = pos.offset(side);
-        BlockState placeState = world.getBlockState(placePos);
-
-        if (player != null && player.isSneaking() && placeState.isAir() && world.getBlockState(pos).isSolidBlock(world, pos)) {
-            if (!world.isClient) {
-                world.setBlockState(placePos, WelkinBlocks.NODE.getDefaultState());
-            }
-            return ActionResult.SUCCESS;
-        }
-        return ActionResult.PASS;
-    }
 
     private static ActionResult doWrenchFunction(ItemUsageContext context) {
         World world = context.getWorld();
@@ -174,5 +170,16 @@ public class ConductorBatonItem extends Item implements DirectClickItem {
         return ActionResult.SUCCESS;
     }
 
+
+    @Override
+    public boolean hasRecipeRemainder(){
+        return true;
+    }
+
+    @Override
+    public ItemStack getRecipeRemainder(ItemStack stack){
+        if (stack.isOf(WelkinItems.CONDUCTOR_BATON)) return stack;
+        else return null;
+    }
 
 }

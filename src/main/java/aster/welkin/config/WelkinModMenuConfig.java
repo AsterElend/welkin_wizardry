@@ -11,7 +11,7 @@ public class WelkinModMenuConfig implements ModMenuApi {
 
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> AutoConfig.getConfigScreen(WelkinConfigData.class, parent).get();
+        return parent -> AutoConfig.getConfigScreen(WelkinConfig.class, parent).get();
     }
 
 }

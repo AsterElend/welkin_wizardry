@@ -1,0 +1,9 @@
+{
+  "mainTag": "minecraft:saplings",
+  "removeTags": [
+    "spectrum:colored_saplings"
+  ],
+  "removeItems": [],
+  "loopLength": 3,
+  "catalyst": "minecraft:hay_block"
+}

@@ -32,7 +32,7 @@ public class WardedBlockRenderer {
         VertexConsumerProvider consumers = context.consumers();
         if (consumers == null) return;
 
-        VertexConsumer buffer = consumers.getBuffer(SongweaverRenderLayers.WARD_LAYER);
+        VertexConsumer buffer = consumers.getBuffer(WelkinRenderLayers.WARD_LAYER);
 
         Set<Long> warded = ClientWardedState.get();
 
@@ -51,7 +51,8 @@ public class WardedBlockRenderer {
             float offset = (l % 1000) / 1000f;
             float hue = ((time % 200) / 200f + offset) % 1.0f;
 
-            int rgb = Color.HSBtoRGB(hue, 0.8f, 1f);
+            Color rainbow = Color.getHSBColor(((float)pos.getX() + (float)pos.getY() + (float)pos.getZ()) / 35.0F, 1.0F, 1.0F);
+            int rgb = rainbow.getRGB();
 
             float r = ((rgb >> 16) & 255) / 255f;
             float g = ((rgb >> 8) & 255) / 255f;

@@ -29,7 +29,7 @@ public class FractalTreeTrunkPlacer extends TrunkPlacer {
 
     @Override
     protected TrunkPlacerType<?> getType() {
-        return LoomTrunkPlacers.FRACTAL_TRUNK;
+        return WelkinTrunkPlacers.FRACTAL_TRUNK;
     }
 
     @Override

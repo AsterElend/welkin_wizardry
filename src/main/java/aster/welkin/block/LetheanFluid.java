@@ -1,8 +1,8 @@
 package aster.welkin.block;
 
 import aster.welkin.Welkin;
-import aster.welkin.registry.LoomFluids;
 import aster.welkin.registry.WelkinBlocks;
+import aster.welkin.registry.WelkinFluids;
 import aster.welkin.registry.WelkinItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -38,11 +38,11 @@ public abstract class LetheanFluid extends FlowableFluid {
 
 
     public Fluid getFlowing() {
-        return LoomFluids.LETHEAN_WATER_FLOWING;
+        return WelkinFluids.LETHEAN_WATER_FLOWING;
     }
 
     public Fluid getStill() {
-        return LoomFluids.LETHEAN_WATER_STATIC;
+        return WelkinFluids.LETHEAN_WATER_STATIC;
     }
 
     public Item getBucketItem() {
@@ -83,7 +83,7 @@ public abstract class LetheanFluid extends FlowableFluid {
     }
     @Override
     public boolean matchesType(Fluid fluid) {
-        return fluid == LoomFluids.LETHEAN_WATER_STATIC || fluid == LoomFluids.LETHEAN_WATER_FLOWING;
+        return fluid == WelkinFluids.LETHEAN_WATER_STATIC || fluid == WelkinFluids.LETHEAN_WATER_FLOWING;
     }
     @Override
     public int getLevelDecreasePerBlock(WorldView world) {

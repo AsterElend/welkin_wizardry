@@ -1,8 +1,8 @@
 package aster.welkin.block.entity;
 
+import aster.welkin.api.IHasLensInfo;
 import aster.welkin.api.chat.ChatReceiver;
 import aster.welkin.api.chat.GlobalChatReceiver;
-import aster.welkin.api.IHasLensInfo;
 import aster.welkin.block.EchoingReceiverBlock;
 import aster.welkin.registry.WelkinBlockEntities;
 import net.minecraft.block.Block;
@@ -125,13 +125,13 @@ public class EchoingRecieverBlockEntity extends BlockEntity implements GlobalCha
     public void applyLensOverlay(List<Pair<ItemStack, StringVisitable>> lines,
                                  BlockState state, BlockPos pos,
                                  PlayerEntity observer, World world, Direction hitFace){
-        if (world.getBlockEntity(pos) instanceof EchoingRecieverBlockEntity beai) {
-            if (beai.storedMessage == null) {
+        if (world.getBlockEntity(pos) instanceof EchoingRecieverBlockEntity reciever) {
+            if (reciever.storedMessage == null) {
                 lines.add(new Pair<>(new ItemStack(Blocks.SCULK_SENSOR),
                         Text.translatable("welkin.scry.echo.idle").setStyle(Style.EMPTY.withColor(Formatting.BLUE))));
             } else {
                 lines.add(new Pair<>(new ItemStack(Blocks.CALIBRATED_SCULK_SENSOR),
-                        Text.translatable("welkin.scry.echo.listen").append(" ").append(storedMessage)
+                        Text.translatable("welkin.scry.echo.listen").append(" ").append(reciever.storedMessage)
                                 .setStyle(Style.EMPTY.withColor(Formatting.BLUE))));
             }
         }

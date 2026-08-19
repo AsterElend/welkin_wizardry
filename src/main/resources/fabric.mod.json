@@ -56,9 +56,10 @@
 	"custom": {
 		"cardinal-components": [
 			"welkin:force",
-			"welkin:discoveries",
 			"welkin:forgotten"
 		]
-	}
+	},
+
+	"accessWidener": "welkin.accesswidener"
 
 }

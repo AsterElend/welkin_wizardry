@@ -1,6 +1,6 @@
 package aster.welkin.block;
 
-import aster.welkin.block.entity.CondenserBE;
+import aster.welkin.block.entity.CondenserBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -37,7 +37,7 @@ public class CondenserBlock extends BlockWithEntity {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new CondenserBE(pos, state);
+        return new CondenserBlockEntity(pos, state);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class CondenserBlock extends BlockWithEntity {
         if (world.isClient) return null;
 
         return (w, pos, s, be) -> {
-            if (be instanceof CondenserBE injector) {
+            if (be instanceof CondenserBlockEntity injector) {
                 injector.tick(pos, s);
             }
         };

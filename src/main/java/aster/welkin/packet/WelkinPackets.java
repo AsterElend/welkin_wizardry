@@ -2,17 +2,10 @@ package aster.welkin.packet;
 
 import aster.welkin.Welkin;
 import aster.welkin.api.WardedBlocksState;
-import aster.welkin.client.ClientWardedState;
-import aster.welkin.client.NadirToast;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static aster.welkin.item.WardingPrismItem.syncBatch;
 

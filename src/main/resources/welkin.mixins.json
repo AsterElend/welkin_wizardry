@@ -8,10 +8,10 @@
     "BoatItemMixin",
     "EnchantmentMixin",
     "EntityApplyFluidsMixin",
+    "EntityMixin",
     "ExplosionWard",
-    "ItemLightningMixin",
+    "ItemEntityMixin",
     "LightningHandler",
-    "PlayerInventoryMixin",
     "PlayerLetheanCheck"
   ],
   "injectors": {

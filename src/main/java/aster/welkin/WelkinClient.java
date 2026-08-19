@@ -1,27 +1,23 @@
 package aster.welkin;
 
 import aster.welkin.client.*;
-import aster.welkin.item.GenericScreenInvocationItem;
-import aster.welkin.registry.LoomFluids;
+import aster.welkin.client.beRenderers.FalseStarBlockEntityRenderer;
+import aster.welkin.client.beRenderers.LinkableLineRenderer;
+import aster.welkin.client.beRenderers.PedestalRenderableRenderer;
+import aster.welkin.client.beRenderers.SigilBlockEntityRenderer;
 import aster.welkin.registry.WelkinBlockEntities;
 import aster.welkin.registry.WelkinBlocks;
-import aster.welkin.registry.screen.AlchemySlateScreen;
+import aster.welkin.registry.WelkinFluids;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRenderEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.text.Text;
-import net.minecraft.util.TypedActionResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +28,8 @@ import static aster.welkin.packet.WelkinPackets.SYNC_WARDS;
 public class WelkinClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-
+        BlockEntityRendererFactories.register(WelkinBlockEntities.TENPO_SIGIL, SigilBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(WelkinBlockEntities.SULI_SIGIL, SigilBlockEntityRenderer::new);
         OculatorLensOverlays.addOculatorLensStuff();
         HudRenderCallback.EVENT.register(OculatorRendererHandler::overlayGui);
         ClientPlayNetworking.registerGlobalReceiver(SYNC_WARDS, (client, handler, buf, responseSender) ->{
@@ -80,33 +77,52 @@ public class WelkinClient implements ClientModInitializer {
     HaloBatonRenderer.register();
 
         WorldRenderEvents.AFTER_TRANSLUCENT.register(WardedBlockRenderer::render);
-        FluidRenderHandlerRegistry.INSTANCE.register(LoomFluids.LETHEAN_WATER_STATIC, LoomFluids.LETHEAN_WATER_FLOWING, SimpleFluidRenderHandler.coloredWater(0xff209f));
-        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), LoomFluids.LETHEAN_WATER_STATIC, LoomFluids.LETHEAN_WATER_FLOWING);
-        BlockEntityRendererRegistry.register(
+        FluidRenderHandlerRegistry.INSTANCE.register(WelkinFluids.LETHEAN_WATER_STATIC, WelkinFluids.LETHEAN_WATER_FLOWING, SimpleFluidRenderHandler.coloredWater(0xff209f));
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), WelkinFluids.LETHEAN_WATER_STATIC, WelkinFluids.LETHEAN_WATER_FLOWING);
+        BlockEntityRendererFactories.register(
                 WelkinBlockEntities.NODE,
-                NodeBlockEntityRenderer::new
+                ctx -> new PedestalRenderableRenderer<>(ctx, 0.5f)
         );
 
-        BlockEntityRendererRegistry.register(
+        BlockEntityRendererFactories.register(
+                WelkinBlockEntities.FALSE_STAR,
+                FalseStarBlockEntityRenderer::new
+        );
+
+        BlockEntityRendererFactories.register(
                 WelkinBlockEntities.PYLON,
-                PedestalRenderableRenderer::new);
-
-        BlockEntityRendererRegistry.register(
-                WelkinBlockEntities.AGONITE_TRANSMUTER,
-                PedestalRenderableRenderer::new
+                ctx -> new PedestalRenderableRenderer<>(ctx, 1f)
         );
 
 
+        BlockEntityRendererFactories.register(
+                WelkinBlockEntities.AGONITE_TRANSMUTER,
+                ctx -> new PedestalRenderableRenderer<>(ctx, 1f)
+        );
 
-         BlockEntityRendererRegistry.register(
+
+        BlockEntityRendererFactories.register(
                  WelkinBlockEntities.ITEM_TRANSDUCER,
-                 TransducerRenderer::new
+                 LinkableLineRenderer::new
          );
 
-   BlockEntityRendererRegistry.register(
+        BlockEntityRendererFactories.register(
                  WelkinBlockEntities.FLUID_TRANSDUCER,
-                 TransducerRenderer::new
+                 LinkableLineRenderer::new
          );
+
+        BlockEntityRendererFactories.register(
+                 WelkinBlockEntities.AETHER_TRANSDUCER,
+                 LinkableLineRenderer::new
+         );
+
+
+    BlockEntityRendererFactories.register(
+                 WelkinBlockEntities.ALCHEMY_ENTITY,
+                 LinkableLineRenderer::new
+         );
+
+
 
 
 

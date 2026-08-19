@@ -2,11 +2,10 @@ package aster.welkin.registry;
 
 import aster.welkin.Welkin;
 import aster.welkin.block.entity.*;
-import aster.welkin.block.sigil.SigilBlock;
+import aster.welkin.block.sigil.SuliSigil;
 import aster.welkin.block.sigil.TenpoSigil;
 import aster.welkin.block.transducer.FluidTransducerEntity;
 import aster.welkin.block.transducer.ItemTransducerEntity;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -29,9 +28,9 @@ public class WelkinBlockEntities {
                             WelkinBlocks.PYLON).build(null));
 
 
-    public static final BlockEntityType<CondenserBE> CONDENSER =
+    public static final BlockEntityType<CondenserBlockEntity> CONDENSER =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, id("condenser"),
-                    FabricBlockEntityTypeBuilder.create(CondenserBE::new,
+                    FabricBlockEntityTypeBuilder.create(CondenserBlockEntity::new,
                             WelkinBlocks.CONDENSER).build(null));
 
 
@@ -56,9 +55,26 @@ public class WelkinBlockEntities {
             ChristeningAltarBlockEntity::new, WelkinBlocks.CHRISTENING_ALTAR);
     public static final BlockEntityType<ThunderheadBlockEntity> THUNDERHEAD = register("thunderhead",
             ThunderheadBlockEntity::new, WelkinBlocks.THUNDERHEAD);
+    public static final BlockEntityType<MaelstromGeneratorBlockEntity> MAELSTROM_GENERATOR = register("maelstrom_generator",
+            MaelstromGeneratorBlockEntity::new, WelkinBlocks.MAELSTROM_GENERATOR);
+   public static final BlockEntityType<DebugThunderhead> CREATIVE_THUNDERHEAD = register("creative_thunderhead",
+           DebugThunderhead::new, WelkinBlocks.CREATIVE_THUNDERHEAD);
     public static final BlockEntityType<EchoingRecieverBlockEntity> ECHOING_RECEIVER = register("echoing_receiver",
             EchoingRecieverBlockEntity::new, WelkinBlocks.ECHOING_RECEIVER);
+    public static final BlockEntityType<WarpArrayBlockEntity> WARP_CONTROLLER = register("warp_controller",
+            WarpArrayBlockEntity::new, WelkinBlocks.WARP_CONTROLLER);
     public static final BlockEntityType<TenpoSigil> TENPO_SIGIL = register("tenpo_sigil", TenpoSigil::new, WelkinBlocks.TENPO_SIGIL);
+    public static final BlockEntityType<SuliSigil> SULI_SIGIL = register("suli_sigil", SuliSigil::new, WelkinBlocks.SULI_SIGIL);
+    public static final BlockEntityType<EnchantmentDisintegratorBlockEntity> ENCHANTMENT_DISINTEGRATOR =
+            register("enchantment_disintegrator", EnchantmentDisintegratorBlockEntity::new, WelkinBlocks.ENCHANTMENT_DISINTEGRATOR);
+    public static final BlockEntityType<AetherTransducerBlockEntity> AETHER_TRANSDUCER = register(
+            "aether_transducer", AetherTransducerBlockEntity::new, WelkinBlocks.AETHER_TRANSDUCER
+    );
+
+    public static final BlockEntityType<FalseStarBlockEntity> FALSE_STAR =
+            register("false_star", FalseStarBlockEntity::new, WelkinBlocks.FALSE_STAR);
+    public static final BlockEntityType<AlchemyBlockEntity> ALCHEMY_ENTITY = register("alchemy", AlchemyBlockEntity::new, WelkinBlocks.ALCHEMICAL_ENGINE);
+
 
 //  public static final BlockEntityType<TankFrameEntity> TANK_FRAME =
  //           Registry.register(Registries.BLOCK_ENTITY_TYPE, id("tankframe"),

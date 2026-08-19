@@ -9,11 +9,12 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public class WelkinTags {
-
+    public static void register(){};
     public static final TagKey<Item> SHOW_FORCE = TagKey.of(RegistryKeys.ITEM, Identifier.of("welkin", "show_force"));
     public static final TagKey<Block> ABSCONDABLE = TagKey.of(RegistryKeys.BLOCK, Identifier.of("welkin", "abscondable"));
     public static final TagKey<Item> TAKE_HEART = TagKey.of(RegistryKeys.ITEM, Welkin.id("take_heart"));
     public static final TagKey<Fluid> LETHE = TagKey.of(RegistryKeys.FLUID, Welkin.id("lethe"));
     public static final TagKey<Block> YOINKABLE = TagKey.of(RegistryKeys.BLOCK, Welkin.id("yoinkable"));
     public static final TagKey<Block> UNACCELERATEABLE = TagKey.of(RegistryKeys.BLOCK, Welkin.id("unaccelerateable"));
+    public static final TagKey<Block> CUT_COPPER = TagKey.of(RegistryKeys.BLOCK, Welkin.id("cut_copper"));
 }

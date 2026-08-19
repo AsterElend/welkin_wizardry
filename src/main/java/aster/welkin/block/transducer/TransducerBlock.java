@@ -1,31 +1,22 @@
 package aster.welkin.block.transducer;
 
-import aster.welkin.api.IHasLensInfo;
 import aster.welkin.api.Yoinkable;
-import aster.welkin.registry.WelkinItems;
 import net.minecraft.block.*;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class TransducerBlock extends BlockWithEntity implements IHasLensInfo, Yoinkable {
+public abstract class TransducerBlock extends BlockWithEntity implements Yoinkable {
 
 
     public static final DirectionProperty FACING = Properties.FACING;
@@ -57,8 +48,7 @@ public abstract class TransducerBlock extends BlockWithEntity implements IHasLen
     public BlockState getPlacementState(ItemPlacementContext ctx){
         Direction direction = ctx.getSide();
         BlockState state = ctx.getWorld().getBlockState(ctx.getBlockPos().offset(direction.getOpposite()));
-        return state.isOf(this) && state.get(FACING) == direction ? this.getDefaultState().with(FACING, direction.getOpposite())
-                : this.getDefaultState().with(FACING, direction);
+        return this.getDefaultState().with(FACING, direction);
     }
 
     @Override

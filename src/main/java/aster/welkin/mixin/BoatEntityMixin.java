@@ -124,18 +124,23 @@ public abstract class BoatEntityMixin extends Entity implements EnchantableBoatE
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void welkin$applyFrostWalker(CallbackInfo ci) {
-        if (this.getWorld().isClient) return; // block edits are server-authoritative
-
+        if (this.getWorld().isClient) return;
         int level = welkin$getLevelOfBoatEnchant(Enchantments.FROST_WALKER);
         if (level <= 0) return;
 
+        // require a driver
+        if (this.getControllingPassenger() == null) return;
+
+        // require actual horizontal movement
+        Vec3d vel = this.getVelocity();
+        double horizontalSpeedSq = vel.x * vel.x + vel.z * vel.z;
+        if (horizontalSpeedSq < 1.0E-4) return; // ~0.01 blocks/tick threshold, tune to taste
 
         // throttle — freezing a big area every single tick is wasteful
         if (this.age % 3 != 0) return;
 
         welkin$freezeWater((Entity) (Object) this, this.getWorld(), this.getBlockPos(), level);
     }
-
 
     @Unique
       void welkin$freezeWater(Entity entity, World world, BlockPos blockPos, int level) {

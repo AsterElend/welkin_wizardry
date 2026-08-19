@@ -1,7 +1,16 @@
 {
   "variants": {
-    "": {
-      "model": "welkin:block/node"
-    }
+    "facing=up":    { "model": "welkin:block/node",    "x": 180,   "y": 0   },
+
+    "facing=down":  { "model": "welkin:block/node",    "x": 0, "y": 0   },
+
+    "facing=north": { "model": "welkin:block/node",    "x": 90,  "y": 180   },
+
+    "facing=south": { "model": "welkin:block/node",    "x": 90,  "y": 0 },
+
+    "facing=east":  { "model": "welkin:block/node",    "x": 90,  "y": 270  },
+
+    "facing=west":  { "model": "welkin:block/node",    "x": 90,  "y": 90 }
+
   }
 }

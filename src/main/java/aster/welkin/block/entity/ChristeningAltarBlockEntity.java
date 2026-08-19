@@ -1,7 +1,7 @@
 package aster.welkin.block.entity;
 
-import aster.welkin.api.chat.ChatReceiver;
 import aster.welkin.api.PedestalLikeBlockEntity;
+import aster.welkin.api.chat.ChatReceiver;
 import aster.welkin.registry.WelkinBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -32,7 +32,7 @@ public class ChristeningAltarBlockEntity extends PedestalLikeBlockEntity impleme
 
     @Override
     public boolean onChatReceived(String message, ServerPlayerEntity sender) {
-        ItemStack stack = getStack();
+        ItemStack stack = logic.getStack();
         if (stack.isEmpty()) {
             return false;
         }

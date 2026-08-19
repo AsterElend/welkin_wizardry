@@ -25,7 +25,7 @@ public class FractalFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected FoliagePlacerType<?> getType() {
-        return LoomFoliagePlacers.FRACTAL_LEAF_PLACER;
+        return WelkinFoliagePlacers.FRACTAL_LEAF_PLACER;
     }
 
 

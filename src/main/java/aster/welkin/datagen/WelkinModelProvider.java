@@ -19,7 +19,7 @@ public class WelkinModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator Bgenerator){
 
 
-
+        Bgenerator.registerSimpleCubeAll(WelkinBlocks.SUNSTONE);
         Bgenerator.registerSimpleCubeAll(WelkinBlocks.CHARGEPLANKS);
         Bgenerator.registerRotatable(WelkinBlocks.MOTHTILE);
         Bgenerator.registerLog(WelkinBlocks.CHARGELOG).log(WelkinBlocks.CHARGELOG).wood(WelkinBlocks.CHARGEWOOD);
@@ -39,7 +39,7 @@ public class WelkinModelProvider extends FabricModelProvider {
         Bgenerator.registerLog(WelkinBlocks.WATCHER_LOG).log(WelkinBlocks.WATCHER_LOG).wood(WelkinBlocks.WATCHER_WOOD);
         Bgenerator.registerLog(WelkinBlocks.STRIPPED_WATCHER_LOG).log(WelkinBlocks.STRIPPED_WATCHER_LOG).wood(WelkinBlocks.STRIPPED_WATCHER_WOOD);
         Bgenerator.registerTintableCross(WelkinBlocks.WATCHER_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-
+        Bgenerator.registerSimpleCubeAll(WelkinBlocks.PUMICE);
 
 
 
@@ -48,6 +48,7 @@ public class WelkinModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator){
         itemModelGenerator.register(WelkinItems.GRIMORE, Models.GENERATED);
+        itemModelGenerator.register(WelkinItems.WISHFUL_BATON, Models.HANDHELD_ROD);
         itemModelGenerator.register(WelkinItems.STORMPHRAX, Models.GENERATED);
         itemModelGenerator.register(WelkinItems.STELLARIUM, Models.GENERATED);
         itemModelGenerator.register(WelkinItems.ZEPHYRITE, Models.GENERATED);
@@ -57,6 +58,11 @@ public class WelkinModelProvider extends FabricModelProvider {
         itemModelGenerator.register(WelkinItems.WINDTUNNEL_DISC, Models.GENERATED);
         itemModelGenerator.register(WelkinItems.WINDSTORMER_BATON, Models.HANDHELD_ROD);
         itemModelGenerator.register(WelkinItems.BRICKLAYER_BATON, Models.HANDHELD_ROD);
+        itemModelGenerator.register(WelkinItems.TUNNELER_BATON, Models.HANDHELD_ROD);
+        itemModelGenerator.register(WelkinItems.GRAVITOR_BATON, Models.HANDHELD_ROD);
+        itemModelGenerator.register(WelkinItems.INSCRIBER_BATON, Models.HANDHELD_ROD);
+
+
         itemModelGenerator.register(WelkinItems.WARDING_PRISM, Models.GENERATED);
         itemModelGenerator.register(WelkinItems.LETHEAN_WATER_BUCKET, Models.GENERATED);
         itemModelGenerator.register(WelkinItems.LETHEAN_WATER_BOTTLE, Models.GENERATED);
@@ -64,6 +70,9 @@ public class WelkinModelProvider extends FabricModelProvider {
         itemModelGenerator.register(WelkinItems.CRYSTAL_HEART, Models.GENERATED);
         itemModelGenerator.register(WelkinItems.EXTRACTED_HEART, Models.GENERATED);
         itemModelGenerator.register(WelkinItems.OCULATOR_LENS, Models.GENERATED);
+        itemModelGenerator.register(WelkinItems.BLACK_HOLE_CORE, Models.GENERATED);
+        itemModelGenerator.register(WelkinItems.WHITE_HOLE_CORE, Models.GENERATED);
+        itemModelGenerator.register(WelkinItems.CLOUD_BOTTLE, Models.GENERATED);
 
 
 

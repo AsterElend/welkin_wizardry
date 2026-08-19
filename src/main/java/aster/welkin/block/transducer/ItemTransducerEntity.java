@@ -9,26 +9,11 @@ import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.fabricmc.fabric.api.transfer.v1.storage.StorageView;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.StringVisitable;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class ItemTransducerEntity extends Linkable implements IHasLensInfo {
    private int cooldown;
@@ -96,38 +81,6 @@ public class ItemTransducerEntity extends Linkable implements IHasLensInfo {
     }
 
 
-    @Override
-    public void applyLensOverlay(List<Pair<ItemStack, StringVisitable>> lines,
-                                 BlockState state, BlockPos pos,
-                                 PlayerEntity observer, World world, Direction hitFace){
-        if (world.getBlockEntity(pos) instanceof ItemTransducerEntity entity) {
-            if (entity.getLinkPos() == null) {
-                lines.add(new Pair<>(new ItemStack(Items.SLIME_BALL),
-                        Text.translatable("welkin.scry.trans.idle").setStyle(Style.EMPTY.withColor(Formatting.BLUE))));
-            } else {
-                lines.add(new Pair<>(new ItemStack(Blocks.CALIBRATED_SCULK_SENSOR),
-                        Text.translatable("welkin.scry.trans.linked").append(" ").append(linkPos.toShortString())
-                ));
-                lines.add(new Pair<>(new ItemStack(Items.SPECTRAL_ARROW),
-                        Text.translatable("welkin.scry.trans.side1").append(linkSide.getName())
-                                .append(Text.translatable("welkin.scry.trans.side2"))));
-            }
 
-
-        }
-
-
-
-    };
-    @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return createNbt(); // or however you're building save NBT — reuse your writeNbt logic
-    }
-
-    @Nullable
-    @Override
-    public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
-    }
 
 }
