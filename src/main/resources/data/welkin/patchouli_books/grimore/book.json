@@ -8,5 +8,7 @@
   "dont_generate_book": true,
   "custom_book_item": "welkin:grimore",
   "use_resource_pack": true,
-  "il8n": true
+  "il8n": true,
+  "text_color": "8AE1DA",
+  "link_color": "A7DDF4"
 }

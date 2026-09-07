@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "welkin:chargelog",
+    "welkin:chargewood",
+    "welkin:strippedchargelog",
+    "welkin:strippedchargewood"
+  ]
+}

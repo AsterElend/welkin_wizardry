@@ -57,6 +57,12 @@
   "emi.category.welkin.lightning_transmutation": "Lightning Transmutation",
   "emi.category.welkin.alchemy": "Alchemization",
   "tag.block.welkin.cut_copper": "Cut Copper",
-  "emi.category.welkin.storm_eye": "Storm Eye Multiblocks"
-
+  "tag.item.welkin.cut_copper": "Cut Copper",
+  "tag.item.welkin.fractal_logs": "Fractal Logs",
+  "tag.item.welkin.watcher_logs": "Watcher Logs",
+  "tag.item.welkin.charged_logs": "Charged Logs",
+  "emi.category.welkin.storm_eye": "Storm Eye Multiblocks",
+  "effect.welkin.peckishness": "Peckishness",
+  "effect.welkin.warp_fatigue": "Warp Fatigue",
+  "welkin.sigil.error.how?": "This sigil doesn't exist"
 }

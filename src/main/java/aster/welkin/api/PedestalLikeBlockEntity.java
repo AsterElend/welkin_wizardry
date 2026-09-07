@@ -16,27 +16,89 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class PedestalLikeBlockEntity extends BlockEntity implements ImplementedInventory, PedestalInteractable {
-    protected final PedestalLogic logic = new PedestalLogic(this);
-
-    @Override
-    public ItemStack stackInteractionAttempt(ItemStack incoming) {
-        ItemStack stack =  logic.stackInteractionAttempt(incoming);
+public abstract class PedestalLikeBlockEntity extends BlockEntity implements ImplementedInventory {
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
+    public void clearStack(){
+        items.set(0, ItemStack.EMPTY);
         WelkinUtil.yellAtEverything(this);
+    }
+
+    public boolean isEmpty(){
+       return getStack().isEmpty();
+    }
+
+    public ItemStack getStack(){
+        return items.get(0);
+    }
+
+    public void setStack(ItemStack stack){
+        items.set(0, stack);
+        WelkinUtil.yellAtEverything(this);
+    }
+    public void setCount(int count){
+        items.get(0).setCount(count);
+        WelkinUtil.yellAtEverything(this);
+    }
+    public int getCount(){
+        return items.get(0).getCount();
+    }
+    @Override
+    public DefaultedList<ItemStack> getItems(){
+        return items;
+    }
+
+
+    public ItemStack stackInteractionAttempt(ItemStack inputStack){
+        ItemStack stack = inputStack;
+
+        if (getStack().isEmpty() && stack.isEmpty()){
+            return stack;
+        }
+
+        if (stack.isEmpty()){
+            stack = getStack();
+
+            clearStack();
+            WelkinUtil.yellAtEverything(this);
+
+            return stack;
+        }
+
+        if (getStack().isEmpty()){
+            setStack(stack);
+            stack = ItemStack.EMPTY;
+            WelkinUtil.yellAtEverything(this);
+            return stack;
+        }
+
+        if (getStack().getItem() == stack.getItem()){
+            if (getStack().getCount() + stack.getCount() < getStack().getMaxCount()) {
+                int newCount = getStack().getCount() + stack.getCount();
+                setCount(newCount);
+                stack = ItemStack.EMPTY;
+                WelkinUtil.yellAtEverything(this);
+                return stack;
+            } else {
+                int movingCount = getStack().getMaxCount() - getStack().getCount();
+                stack.setCount(stack.getCount() - movingCount);
+                setCount(getStack().getMaxCount());
+                WelkinUtil.yellAtEverything(this);
+                return stack;
+            }
+        }
+
+        stack = swapStacks(stack);
+
         return stack;
     }
 
-    @Override
-    public void doSneakInteraction(PlayerEntity player, Hand hand) {
-
-        logic.doSneakInteraction(player, hand);
+    public ItemStack swapStacks(ItemStack stack){
+        ItemStack cachedStack = getStack();
+        setStack(stack);
         WelkinUtil.yellAtEverything(this);
+        return cachedStack;
     }
-
-    public PedestalLogic getLogic(){
-        return logic;
-    }
-
+    
     public PedestalLikeBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state){
         super(type, pos, state);
 
@@ -44,21 +106,10 @@ public abstract class PedestalLikeBlockEntity extends BlockEntity implements Imp
     }
 
     public void transmuteTo(Item item){
-        int count = logic.getCount();
-        logic.setStack(new ItemStack(item, count));
+        int count = getCount();
+        setStack(new ItemStack(item, count));
         WelkinUtil.yellAtEverything(this);
     }
-
-    public ItemStack getStack(){
-        return logic.getStack();
-    }
-
-
-    @Override
-    public DefaultedList<ItemStack> getItems(){
-        return logic.getItems();
-    }
-
 
 
 
@@ -77,16 +128,19 @@ public abstract class PedestalLikeBlockEntity extends BlockEntity implements Imp
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
 
-        Inventories.readNbt(nbt, this.logic.getItems());
+        Inventories.readNbt(nbt, items);
         readAdditionalData(nbt);
     }
 
     @Override
     public void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, this.logic.getItems());
+        Inventories.writeNbt(nbt, items);
         storeAdditionalData(nbt);
     }
+
+
+    void doSneakInteraction(PlayerEntity player, Hand hand) {};
 
     public void storeAdditionalData(NbtCompound nbt){
 

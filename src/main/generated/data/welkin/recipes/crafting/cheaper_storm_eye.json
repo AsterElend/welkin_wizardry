@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "b": {
+      "item": "welkin:conductor_baton"
+    },
+    "g": {
+      "tag": "c:glass_blocks"
+    },
+    "s": {
+      "item": "welkin:stormphrax"
+    }
+  },
+  "pattern": [
+    "gsg",
+    "sbs",
+    "gsg"
+  ],
+  "result": {
+    "item": "welkin:storm_eye"
+  },
+  "show_notification": true
+}

@@ -3,13 +3,18 @@ package aster.welkin.registry;
 import aster.welkin.Welkin;
 import aster.welkin.api.WardedBlocksState;
 import aster.welkin.api.WelkinUtil;
+import aster.welkin.api.XpUtils;
+import aster.welkin.api.state.WeatherManager;
 import aster.welkin.block.entity.AgoniteTransmuterEntity;
+import aster.welkin.cc.LastDeathSourceComponent;
+import aster.welkin.cc.WelkinEntityCC;
 import aster.welkin.item.WardstoneItem;
 import aster.welkin.item.baton.ConductorBatonItem;
 import aster.welkin.packet.WelkinPackets;
 import aster.welkin.recipes.AlchemyRecipeManager;
 import aster.welkin.recipes.AlchemyReloadListener;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -21,10 +26,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
@@ -35,6 +43,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public class WelkinEvents {
     public static void register(){
@@ -63,6 +72,28 @@ public class WelkinEvents {
 
         });
 
+        ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
+
+            if (!(entity instanceof ServerPlayerEntity player)) return true;
+            if (!WardstoneItem.hasParticularWardstoneActive(player, (WardstoneItem) WelkinItems.DREAMSHIELD_WARDSTONE)) return true;
+            if (player.hurtTime > 0) return false;
+
+            if (player.getHealth() - amount <= 0){
+                int shield = XpUtils.getPlayerXP(player);
+                int toBlock = Math.round(amount * 10);
+                if (shield > toBlock) {
+                    XpUtils.subtractPlayerXP(player, toBlock);
+                    player.setHealth(1F);
+                    player.hurtTime = player.maxHurtTime;
+                    return false; // cancel the damage entirely
+                }
+                return true;
+            }
+
+
+
+            return true; // not enough XP, take the hit
+        });
 
         //don't open guis with the baton please
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
@@ -96,6 +127,23 @@ public class WelkinEvents {
             return true;
         }));
 
+       ServerLivingEntityEvents.AFTER_DEATH.register((entity, damageSource) -> {
+           RegistryEntry<DamageType> entry = damageSource.getTypeRegistryEntry();
+           Optional<RegistryKey<DamageType>> key = entry.getKey();
+           key.ifPresent(damageTypeRegistryKey -> WelkinEntityCC.LAST_DEATH_SOURCE.get(entity).setType(damageTypeRegistryKey));
+       });
+
+       ServerLivingEntityEvents.ALLOW_DEATH.register((entity, source, amount) ->{
+           RegistryEntry<DamageType> entry = source.getTypeRegistryEntry();
+           Optional<RegistryKey<DamageType>> key = entry.getKey();
+
+           if (key.isPresent()){
+               boolean isSame = WelkinEntityCC.LAST_DEATH_SOURCE.get(entity).isThisTheStoredDamageType(key.get());
+               return !isSame;
+           }
+
+           return true;
+       });
 
 
         PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) ->{
@@ -104,7 +152,7 @@ public class WelkinEvents {
         });
 
         ServerTickEvents.END_WORLD_TICK.register(world -> WardedBlocksState.get(world).validate(world));
-
+        ServerTickEvents.END_WORLD_TICK.register(world -> WeatherManager.getServerState(world).tick(world));
         ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
             Welkin.LOGGER.info("Starting the Great Work...");
             long seed = server.getOverworld().getSeed();

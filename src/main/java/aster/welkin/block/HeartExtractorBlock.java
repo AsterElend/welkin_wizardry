@@ -25,7 +25,7 @@ public class HeartExtractorBlock extends Block {
     public HeartExtractorBlock(Settings settings) {
         super(settings);
     }
-    private UUID MODIFIED_HEARTS = UUID.fromString("db5d53dd-2eb6-4df2-88f1-f9e875154509");
+    private static final UUID MODIFIED_HEARTS = UUID.fromString("db5d53dd-2eb6-4df2-88f1-f9e875154509");
 
 
     @Override
@@ -44,10 +44,6 @@ public class HeartExtractorBlock extends Block {
 
            instance.addPersistentModifier(new EntityAttributeModifier(MODIFIED_HEARTS, "modified_hearts", 2+value, EntityAttributeModifier.Operation.ADDITION));
            stack.decrement(1);
-
-            if (player instanceof ServerPlayerEntity servPlay){
-              //todo astral sorcery attunement style animation
-            }
 
            return ActionResult.SUCCESS;
         } else if (stack.isEmpty()){

@@ -22,7 +22,5 @@
       }
     }
   },
-  "requirements": [
-    ["lightning_strike"]
-  ]
+  "parent": "welkin:root"
 }

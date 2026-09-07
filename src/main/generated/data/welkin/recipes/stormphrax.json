@@ -1,0 +1,9 @@
+{
+  "type": "welkin:lightning_transmutation",
+  "ingredient": {
+    "tag": "c:copper_ingots"
+  },
+  "result": {
+    "item": "welkin:stormphrax"
+  }
+}

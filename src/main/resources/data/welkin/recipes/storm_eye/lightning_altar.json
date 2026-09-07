@@ -4,7 +4,7 @@
     "mapping": {
       "L": "minecraft:lightning_rod",
       "0": "welkin:storm_eye",
-      "C": "minecraft:cut_copper",
+      "C": "#welkin:cut_copper",
       "R": "minecraft:redstone_block",
       "P": "welkin:chargeplanks"
     },

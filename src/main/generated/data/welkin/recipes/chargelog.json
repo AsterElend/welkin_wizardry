@@ -1,0 +1,9 @@
+{
+  "type": "welkin:lightning_transmutation",
+  "ingredient": {
+    "tag": "minecraft:logs"
+  },
+  "result": {
+    "item": "welkin:chargelog"
+  }
+}

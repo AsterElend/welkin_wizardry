@@ -1,10 +1,7 @@
 package aster.welkin.registry;
 
 import aster.welkin.Welkin;
-import aster.welkin.item.LetheanWaterBottle;
-import aster.welkin.item.WardingPrismItem;
-import aster.welkin.item.WardstoneItem;
-import aster.welkin.item.WorldSaltsItem;
+import aster.welkin.item.*;
 import aster.welkin.item.baton.*;
 import aster.welkin.registry.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -49,8 +46,17 @@ public static final Item EXOSPHERE_DISC = registerItem("exosphere_disc",
     public static final Item LETHEAN_WATER_BUCKET = registerItem("lethean_water_bucket", new BucketItem(WelkinFluids.LETHEAN_WATER_STATIC,
             new FabricItemSettings().maxCount(1)));
 
+       public static final Item FALSE_MILK_BUCKET = registerItem("false_milk_bucket", new BucketItem(WelkinFluids.FALSE_MILK_STATIC,
+            new FabricItemSettings().maxCount(1)));
+
+
     public static final Item MAGMATIC_WARDSTONE = registerItem("magmatic_wardstone", new WardstoneItem(new FabricItemSettings().maxCount(1)) {
     });
+
+    public static final Item DEATHLOOP_WARDSTONE = registerItem("deathloop_wardstone", new WardstoneItem(new FabricItemSettings().maxCount(1)));
+    public static final Item SKIMSTEP_WARDSTONE = registerItem("skimstep_wardstone", new WardstoneItem(new FabricItemSettings().maxCount(1)));
+    public static final Item DREAMSHIELD_WARDSTONE = registerItem("dreamshield_wardstone", new WardstoneItem(new FabricItemSettings().maxCount(1)));
+
     public static final Item LETHEAN_WATER_BOTTLE = registerItem("lethean_water_bottle", new LetheanWaterBottle(new FabricItemSettings().maxCount(16)));
     public static final Item WORLD_SALTS = registerItem("world_salts", new WorldSaltsItem(new FabricItemSettings().maxCount(16)));
 
@@ -59,7 +65,8 @@ public static final Item EXOSPHERE_DISC = registerItem("exosphere_disc",
   public static final Item BLACK_HOLE_CORE = registerItem("black_hole_core", new Item(new FabricItemSettings().maxCount(1)));
   public static final Item WHITE_HOLE_CORE = registerItem("white_hole_core", new Item(new FabricItemSettings().maxCount(1)));
 
-
+  public static final Item TEACUP = registerItem("teacup", new Item(new FabricItemSettings().maxCount(16)));
+  public static final Item BONE_APPLE_TEA = registerItem("bone_apple_tea", new EffectFoodItem(new FabricItemSettings().maxCount(16).food(WelkinFoodComponents.BONE_APPLE_TEA), 10, true, TEACUP));
 
 
 

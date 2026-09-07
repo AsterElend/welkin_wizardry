@@ -1,0 +1,9 @@
+{
+  "type": "welkin:void_transmutation",
+  "ingredient": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "item": "minecraft:echo_shard"
+  }
+}

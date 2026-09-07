@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "welkin:fractal_log",
+    "welkin:fractal_wood",
+    "welkin:stripped_fractal_log",
+    "welkin:stripped_fractal_wood"
+  ]
+}

@@ -17,6 +17,7 @@ public class WelkinFluidTagGen extends FabricTagProvider<Fluid> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup lookup) {
-        getOrCreateTagBuilder(WelkinTags.LETHE).add(WelkinFluids.LETHEAN_WATER_STATIC, WelkinFluids.LETHEAN_WATER_FLOWING);
+        getOrCreateTagBuilder(WelkinTags.LETHEAN_WATER).add(WelkinFluids.LETHEAN_WATER_STATIC, WelkinFluids.LETHEAN_WATER_FLOWING);
+        getOrCreateTagBuilder(WelkinTags.FALSE_MILK).add(WelkinFluids.FALSE_MILK_STATIC, WelkinFluids.FALSE_MILK_FLOWING);
     }
 }

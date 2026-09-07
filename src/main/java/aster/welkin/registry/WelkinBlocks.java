@@ -78,8 +78,11 @@ public class WelkinBlocks {
 	public static final Block WATCHER_LEAVES = registerBlock("watcher_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_LEAVES)));
 
 	public static final Block LETHEAN_WATER_BLOCK = registerBlockWithNoItem("lethean_water", new FluidBlock(WelkinFluids.LETHEAN_WATER_STATIC, FabricBlockSettings.copyOf(Blocks.WATER)));
+	public static final Block FALSE_MILK_BLOCK = registerBlockWithNoItem("false_milk", new FluidBlock(WelkinFluids.FALSE_MILK_STATIC, FabricBlockSettings.copyOf(Blocks.WATER)));
 
 	public static final Block SUNSTONE = registerBlock("sunstone", new SunstoneBlock(FabricBlockSettings.copyOf(Blocks.TUFF).luminance(SunstoneBlock.STATE_TO_LUMINANCE)));
+	public static final Block ITEM_CANNON = registerBlock("item_cannon", new ItemCannonBlock(FabricBlockSettings.copyOf(Blocks.DISPENSER)));
+
 
 
 
@@ -131,6 +134,9 @@ public class WelkinBlocks {
 	public static final Block LIGHTNING_ALTAR = registerBlock("lightning_altar", new LightningAltar(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).nonOpaque()));
 	//no model
 	public static final Block ANTIGRAVITY_PYLON = registerBlock("antigravity_pylon", new AntigravityPylon(FabricBlockSettings.copyOf(Blocks.CONDUIT)));
+
+	public static final Block WARDED_STONE = registerBlock("warded_stone", new Block(FabricBlockSettings.copyOf(Blocks.BEDROCK).hardness(-1).resistance(Float.MAX_VALUE)));
+
 
 
 	//public static final Block TANK_FRAME = registerBlock("tankframe", new TankFrameBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));

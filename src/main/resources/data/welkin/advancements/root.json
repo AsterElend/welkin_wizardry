@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": {
+      "item": "welkin:chargestone"
+    },
+    "title": "Welkin Wizardry",
+    "description": "As below, so above.",
+    "background": "welkin:textures/block/starstone.png",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

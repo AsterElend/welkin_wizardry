@@ -1,0 +1,9 @@
+{
+  "type": "welkin:lightning_transmutation",
+  "ingredient": {
+  "item": "minecraft:glass_bottle"
+  },
+  "result": {
+    "item": "welkin:cloud_bottle"
+  }
+}

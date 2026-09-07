@@ -24,6 +24,9 @@ public  class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(
                 WelkinBlocks.STARSTONE
         );
+
+        getOrCreateTagBuilder(WelkinTags.YOINKABLE).add(WelkinBlocks.WARDED_STONE);
+
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
                 WelkinBlocks.LIGHTNING_ALTAR,
                 WelkinBlocks.CHARGELOG,
@@ -68,6 +71,7 @@ public  class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 WelkinBlocks.WATCHER_WOOD,
                 WelkinBlocks.STRIPPED_WATCHER_LOG,
                 WelkinBlocks.STRIPPED_WATCHER_WOOD);
+
         getOrCreateTagBuilder(BlockTags.SAPLINGS).add(WelkinBlocks.WATCHER_SAPLING, WelkinBlocks.FRACTAL_SAPLING);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(WelkinBlocks.CHARGEPLANKS, WelkinBlocks.WATCHER_PLANKS, WelkinBlocks.FRACTAL_PLANKS);
         getOrCreateTagBuilder(BlockTags.LEAVES).add(WelkinBlocks.FRACTAL_LEAVES, WelkinBlocks.WATCHER_LEAVES);

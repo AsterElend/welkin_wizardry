@@ -21,7 +21,7 @@ public class ActuallySwimCheck {
     @WrapOperation(method = {"updateMovementInFluid", "updateSwimming"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/fluid/FluidState;isIn(Lnet/minecraft/registry/tag/TagKey;)Z"))
     public boolean spectrum$updateMovementInFluid(FluidState instance, TagKey<Fluid> tag, Operation<Boolean> original) {
         if (original.call(instance, tag)) return true;
-        return tag == FluidTags.WATER ? original.call(instance, WelkinTags.LETHE) : false;
+        return tag == FluidTags.WATER ? original.call(instance, WelkinTags.LETHEAN_WATER) : false;
     }
 
     // Used to cache the state being submerged in water, which is used for initiating swimming.
@@ -29,7 +29,7 @@ public class ActuallySwimCheck {
     @WrapOperation(method = "updateSubmergedInWaterState", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;isSubmergedIn(Lnet/minecraft/registry/tag/TagKey;)Z"))
     public boolean spectrum$updateSubmergedInWaterState(Entity instance, TagKey<Fluid> tag, Operation<Boolean> original) {
         if (original.call(instance, tag)) return true;
-        return tag == FluidTags.WATER ? original.call(instance, WelkinTags.LETHE) : false;
+        return tag == FluidTags.WATER ? original.call(instance, WelkinTags.LETHEAN_WATER) : false;
     }
 
 

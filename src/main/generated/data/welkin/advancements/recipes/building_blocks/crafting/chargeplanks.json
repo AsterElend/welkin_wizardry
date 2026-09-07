@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chargelog": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "welkin:chargelog"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "welkin:crafting/chargeplanks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_chargelog",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "welkin:crafting/chargeplanks"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -56,6 +56,7 @@ public abstract class BoatEntityMixin extends Entity implements EnchantableBoatE
     @Unique
     private static final TrackedData<NbtCompound> BOAT_ENCHANTMENTS =
             DataTracker.registerData(BoatEntity.class, TrackedDataHandlerRegistry.NBT_COMPOUND);
+    //yes, it does match. calm down. I'm just attaching it to the boat I'm mixing into
 
     @Inject(method = "initDataTracker", at = @At("TAIL"))
     private void welkin$initTracker(CallbackInfo ci) {

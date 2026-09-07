@@ -5,6 +5,7 @@ import aster.welkin.api.PedestalLikeBlock;
 import aster.welkin.block.entity.EnchantmentDisintegratorBlockEntity;
 import aster.welkin.registry.WelkinBlockEntities;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -12,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class EnchantmentDisintegratorBlock extends PedestalLikeBlock implements IHasLensInfo {
+public class EnchantmentDisintegratorBlock extends BlockWithEntity implements IHasLensInfo {
     public EnchantmentDisintegratorBlock(Settings settings) {
         super(settings);
     }

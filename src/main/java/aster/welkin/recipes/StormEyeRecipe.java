@@ -23,9 +23,19 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import vazkii.patchouli.api.IMultiblock;
 import vazkii.patchouli.common.multiblock.SerializedMultiblock;
-
 public class StormEyeRecipe implements CraftingRecipe {
 
+    // 1. Remove 'final' from multiblock so we can load it later
+    private final SerializedMultiblock serializedMultiblock;
+    private IMultiblock multiblock;
+
+    private final ItemStack output;
+    private final BlockState outputState;
+    private final BlockPos offset;
+    private final BlockPos outputOffset;
+    private final Identifier recipeId;
+
+    // 2. Fixed constructor: removed the crashing toMultiblock() call and the unused JsonObject argument
     public StormEyeRecipe(
             SerializedMultiblock serializedMultiblock,
             @Nullable ItemStack output,
@@ -35,7 +45,6 @@ public class StormEyeRecipe implements CraftingRecipe {
             Identifier recipeId
     ) {
         this.serializedMultiblock = serializedMultiblock;
-        this.multiblock = serializedMultiblock.toMultiblock();
         this.output = output;
         this.outputState = state;
         this.offset = offset;
@@ -48,27 +57,29 @@ public class StormEyeRecipe implements CraftingRecipe {
         return WelkinRecipes.STORM_EYE_TYPE;
     }
 
-    private final SerializedMultiblock serializedMultiblock; // kept around so write() can re-emit it
-    private final IMultiblock multiblock;
-    private final ItemStack output;
-    private final BlockState outputState;
-    private final BlockPos offset;
-    private final BlockPos outputOffset;
-    private final Identifier recipeId;
     public boolean hasItemOutput(){return output != null;}
     public boolean hasBlockOutput(){return outputState != null;}
-    public IMultiblock getMultiblock() { return multiblock; }
+
+    // 3. Lazy initialize the multiblock here
+    public IMultiblock getMultiblock() {
+        if (this.multiblock == null) {
+            this.multiblock = this.serializedMultiblock.toMultiblock();
+        }
+        return this.multiblock;
+    }
+
     public ItemStack getOutput() { return output; }
     public BlockState getOutputState() { return outputState; }
     public BlockPos getOffset() { return offset; }
     public BlockPos getOutputOffset() { return outputOffset; }
 
+    // 4. Update these methods to use the lazy getMultiblock() getter
     public BlockRotation testMulti(BlockPos pos, World world) {
-        return multiblock.validate(world, pos);
+        return getMultiblock().validate(world, pos);
     }
 
     public Vec3i getSize() {
-        return multiblock.getSize();
+        return getMultiblock().getSize();
     }
 
     @Override
@@ -138,7 +149,6 @@ public class StormEyeRecipe implements CraftingRecipe {
 
             buf.writeBoolean(recipe.outputState != null);
             if (recipe.outputState != null) buf.writeVarInt(Block.getRawIdFromState(recipe.outputState));
-
 
             buf.writeBlockPos(recipe.offset);
 

@@ -1,7 +1,7 @@
 package aster.welkin.block.entity;
 
 import aster.welkin.api.IHasLensInfo;
-import aster.welkin.api.LinkablePedestal;
+import aster.welkin.api.Linkable;
 import aster.welkin.api.WelkinUtil;
 import aster.welkin.registry.WelkinBlockEntities;
 import net.minecraft.block.BlockState;
@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Map;
 
-public class EnchantmentDisintegratorBlockEntity extends LinkablePedestal implements IHasLensInfo {
+public class EnchantmentDisintegratorBlockEntity extends Linkable implements IHasLensInfo {
   private int cooldown;
     private final int BASE_COOLDOWN = 100;
     public EnchantmentDisintegratorBlockEntity(BlockPos pos, BlockState state) {
@@ -32,9 +32,10 @@ public class EnchantmentDisintegratorBlockEntity extends LinkablePedestal implem
     }
     public void tick(BlockPos pos, World world){
         if (world.isReceivingRedstonePower(pos)) return;
-        if (this.logic.isEmpty()) return;
-        ItemStack stack = this.logic.getStack();
-        if (!stack.hasEnchantments()) return;
+        if (!(world.getBlockEntity(pos.up()) instanceof NodeBlockEntity node)) return;
+        if (node.isEmpty()) return;
+        ItemStack stack = node.getStack();
+        if (!stack.hasEnchantments() || stack.getCount() != 1) return;
         if (cooldown >= 0){
             cooldown--;
             return;
@@ -62,10 +63,7 @@ public class EnchantmentDisintegratorBlockEntity extends LinkablePedestal implem
 
 
     }
-    @Override
-    public int getMaxCountPerStack(){
-        return 1;
-    }
+
 
     public static Enchantment pickOriginalEnchantment(Random random, ItemStack stack) {
         Map<Enchantment, Integer> currentEnchants = EnchantmentHelper.get(stack);
@@ -118,7 +116,9 @@ public class EnchantmentDisintegratorBlockEntity extends LinkablePedestal implem
     public void applyLensOverlay(List<Pair<ItemStack, StringVisitable>> lines,
                                  BlockState state, BlockPos pos,
                                  PlayerEntity observer, World world, Direction hitFace){
-        var enchantments = EnchantmentHelper.get(this.logic.getStack());
+        if (!(world.getBlockEntity(pos.up()) instanceof NodeBlockEntity node)) return;
+
+        var enchantments = EnchantmentHelper.get(node.getStack());
         if (enchantments.isEmpty()) return;
         lines.add(new Pair<>(new ItemStack(Items.ENCHANTED_BOOK), Text.empty()));
         for (var entry : enchantments.entrySet()) {
@@ -128,16 +128,17 @@ public class EnchantmentDisintegratorBlockEntity extends LinkablePedestal implem
 
     };
 
-    @Override
-    public void writeAdditionalData(NbtCompound nbt){
-        nbt.putInt("cooldown", cooldown);
-    }
+  @Override
+    public void readNbt(NbtCompound nbt){
+      cooldown = nbt.getInt("cooldown");
+      readLink(nbt);
+  }
 
-    @Override
-    public void readAdditionalData(NbtCompound nbt){
-        cooldown = nbt.getInt("cooldown");
-    }
-
+  @Override
+    public void writeNbt(NbtCompound nbt){
+      nbt.putInt("cooldown", cooldown);
+      writeLink(nbt);
+  }
 
 
 }

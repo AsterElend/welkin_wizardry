@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "l": {
+      "tag": "welkin:charged_logs"
+    }
+  },
+  "pattern": [
+    "  l",
+    " l ",
+    "l  "
+  ],
+  "result": {
+    "item": "welkin:wishful_baton"
+  },
+  "show_notification": true
+}

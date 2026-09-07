@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chargelog": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "welkin:charged_logs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "welkin:crafting/wishful_baton"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_chargelog",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "welkin:crafting/wishful_baton"
+    ]
+  },
+  "sends_telemetry_event": false
+}

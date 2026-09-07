@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "welkin:watcher_log",
+    "welkin:watcher_wood",
+    "welkin:stripped_watcher_log",
+    "welkin:stripped_watcher_wood"
+  ]
+}

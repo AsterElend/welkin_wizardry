@@ -1,0 +1,23 @@
+blockies  - like complicated bees, but chicken
+item dislocator - like weighted ejector, but teleport, and not only straight lines
+enchantment accelerator
+
+starsnatching
+Indecisive vessel - holds 9 items and 4 buckets of fluid
+nether quartz = feldspar, feldspar + clay = kaolin, kaolin + heat = porcelain. Teacups!
+
+Refineyrie!
+televator - like the old OpenBlock elevator
+Jelly -> Sprites -> weather manip. biome manip. and familiars
+test tubes that hold a tiny amount of fluid
+water clock: basically a hovering hourglass with fluid
+tempestuous leeks
+maybe don't implement the alchemical winds
+ardent altar
+Semantic Slipway, for better endgame teleports
+Soil Cyclone - generates dirt in Temperate, gravel in cold, sand in hot
+
+allow nodes to do fluid transfer if they hold an item that can accept it (like a tank)
+fluid packet item, generated when an empty node is passed fluid. infinite storage, deletes itself when empty.
+
+oh no, now we need to mixin to particle rain

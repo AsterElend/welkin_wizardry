@@ -75,6 +75,7 @@ public class WelkinBlockEntities {
             register("false_star", FalseStarBlockEntity::new, WelkinBlocks.FALSE_STAR);
     public static final BlockEntityType<AlchemyBlockEntity> ALCHEMY_ENTITY = register("alchemy", AlchemyBlockEntity::new, WelkinBlocks.ALCHEMICAL_ENGINE);
 
+    public static final BlockEntityType<ItemCannonBlockEntity> ITEM_CANNON = register("item_cannon", ItemCannonBlockEntity::new, WelkinBlocks.ITEM_CANNON);
 
 //  public static final BlockEntityType<TankFrameEntity> TANK_FRAME =
  //           Registry.register(Registries.BLOCK_ENTITY_TYPE, id("tankframe"),

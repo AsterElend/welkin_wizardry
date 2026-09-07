@@ -29,7 +29,7 @@ public abstract class PedestalLikeBlock extends BlockWithEntity {
             return ActionResult.SUCCESS;
         }
 
-        if (!(world.getBlockEntity(pos) instanceof PedestalInteractable pedestal)) {
+        if (!(world.getBlockEntity(pos) instanceof PedestalLikeBlockEntity pedestal)) {
             return ActionResult.FAIL;
         }
 

@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
 public class WelkinDataGenerator implements DataGeneratorEntrypoint {
+
+
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
@@ -15,7 +17,7 @@ public class WelkinDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModAdvancementProvider::new);
 		pack.addProvider(BlockLootProvider::new);
 		pack.addProvider(WelkinFluidTagGen::new);
-
+		pack.addProvider(WelkinRecipeGenerator::new);
 
 	}
 

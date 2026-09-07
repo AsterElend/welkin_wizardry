@@ -91,7 +91,7 @@ public class ConductorBatonItem extends Item implements DirectClickItem {
             if (!ctx.getWorld().isClient) {
                 boolean success = zelda.setLink(ctx.getBlockPos(), ctx.getSide());
                 if (!success) {
-                    ctx.getPlayer().sendMessage(Text.literal("Failed to link: out of range.")
+                    ctx.getPlayer().sendMessage(Text.literal("Failed to link: out of particleRadius.")
                             .setStyle(Style.EMPTY.withColor(TextColor.parse("red"))), true); // true sets action bar overlay
                 }
                 stack.getOrCreateNbt().remove("storedpos");

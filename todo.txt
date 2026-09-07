@@ -1,3 +1,0 @@
-blockies  - like complicated bees, but chicken
-item dislocator - like weighted ejector, but teleport, and not only straight lines
-enchantment accelerator

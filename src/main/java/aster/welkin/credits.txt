@@ -3,3 +3,4 @@ used the fabric mod template generator
 many thanks to the wonderful botania mod
 hexcasting for the scrying lens system
 spectrum for how to make a pedestal-like block, and generally being the best reference for this version of fabric
+particlerain for how to make a weather system actually look decent

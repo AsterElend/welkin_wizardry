@@ -4,6 +4,7 @@ import aster.welkin.Welkin;
 import aster.welkin.registry.WelkinBlocks;
 import aster.welkin.registry.WelkinFluids;
 import aster.welkin.registry.WelkinItems;
+import aster.welkin.registry.WelkinTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -95,7 +96,7 @@ public abstract class LetheanFluid extends FlowableFluid {
     }
     @Override
     public boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, Direction direction) {
-        return direction == Direction.DOWN && !fluid.isIn(TagKey.of(RegistryKeys.FLUID, Welkin.id("lethean")));
+        return direction == Direction.DOWN && !fluid.isIn(WelkinTags.LETHEAN_WATER);
     }
 
     @Override

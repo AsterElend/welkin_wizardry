@@ -4,10 +4,13 @@ package aster.welkin;
 import aster.welkin.api.ExtraEnchantsHolder;
 import aster.welkin.api.SigilVisionManager;
 import aster.welkin.api.chat.ChatCatchHelper;
+import aster.welkin.api.state.WeatherManager;
+import aster.welkin.compat.SpectrumWeatherOverrides;
 import aster.welkin.config.WelkinConfig;
 import aster.welkin.packet.WelkinPackets;
 import aster.welkin.recipes.AlchemyReloadListener;
 import aster.welkin.registry.*;
+import aster.welkin.registry.particle.WelkinParticles;
 import aster.welkin.registry.sound.ModSounds;
 import aster.welkin.registry.world.DimensionStuff;
 import aster.welkin.registry.world.trees.WelkinFoliagePlacers;
@@ -15,11 +18,15 @@ import aster.welkin.registry.world.trees.WelkinTrunkPlacers;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +56,10 @@ public class Welkin implements ModInitializer {
 	public void onInitialize() {
 		WelkinItems.registerModItems();
 		WelkinTags.register();
-
+		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+			ServerWorld world = handler.getPlayer().getServerWorld();
+			WeatherManager.getServerState(world).sendFullSync(handler.getPlayer());
+		});
 		ExtraEnchantsHolder.registerExtraTag(Enchantments.SWIFT_SNEAK, ItemTags.BOATS);
 		ExtraEnchantsHolder.registerExtraTag(Enchantments.FROST_WALKER, ItemTags.BOATS);
 		ExtraEnchantsHolder.registerExtraTag(Enchantments.DEPTH_STRIDER, ItemTags.BOATS);
@@ -73,7 +83,7 @@ public class Welkin implements ModInitializer {
 		ChatCatchHelper.register();
 		WelkinEffects.invoke();
 		WelkinEvents.register();
-
+		WelkinParticles.register();
 
 
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new AlchemyReloadListener());
@@ -82,6 +92,12 @@ public class Welkin implements ModInitializer {
 
 
 		LOGGER.info("Hello Fabric world!");
+
+		ServerLifecycleEvents.SERVER_STARTING.register(server -> {
+			if (FabricLoader.getInstance().isModLoaded("spectrum")){
+				SpectrumWeatherOverrides.register();
+			}
+		});
 
 
 	}

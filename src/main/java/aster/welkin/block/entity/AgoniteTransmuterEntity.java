@@ -25,16 +25,16 @@ public class AgoniteTransmuterEntity extends PedestalLikeBlockEntity {
     }
 
     public void runRecipe(){
-        SimpleInventory inv = new SimpleInventory(this.logic.getStack());
+        SimpleInventory inv = new SimpleInventory(getStack());
         Optional<AgoniteTransmutationRecipe> maybeGet = this.getWorld().getServer().getRecipeManager().getFirstMatch(
                 WelkinRecipes.AGONY_TYPE, inv, this.getWorld()
         );
         if (maybeGet.isEmpty()) return;
         AgoniteTransmutationRecipe recipe = maybeGet.get();
-        int toTransmuteCount = this.logic.getCount();
+        int toTransmuteCount = getStack().getCount();
         float required = recipe.getPain() * toTransmuteCount;
         if (required < stockpiledPain) return;
-        logic.setStack(new ItemStack(recipe.getBaseOutput().getItem(), toTransmuteCount));
+        this.setStack(new ItemStack(recipe.getBaseOutput().getItem(), toTransmuteCount));
         stockpiledPain -= required;
 
 

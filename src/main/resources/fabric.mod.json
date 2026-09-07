@@ -56,7 +56,9 @@
 	"custom": {
 		"cardinal-components": [
 			"welkin:force",
-			"welkin:forgotten"
+			"welkin:forgotten",
+			"welkin:frozen_velocity",
+			"welkin:last_death_source"
 		]
 	},
 

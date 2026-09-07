@@ -17,8 +17,8 @@ import java.util.Objects;
 
 public class NadirToast implements Toast {
     private boolean justUpdated = true;
-    private static final Identifier FORGET_TEXTURE = new Identifier("songweaver", "textures/gui/forget_toast.png");
-    private static final Identifier REMEMBER_TEXTURE = new Identifier("songweaver", "textures/gui/remember_toast.png");
+    private static final Identifier FORGET_TEXTURE = new Identifier("welkin", "textures/gui/forget_toast.png");
+    private static final Identifier REMEMBER_TEXTURE = new Identifier("welkin", "textures/gui/remember_toast.png");
     private long startTime;
     private final Text advancement;
     private final Text title;
@@ -54,7 +54,7 @@ public class NadirToast implements Toast {
         PacketByteBuf buf = PacketByteBufs.create();
         Text output;
         if (Objects.equals(advancement, Welkin.id("everything"))){
-            output = Text.translatable("songweaver.toast.everything");
+            output = Text.translatable("welkin.toast.everything");
         } else {
              output = player.getServer().getAdvancementLoader().get(advancement).getDisplay().getTitle();
         }
@@ -69,10 +69,10 @@ public class NadirToast implements Toast {
 
 
     public static NadirToast buildRememberToast(Text advancement){
-        return new NadirToast(advancement, Text.translatable("songweaver.toast.remember_title"), REMEMBER_TEXTURE);
+        return new NadirToast(advancement, Text.translatable("welkin.toast.remember_title"), REMEMBER_TEXTURE);
     }
     public static NadirToast buildForgetToast(Text advancement){
-        return new NadirToast(advancement, Text.translatable("songweaver.toast.forget_title"), FORGET_TEXTURE);
+        return new NadirToast(advancement, Text.translatable("welkin.toast.forget_title"), FORGET_TEXTURE);
     }
 
 

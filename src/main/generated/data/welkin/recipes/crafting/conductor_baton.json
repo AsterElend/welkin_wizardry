@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "c": {
+      "item": "welkin:stormphrax"
+    },
+    "l": {
+      "item": "welkin:wishful_baton"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    " c ",
+    " l ",
+    " r "
+  ],
+  "result": {
+    "item": "welkin:conductor_baton"
+  },
+  "show_notification": true
+}

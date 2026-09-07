@@ -5,6 +5,7 @@ import aster.welkin.registry.WelkinItems;
 import aster.welkin.registry.WelkinTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
@@ -37,7 +38,20 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider{
                         WelkinBlocks.STRIPPED_WATCHER_WOOD.asItem()
                 );
 
+        getOrCreateTagBuilder(WelkinTags.CUT_COPPER_ITEM_TAG).add(
+                Blocks.CUT_COPPER.asItem(),
+                Blocks.EXPOSED_CUT_COPPER.asItem(),
+                Blocks.WEATHERED_CUT_COPPER.asItem(),
+                Blocks.OXIDIZED_CUT_COPPER.asItem(),
+                Blocks.WAXED_CUT_COPPER.asItem(),
+                Blocks.WAXED_EXPOSED_CUT_COPPER.asItem(),
+                Blocks.WAXED_WEATHERED_CUT_COPPER.asItem(),
+                Blocks.WAXED_OXIDIZED_CUT_COPPER.asItem()
+        );
 
+        getOrCreateTagBuilder(WelkinTags.CHARGED_LOGS).add(WelkinBlocks.CHARGELOG.asItem(), WelkinBlocks.CHARGEWOOD.asItem(), WelkinBlocks.STRIPPEDCHARGELOG.asItem(), WelkinBlocks.STRIPPEDCHARGEWOOD.asItem());
+        getOrCreateTagBuilder(WelkinTags.FRACTAL_LOGS).add(WelkinBlocks.FRACTAL_LOG.asItem(), WelkinBlocks.FRACTAL_WOOD.asItem(), WelkinBlocks.STRIPPED_FRACTAL_LOG.asItem(), WelkinBlocks.STRIPPED_FRACTAL_WOOD.asItem());
+        getOrCreateTagBuilder(WelkinTags.WATCHER_LOGS).add(WelkinBlocks.WATCHER_LOG.asItem(), WelkinBlocks.WATCHER_WOOD.asItem(), WelkinBlocks.STRIPPED_WATCHER_LOG.asItem(), WelkinBlocks.STRIPPED_WATCHER_WOOD.asItem());
 
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
                 .add(WelkinItems.STORMCYCLE_DISC, WelkinItems.WINDTUNNEL_DISC);
@@ -53,4 +67,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider{
         getOrCreateTagBuilder(ItemTags.LEAVES).add(
                 WelkinBlocks.FRACTAL_LEAVES.asItem(), WelkinBlocks.WATCHER_LEAVES.asItem());
     }
+
+
 }

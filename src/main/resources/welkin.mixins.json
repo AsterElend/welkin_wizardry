@@ -4,20 +4,33 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ActuallySwimCheck",
+    "BlockMixin",
     "BoatEntityMixin",
     "BoatItemMixin",
     "EnchantmentMixin",
     "EntityApplyFluidsMixin",
     "EntityMixin",
     "ExplosionWard",
+    "FarmlandBlockMixin",
     "ItemEntityMixin",
     "LightningHandler",
-    "PlayerLetheanCheck"
+    "LivingEntityMixin",
+    "MobEntityMixin",
+    "PlayerEntityMixin",
+    "ServerWorldMixin",
+    "WeatherCommandMixin",
+    "WorldMixin",
+    "interop.OpWeatherMixin",
+    "interop.TeruTeruBozuMixin",
+    "interop.WeatherPredicateMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
-    "LetheFog"
-  ]
+    "ClientWorldMixin",
+    "FogMixin",
+    "KeyboardInputMixin"
+  ],
+  "plugin": "aster.welkin.WelkinMixinPlugin"
 }

@@ -19,7 +19,7 @@ public class PedestalRenderableRenderer<T extends PedestalLikeBlockEntity> imple
 
     @Override
     public void render(PedestalLikeBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay){
-        ItemStack stack = entity.getLogic().getStack();
+        ItemStack stack = entity.getStack();
         if (stack.isEmpty()) return;
 
         matrices.push();

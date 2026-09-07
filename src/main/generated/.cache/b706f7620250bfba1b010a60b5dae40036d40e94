@@ -1,8 +1,12 @@
-// 1.20.1	2026-08-19T14:45:21.271855	Welkin Wizardry/Tags for minecraft:item
+// 1.20.1	2026-08-31T21:35:10.4758038	Welkin Wizardry/Tags for minecraft:item
+0e0a561eb527c78427e226a69d11f9c7303bc3d0 data\welkin\tags\items\cut_copper.json
 ce7b25b1c744483299782c43110ffd27178def93 data\minecraft\tags\items\music_discs.json
+36ef7d7ece699080ddefad346c9cac9ccc1a7f84 data\welkin\tags\items\fractal_logs.json
 0f05f690a188cb7e2c0d385dba38bd41da38379d data\minecraft\tags\items\saplings.json
 5e6c6bdf2998e346f8de6f5d849ef36b5d8f6061 data\minecraft\tags\items\logs.json
+36b6a2ece7a842bc476365a3fd7e9cd11e56f1b9 data\welkin\tags\items\charged_logs.json
 2ae7cef8432518f9bbfc723cc518d3fa02c363ed data\welkin\tags\items\take_heart.json
-e09be05e3e22dd0fa98c06f5b36c7ca94bbe333c data\welkin\tags\items\show_force.json
+2db99b36973876ef58bd91d5080bff48bd431e94 data\welkin\tags\items\watcher_logs.json
 84a8d6c6acae97b9a58101f428f582bdba15ae6c data\minecraft\tags\items\leaves.json
+e09be05e3e22dd0fa98c06f5b36c7ca94bbe333c data\welkin\tags\items\show_force.json
 ba0d5506cef387436024711a4b33be30e308f671 data\minecraft\tags\items\planks.json

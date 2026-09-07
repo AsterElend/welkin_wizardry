@@ -32,7 +32,7 @@ public class ChristeningAltarBlockEntity extends PedestalLikeBlockEntity impleme
 
     @Override
     public boolean onChatReceived(String message, ServerPlayerEntity sender) {
-        ItemStack stack = logic.getStack();
+        ItemStack stack = getStack();
         if (stack.isEmpty()) {
             return false;
         }

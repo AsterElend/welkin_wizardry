@@ -69,7 +69,6 @@ public class AlchemyRecipeManager {
                 Welkin.LOGGER.warn("Tag {} was not found on Registries.ITEM at all", set.mainTag().id());
                 continue;
             } else {
-                Welkin.LOGGER.info("Tag {} found with {} entries", set.mainTag().id(), entryListOpt.get().size());
                 for (RegistryEntry<Item> item : entryListOpt.get()) {
                     pool.add(item.value());
                 }
@@ -88,7 +87,6 @@ public class AlchemyRecipeManager {
 
             // 3. Filter pool
             pool.removeIf(item -> excluded.contains(itemRegistry.getId(item)));
-            Welkin.LOGGER.info("Filtered pool size: {} items", pool.size());
 
             int loopLength = set.loopLength();
             Block catalyst = set.catalyst();

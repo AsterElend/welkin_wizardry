@@ -39,13 +39,13 @@ public abstract class EntityApplyFluidsMixin implements TouchingWaterAware {
     @Inject(method = "isSubmergedIn", at = @At("RETURN"), cancellable = true)
     public void spectrum$isSubmergedIn(TagKey<Fluid> fluidTag, CallbackInfoReturnable<Boolean> cir) {
         if (!cir.getReturnValue() && fluidTag == FluidTags.WATER) {
-            cir.setReturnValue(this.submergedFluidTag.contains(WelkinTags.LETHE));
+            cir.setReturnValue(this.submergedFluidTag.contains(WelkinTags.LETHEAN_WATER));
         }
     }
 
     @Inject(method = "isSubmergedInWater", at = @At("RETURN"), cancellable = true)
     public void spectrum$isSubmergedInWater(CallbackInfoReturnable<Boolean> cir) {
-        if (!cir.getReturnValue() && this.submergedFluidTag.contains(WelkinTags.LETHE)) {
+        if (!cir.getReturnValue() && this.submergedFluidTag.contains(WelkinTags.LETHEAN_WATER)) {
             //this.submergedFluidTag.add(FluidTags.WATER);
             cir.setReturnValue(true);
         }
